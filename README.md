@@ -1,18 +1,42 @@
-# PulseWatch
+# PulseWatch — Week 1 PoC
 
-Competitor Change Radar — automated monitoring of competitor websites (pricing, product pages, docs, careers) with diffing + AI summarization + alerts.
+Simple CLI proof-of-concept for:
+- capturing a single URL (HTML + full-page screenshot)
+- storing artifacts on local filesystem
+- diffing two captures with a text diff
 
-## Principles
-- **GitHub-first**: changes happen via PRs.
-- **Evidence-first**: every alert includes a diff + screenshot evidence.
+## Files
+- `pulsewatch_cli.py` — CLI entry point (`capture`, `diff`)
+- `capture.py` — Playwright capture helper
+- `storage.py` — filesystem pathing + artifact persistence
+- `diff.py` — basic unified text diff
 
-## Roadmap (MVP)
-- Targets: domains/pages to monitor
-- Scheduler + capture (HTML + screenshot)
-- Diff engine (DOM/text + screenshot)
-- AI summary + importance scoring
-- Alert delivery (Discord + email)
-- Web UI feed
+## Install
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+playwright install chromium
+```
 
-## Status
-Planning / scaffolding.
+## Usage
+### Capture
+```bash
+python pulsewatch_cli.py capture https://example.com
+```
+Artifacts are stored under:
+```text
+data/{target_domain}/{date}/{page_hash}/
+```
+with files:
+- `page.html`
+- `screenshot.png`
+- `metadata.json`
+
+### Diff two captures
+```bash
+python pulsewatch_cli.py diff data/example.com/2026-03-18/abc123 data/example.com/2026-03-18/def456
+```
+Outputs:
+- changed lines count
+- `diff.txt` path (written to the new capture directory)
