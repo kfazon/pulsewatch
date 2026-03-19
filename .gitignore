@@ -10,3 +10,4 @@ playwright-report/
 # Local artifacts
 artifacts/
 logs/
+data/
