@@ -1,0 +1,78 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: ${DATABASE_URL}
+      OPENROUTER_API_KEY: ${OPENROUTER_API_KEY}
+      DISCORD_WEBHOOK_URL: ${DISCORD_WEBHOOK_URL}
+      SECRET_KEY: ${SECRET_KEY}
+      MIGRATION_CMD: ${MIGRATION_CMD:-}
+      BACKEND_START_CMD: ${BACKEND_START_CMD:-}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - "8000:8000"
+    volumes:
+      - pulsewatch_data:/app/data
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "3000:80"
+
+  discord-scheduler:
+    image: python:3.12-alpine
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: ${DATABASE_URL}
+      DISCORD_WEBHOOK_URL: ${DISCORD_WEBHOOK_URL}
+      OPENROUTER_API_KEY: ${OPENROUTER_API_KEY}
+      SECRET_KEY: ${SECRET_KEY}
+    depends_on:
+      - backend
+    working_dir: /app
+    volumes:
+      - ./:/app
+      - pulsewatch_data:/app/data
+    command: >
+      sh -c "
+        python -m pip install --no-cache-dir -r requirements.txt &&
+        printf '0 9 * * * cd /app && python -c \"from alerts.scheduler import check_and_send_digest; check_and_send_digest()\"\n' > /etc/crontabs/root &&
+        crond -f -l 8
+      "
+
+volumes:
+  postgres_data:
+  pulsewatch_data:
