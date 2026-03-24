@@ -1,14 +1,16 @@
 import React from 'react';
-import LandingHero from './components/LandingHero';
-import PricingSection from './components/PricingSection';
-import OnboardingPreview from './components/OnboardingPreview';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import Dashboard from './pages/Dashboard';
+import EvidenceView from './pages/EvidenceView';
 
 export default function App() {
   return (
-    <main>
-      <LandingHero />
-      <PricingSection />
-      <OnboardingPreview />
-    </main>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/capture/:id" element={<EvidenceView />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
