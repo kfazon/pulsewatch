@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PulseWatch — AI-Powered Competitor Monitoring</title>
+  <meta name="description" content="Never miss when your competitors move. AI-powered competitor monitoring with Discord delivery, intelligent summaries, and zero noise.">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            background: 'oklch(var(--background))',
+            foreground: 'oklch(var(--foreground))',
+            primary: 'oklch(var(--primary))',
+            'primary-foreground': 'oklch(var(--primary-foreground))',
+            secondary: 'oklch(var(--secondary))',
+            'secondary-foreground': 'oklch(var(--secondary-foreground))',
+            muted: 'oklch(var(--muted))',
+            'muted-foreground': 'oklch(var(--muted-foreground))',
+            border: 'oklch(var(--border))',
+            accent: 'oklch(var(--accent))',
+          },
+        }
+      }
+    }
+  </script>
+  
+  <style>
+    :root {
+      --background: 0.14 0.02 260;      /* Dark navy */
+      --foreground: 0.98 0 0;           /* White */
+      --primary: 0.55 0.15 255;         /* Electric blue */
+      --primary-foreground: 0.98 0 0;
+      --secondary: 0.22 0.02 260;        /* Slightly lighter navy */
+      --secondary-foreground: 0.98 0 0;
+      --muted: 0.25 0.02 250;          /* Muted navy */
+      --muted-foreground: 0.65 0.02 250;/* Muted text */
+      --border: 0.3 0.02 260;          /* Border color */
+      --accent: 0.65 0.18 280;          /* Purple accent */
+    }
+    
+    * {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    
+    body {
+      background: oklch(14% 0.02 260);
+      color: oklch(98% 0 0);
+      font-family: 'Inter', system-ui, sans-serif;
+    }
+    
+    /* Gradient backgrounds */
+    .gradient-bg {
+      background: radial-gradient(ellipse 80% 50% at 50% -20%, oklch(25% 0.1 265), transparent),
+                  radial-gradient(ellipse 60% 40% at 80% 50%, oklch(20% 0.08 280), transparent);
+    }
+    
+    .gradient-text {
+      background: linear-gradient(135deg, oklch(65% 0.18 255), oklch(70% 0.15 280));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    /* Glass effect */
+    .glass {
+      background: oklch(20% 0.02 260 / 0.6);
+      backdrop-filter: blur(12px);
+      border: 1px solid oklch(30% 0.02 260);
+    }
+    
+    .glass-card {
+      background: oklch(18% 0.015 260 / 0.5);
+      backdrop-filter: blur(8px);
+      border: 1px solid oklch(25% 0.02 260);
+    }
+    
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes pulse-glow {
+      0%, 100% {
+        box-shadow: 0 0 20px oklch(55% 0.15 255 / 0.3);
+      }
+      50% {
+        box-shadow: 0 0 40px oklch(55% 0.15 255 / 0.5);
+      }
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    .animate-fade-in-up {
+      animation: fadeInUp 0.6s ease-out forwards;
+    }
+    
+    .animate-delay-100 { animation-delay: 100ms; }
+    .animate-delay-200 { animation-delay: 200ms; }
+    .animate-delay-300 { animation-delay: 300ms; }
+    .animate-delay-400 { animation-delay: 400ms; }
+    
+    .pulse-glow {
+      animation: pulse-glow 3s ease-in-out infinite;
+    }
+    
+    .float {
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    /* Button styles */
+    .btn-primary {
+      background: linear-gradient(135deg, oklch(60% 0.18 255), oklch(55% 0.15 265));
+      transition: all 150ms ease-out;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 40px oklch(55% 0.15 255 / 0.4);
+    }
+    
+    .btn-primary:active {
+      transform: translateY(0) scale(0.98);
+    }
+    
+    /* Input styles */
+    .input-field {
+      background: oklch(15% 0.015 260);
+      border: 1px solid oklch(25% 0.02 260);
+      transition: all 200ms ease-out;
+    }
+    
+    .input-field:focus {
+      border-color: oklch(55% 0.15 255);
+      box-shadow: 0 0 0 3px oklch(55% 0.15 255 / 0.15);
+    }
+    
+    /* Card hover */
+    .card-hover {
+      transition: all 300ms ease-out;
+    }
+    
+    .card-hover:hover {
+      transform: translateY(-4px);
+      border-color: oklch(35% 0.02 260);
+      box-shadow: 0 20px 40px oklch(0 0 0 / 0.3);
+    }
+    
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: oklch(15% 0.02 260);
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: oklch(30% 0.02 260);
+      border-radius: 4px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+      background: oklch(40% 0.02 260);
+    }
+  </style>
+</head>
+<body class="min-h-screen">
+  
+  <!-- Background gradient -->
+  <div class="fixed inset-0 gradient-bg pointer-events-none"></div>
+  
+  <!-- Grid pattern overlay -->
+  <div class="fixed inset-0 opacity-[0.02] pointer-events-none" style="background-image: linear-gradient(oklch(50% 0 0) 1px, transparent 1px), linear-gradient(90deg, oklch(50% 0 0) 1px, transparent 1px); background-size: 60px 60px;"></div>
+  
+  <!-- Content -->
+  <div class="relative">
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50">
+      <div class="max-w-6xl mx-auto px-6 py-5">
+        <div class="glass rounded-2xl px-6 py-3 flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center pulse-glow">
+              <i data-lucide="radar" class="w-5 h-5 text-white"></i>
+            </div>
+            <span class="text-lg font-bold">PulseWatch</span>
+          </div>
+          
+          <div class="hidden md:flex items-center gap-2">
+            <span class="text-sm text-[oklch(65%_0.02_250)]">Coming soon</span>
+            <span class="px-3 py-1 rounded-full text-xs font-medium bg-[oklch(55%_0.15_255_/_0.15)] text-[oklch(65%_0.15_255)] border border-[oklch(55%_0.15_255_/_0.3)]">
+              Early Access
+            </span>
+          </div>
+        </div>
+      </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center px-6 pt-24 pb-16">
+      <div class="max-w-4xl mx-auto text-center">
+        
+        <!-- Badge -->
+        <div class="animate-fade-in-up opacity-0 mb-8">
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span class="text-sm text-[oklch(75%_0.02_250)]">Launching Q2 2026</span>
+          </div>
+        </div>
+        
+        <!-- Headline -->
+        <h1 class="animate-fade-in-up opacity-0 animate-delay-100 text-5xl md:text-7xl font-extrabold tracking-tight mb-6 leading-[1.1]">
+          Never Miss When Your<br>
+          <span class="gradient-text">Competitors Move</span>
+        </h1>
+        
+        <!-- Subheadline -->
+        <p class="animate-fade-in-up opacity-0 animate-delay-200 text-xl md:text-2xl text-[oklch(65%_0.02_250)] max-w-2xl mx-auto mb-10 leading-relaxed">
+          AI-powered competitor monitoring that tells you what changed <em>and why it matters</em> — delivered to Discord before your team hears it from someone else.
+        </p>
+        
+        <!-- CTA Form -->
+        <div class="animate-fade-in-up opacity-0 animate-delay-300">
+          <form id="signupForm" class="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto mb-6">
+            <input
+              type="email"
+              id="emailInput"
+              placeholder="you@company.com"
+              required
+              autocomplete="email"
+              class="input-field flex-1 px-5 py-4 rounded-xl text-white placeholder-[oklch(50%_0.02_250)] outline-none text-lg"
+            >
+            <button
+              type="submit"
+              id="submitBtn"
+              class="btn-primary px-8 py-4 rounded-xl font-semibold text-white whitespace-nowrap text-lg"
+            >
+              Join Waitlist
+            </button>
+          </form>
+          
+          <div id="formMessage" class="text-center text-sm mb-4 min-h-[24px]"></div>
+          
+          <p class="text-[oklch(50%_0.02_250)] text-sm">
+            Join <span id="subscriberCount" class="font-semibold text-[oklch(70%_0.02_250)]">247</span> growth teams already on the list
+          </p>
+        </div>
+        
+        <!-- Floating visual element -->
+        <div class="animate-fade-in-up opacity-0 animate-delay-400 mt-16 float">
+          <div class="inline-flex items-center gap-4 glass rounded-2xl p-4">
+            <div class="flex -space-x-3">
+              <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-cyan-400 border-2 border-[oklch(14%_0.02_260)]"></div>
+              <div class="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-pink-400 border-2 border-[oklch(14%_0.02_260)]"></div>
+              <div class="w-10 h-10 rounded-full bg-gradient-to-br from-orange-500 to-yellow-400 border-2 border-[oklch(14%_0.02_260)]"></div>
+              <div class="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-teal-400 border-2 border-[oklch(14%_0.02_260)]"></div>
+            </div>
+            <div class="text-left">
+              <div class="text-sm font-semibold">From startups to enterprise</div>
+              <div class="text-xs text-[oklch(55%_0.02_250)]">Used by growth teams worldwide</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Features Section -->
+    <section class="py-24 px-6">
+      <div class="max-w-6xl mx-auto">
+        
+        <div class="text-center mb-16">
+          <p class="text-sm font-semibold text-[oklch(60%_0.15_255)] uppercase tracking-wider mb-3">Why PulseWatch</p>
+          <h2 class="text-4xl md:text-5xl font-bold mb-4">Stop checking. Start knowing.</h2>
+          <p class="text-xl text-[oklch(65%_0.02_250)] max-w-2xl mx-auto">
+            Built for teams that can't afford to miss a competitor move but also can't afford noise.
+          </p>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-6">
+          
+          <!-- Feature 1 -->
+          <div class="glass-card rounded-2xl p-8 card-hover">
+            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center mb-6">
+              <i data-lucide="brain" class="w-7 h-7 text-blue-400"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3">AI Intelligence</h3>
+            <p class="text-[oklch(65%_0.02_250)] leading-relaxed">
+              Not just "page changed" — we summarize what changed and score how important it is. See the signal, not the noise.
+            </p>
+          </div>
+          
+          <!-- Feature 2 -->
+          <div class="glass-card rounded-2xl p-8 card-hover">
+            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-500/20 to-cyan-500/20 flex items-center justify-center mb-6">
+              <i data-lucide="bell-off" class="w-7 h-7 text-emerald-400"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3">Zero Noise</h3>
+            <p class="text-[oklch(65%_0.02_250)] leading-relaxed">
+              Daily digest delivers one summary to Discord — not 47 emails at 3am. You decide when and how you get updates.
+            </p>
+          </div>
+          
+          <!-- Feature 3 -->
+          <div class="glass-card rounded-2xl p-8 card-hover">
+            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center mb-6">
+              <i data-lucide="users" class="w-7 h-7 text-purple-400"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3">Team-Ready</h3>
+            <p class="text-[oklch(65%_0.02_250)] leading-relaxed">
+              Built for growth teams. Discord-native delivery means the whole team sees competitor intel where they already work.
+            </p>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+    
+    <!-- How It Works -->
+    <section class="py-24 px-6">
+      <div class="max-w-5xl mx-auto">
+        
+        <div class="text-center mb-16">
+          <p class="text-sm font-semibold text-[oklch(60%_0.15_255)] uppercase tracking-wider mb-3">How it works</p>
+          <h2 class="text-4xl md:text-5xl font-bold mb-4">Three steps to intelligence</h2>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-8">
+          
+          <div class="text-center">
+            <div class="w-16 h-16 rounded-2xl bg-[oklch(55%_0.15_255_/_0.15)] border border-[oklch(55%_0.15_255_/_0.3)] flex items-center justify-center mx-auto mb-6 text-2xl font-bold text-[oklch(65%_0.15_255)]">
+              1
+            </div>
+            <h3 class="text-lg font-bold mb-2">Add competitors</h3>
+            <p class="text-[oklch(65%_0.02_250)] text-sm leading-relaxed">
+              Add any competitor URL. We'll track pricing, products, careers, and more.
+            </p>
+          </div>
+          
+          <div class="text-center">
+            <div class="w-16 h-16 rounded-2xl bg-[oklch(55%_0.15_255_/_0.15)] border border-[oklch(55%_0.15_255_/_0.3)] flex items-center justify-center mx-auto mb-6 text-2xl font-bold text-[oklch(65%_0.15_255)]">
+              2
+            </div>
+            <h3 class="text-lg font-bold mb-2">AI monitors</h3>
+            <p class="text-[oklch(65%_0.02_250)] text-sm leading-relaxed">
+              We scrape daily, diff the changes, and our AI summarizes what matters.
+            </p>
+          </div>
+          
+          <div class="text-center">
+            <div class="w-16 h-16 rounded-2xl bg-[oklch(55%_0.15_255_/_0.15)] border border-[oklch(55%_0.15_255_/_0.3)] flex items-center justify-center mx-auto mb-6 text-2xl font-bold text-[oklch(65%_0.15_255)]">
+              3
+            </div>
+            <h3 class="text-lg font-bold mb-2">Digest to Discord</h3>
+            <p class="text-[oklch(65%_0.02_250)] text-sm leading-relaxed">
+              One daily digest lands in your Discord. Your team stays informed, always.
+            </p>
+          </div>
+          
+        </div>
+        
+      </div>
+    </section>
+    
+    <!-- Final CTA -->
+    <section class="py-24 px-6">
+      <div class="max-w-3xl mx-auto text-center">
+        
+        <div class="glass rounded-3xl p-12 md:p-16">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">
+            Ready to outpace your competitors?
+          </h2>
+          <p class="text-xl text-[oklch(65%_0.02_250)] mb-8">
+            Join the waitlist and be first to know when we launch.
+          </p>
+          
+          <form id="signupForm2" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+            <input
+              type="email"
+              id="emailInput2"
+              placeholder="you@company.com"
+              required
+              autocomplete="email"
+              class="input-field flex-1 px-5 py-4 rounded-xl text-white placeholder-[oklch(50%_0.02_250)] outline-none"
+            >
+            <button
+              type="submit"
+              class="btn-primary px-8 py-4 rounded-xl font-semibold text-white whitespace-nowrap"
+            >
+              Join Waitlist
+            </button>
+          </form>
+        </div>
+        
+      </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="py-12 px-6 border-t border-[oklch(20%_0.02_260)]">
+      <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+            <i data-lucide="radar" class="w-4 h-4 text-white"></i>
+          </div>
+          <span class="font-semibold">PulseWatch</span>
+        </div>
+        
+        <p class="text-[oklch(50%_0.02_250)] text-sm">
+          Stop checking. Start knowing.
+        </p>
+        
+        <p class="text-[oklch(40%_0.02_250)] text-xs">
+          © 2026 PulseWatch. All rights reserved.
+        </p>
+      </div>
+    </footer>
+    
+  </div>
+  
+  <!-- Initialize Lucide Icons -->
+  <script>
+    lucide.createIcons();
+    
+    // Dynamic subscriber count
+    async function updateSubscriberCount() {
+      try {
+        const response = await fetch('/subscribe.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ action: 'count' })
+        });
+        if (response.ok) {
+          const data = await response.json();
+          if (data.count) {
+            document.getElementById('subscriberCount').textContent = data.count;
+          }
+        }
+      } catch (e) {
+        // Silently fail
+      }
+    }
+    updateSubscriberCount();
+    
+    // Form handlers
+    function setupForm(formId, inputId) {
+      const form = document.getElementById(formId);
+      const emailInput = document.getElementById(inputId);
+      
+      if (!form || !emailInput) return;
+      
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const email = emailInput.value.trim();
+        if (!email) return;
+        
+        const btn = form.querySelector('button[type="submit"]');
+        btn.disabled = true;
+        btn.textContent = 'Joining...';
+        
+        try {
+          const response = await fetch('/subscribe.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email }),
+          });
+          
+          const data = await response.json();
+          
+          if (response.ok && data.success) {
+            // Show success message
+            const messageEl = document.getElementById('formMessage');
+            if (messageEl) {
+              messageEl.textContent = "You're on the list! We'll notify you when we launch.";
+              messageEl.className = 'text-center text-sm mb-4 text-emerald-400';
+            }
+            emailInput.value = '';
+            
+            // Update count
+            const countEl = document.getElementById('subscriberCount');
+            countEl.textContent = parseInt(countEl.textContent) + 1;
+          } else {
+            throw new Error(data.error || 'Something went wrong');
+          }
+        } catch (err) {
+          const messageEl = document.getElementById('formMessage');
+          if (messageEl) {
+            messageEl.textContent = err.message || 'Try again later.';
+            messageEl.className = 'text-center text-sm mb-4 text-red-400';
+          }
+        } finally {
+          btn.disabled = false;
+          btn.textContent = 'Join Waitlist';
+        }
+      });
+    }
+    
+    setupForm('signupForm', 'emailInput');
+    setupForm('signupForm2', 'emailInput2');
+  </script>
+  
+</body>
+</html>
