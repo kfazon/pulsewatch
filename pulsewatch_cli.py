@@ -58,7 +58,10 @@ def capture_command(url: str | None, config_path: Path | None) -> None:
     if config_path:
         urls = _load_urls_from_config(config_path)
         result = capture_batch(urls=urls, output_dir="data")
-        click.echo(f"Captured {result['captured']}/{result['total']} pages. Failed: {result['failed']}")
+        click.echo(
+            f"Captured {result['captured']}/{result['total']} pages. "
+            f"Summarized: {result.get('summarized', 0)}. Failed: {result['failed']}"
+        )
         return
 
     assert url is not None

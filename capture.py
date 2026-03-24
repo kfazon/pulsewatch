@@ -2,7 +2,9 @@
 
 from __future__ import annotations
 
+import difflib
 import logging
+import os
 import time
 from pathlib import Path
 from typing import Dict
@@ -10,6 +12,7 @@ from typing import Dict
 from playwright.sync_api import sync_playwright
 
 from storage import capture_directory_for_url, save_capture_artifacts
+from summarize import summarize, write_summary_file
 
 
 DEFAULT_TIMEOUT_MS = 30000
@@ -45,6 +48,21 @@ def capture_html_and_screenshot(url: str, output_dir: Path) -> Dict[str, str]:
     return {"html": html, "screenshot_path": str(screenshot_path)}
 
 
+def _build_unified_diff(old_html: str, new_html: str, old_name: str, new_name: str) -> str:
+    old_lines = old_html.splitlines()
+    new_lines = new_html.splitlines()
+    unified = list(
+        difflib.unified_diff(
+            old_lines,
+            new_lines,
+            fromfile=old_name,
+            tofile=new_name,
+            lineterm="",
+        )
+    )
+    return "\n".join(unified) + ("\n" if unified else "")
+
+
 def capture_batch(urls: list[str], output_dir: str = "data") -> dict:
     """Capture and persist artifacts for a list of URLs with retries.
 
@@ -54,6 +72,9 @@ def capture_batch(urls: list[str], output_dir: str = "data") -> dict:
     total = len(urls)
     captured_count = 0
     failed: list[str] = []
+    summarized_count = 0
+
+    api_key = os.getenv("OPENAI_API_KEY", "").strip()
 
     for url in urls:
         max_attempts = 3  # initial + 2 retries
@@ -62,6 +83,9 @@ def capture_batch(urls: list[str], output_dir: str = "data") -> dict:
         for attempt in range(1, max_attempts + 1):
             try:
                 capture_dir = capture_directory_for_url(url, base_dir=Path(output_dir))
+                html_path = Path(capture_dir) / "page.html"
+                previous_html = html_path.read_text(encoding="utf-8") if html_path.exists() else None
+
                 captured = capture_html_and_screenshot(url, capture_dir)
                 save_capture_artifacts(
                     capture_dir=Path(capture_dir),
@@ -69,6 +93,26 @@ def capture_batch(urls: list[str], output_dir: str = "data") -> dict:
                     html=captured["html"],
                     screenshot_path=captured["screenshot_path"],
                 )
+
+                # Summarize only when we have a previous capture and content changed.
+                if previous_html is not None and previous_html != captured["html"]:
+                    diff_text = _build_unified_diff(
+                        previous_html,
+                        captured["html"],
+                        old_name="previous/page.html",
+                        new_name="current/page.html",
+                    )
+                    diff_path = Path(capture_dir) / "diff.txt"
+                    diff_path.write_text(diff_text, encoding="utf-8")
+
+                    if api_key:
+                        summary = summarize(diff_text=diff_text, api_key=api_key)
+                        summary_path = write_summary_file(summary, Path(capture_dir))
+                        logger.info("Summarized %s -> %s", url, summary_path)
+                        summarized_count += 1
+                    else:
+                        logger.warning("OPENAI_API_KEY not set; skipping summarization for %s", url)
+
                 captured_count += 1
                 success = True
                 break
@@ -91,4 +135,5 @@ def capture_batch(urls: list[str], output_dir: str = "data") -> dict:
         "captured": captured_count,
         "total": total,
         "failed": failed,
+        "summarized": summarized_count,
     }
