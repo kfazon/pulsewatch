@@ -11,6 +11,7 @@ from typing import Dict
 
 from playwright.sync_api import sync_playwright
 
+from alerts.queue import enqueue_alert
 from storage import capture_directory_for_url, save_capture_artifacts
 from summarize import summarize, write_summary_file
 
@@ -109,6 +110,11 @@ def capture_batch(urls: list[str], output_dir: str = "data") -> dict:
                         summary = summarize(diff_text=diff_text, api_key=api_key)
                         summary_path = write_summary_file(summary, Path(capture_dir))
                         logger.info("Summarized %s -> %s", url, summary_path)
+
+                        importance = float(summary.get("importance", 0.0))
+                        if importance > 0.5:
+                            enqueue_alert(summary=summary, target_url=url)
+
                         summarized_count += 1
                     else:
                         logger.warning("OPENAI_API_KEY not set; skipping summarization for %s", url)
