@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PulseWatch — Know What Your Competitors Change Before They Win</title>
+  <meta name="description" content="PulseWatch monitors your competitors' websites 24/7 and alerts you the moment they change pricing, copy, or features. Stop losing deals to moves you didn't see coming." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0f;
+      --surface: #111118;
+      --surface2: #1a1a24;
+      --border: #2a2a3a;
+      --text: #f0f0f8;
+      --text-muted: #8888a8;
+      --accent: #6366f1;
+      --accent-light: #818cf8;
+      --accent-glow: rgba(99, 102, 241, 0.25);
+      --green: #22c55e;
+      --red: #ef4444;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--accent-light); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10, 10, 15, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 0;
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.03em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .logo-icon {
+      width: 28px;
+      height: 28px;
+      background: var(--accent);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+    }
+    .nav-cta {
+      background: var(--accent);
+      color: #fff;
+      padding: 8px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: background 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+    }
+    .nav-cta:hover {
+      background: var(--accent-light);
+      box-shadow: 0 0 20px var(--accent-glow);
+      text-decoration: none;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 100px 0 80px;
+      text-align: center;
+      position: relative;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 6px 14px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+    }
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--green);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 6vw, 3.8rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+      margin-bottom: 24px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero h1 .highlight {
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-sub {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+    }
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: #fff;
+      padding: 14px 32px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 1rem;
+      transition: all 0.2s;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primary:hover {
+      background: var(--accent-light);
+      box-shadow: 0 0 30px var(--accent-glow);
+      transform: translateY(-1px);
+      text-decoration: none;
+    }
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--text-muted);
+      padding: 14px 24px;
+      border-radius: 10px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: all 0.2s;
+      text-decoration: none;
+      border: 1px solid var(--border);
+    }
+    .btn-ghost:hover {
+      color: var(--text);
+      border-color: var(--text-muted);
+      text-decoration: none;
+    }
+    .guarantee {
+      margin-top: 20px;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    /* ── SOCIAL PROOF ── */
+    .social-proof {
+      padding: 40px 0 60px;
+      text-align: center;
+    }
+    .social-proof p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 16px;
+    }
+    .proof-logos {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+      opacity: 0.5;
+    }
+    .proof-logos span {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    /* ── STATS BAR ── */
+    .stats-bar {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 40px 0;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      text-align: center;
+    }
+    .stat-number {
+      font-size: 2.4rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      color: var(--accent-light);
+    }
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* ── PROBLEM ── */
+    .problem {
+      padding: 80px 0;
+      text-align: center;
+    }
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent-light);
+      margin-bottom: 12px;
+    }
+    .problem h2 {
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+    }
+    .problem p {
+      color: var(--text-muted);
+      max-width: 540px;
+      margin: 0 auto 40px;
+      font-size: 1.05rem;
+    }
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      text-align: left;
+    }
+    .problem-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px;
+    }
+    .problem-card .icon {
+      font-size: 1.4rem;
+      margin-bottom: 12px;
+    }
+    .problem-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .problem-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    /* ── BENEFITS ── */
+    .benefits {
+      padding: 80px 0;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .benefits-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .benefits-header h2 {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 14px;
+    }
+    .benefits-header p {
+      color: var(--text-muted);
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .benefit-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 36px 32px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .benefit-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 0 40px var(--accent-glow);
+    }
+    .benefit-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      border-radius: 16px 16px 0 0;
+    }
+    .benefit-card.acquire::before { background: #22c55e; }
+    .benefit-card.defend::before { background: #f59e0b; }
+    .benefit-card.feel::before { background: var(--accent); }
+
+    .benefit-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+    }
+    .acquire .benefit-icon { background: rgba(34, 197, 94, 0.15); }
+    .defend .benefit-icon { background: rgba(245, 158, 11, 0.15); }
+    .feel .benefit-icon { background: rgba(99, 102, 241, 0.15); }
+
+    .benefit-tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 3px 10px;
+      border-radius: 100px;
+      display: inline-block;
+      margin-bottom: 14px;
+    }
+    .acquire .benefit-tag { background: rgba(34, 197, 94, 0.15); color: #22c55e; }
+    .defend .benefit-tag { background: rgba(245, 158, 11, 0.15); color: #f59e0b; }
+    .feel .benefit-tag { background: rgba(99, 102, 241, 0.15); color: var(--accent-light); }
+
+    .benefit-card h3 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+      letter-spacing: -0.02em;
+    }
+    .benefit-card p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+    .benefit-card ul {
+      margin-top: 16px;
+      list-style: none;
+    }
+    .benefit-card ul li {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      padding: 4px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .benefit-card ul li::before {
+      content: '✓';
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    /* ── HOW IT WORKS ── */
+    .how-it-works {
+      padding: 80px 0;
+    }
+    .how-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+    .how-header h2 {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 14px;
+    }
+    .how-header p { color: var(--text-muted); }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+    .step {
+      text-align: center;
+      padding: 32px 24px;
+    }
+    .step-number {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: var(--accent-light);
+      margin: 0 auto 20px;
+    }
+    .step h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .step p { font-size: 0.9rem; color: var(--text-muted); }
+    .step-connector {
+      display: none;
+    }
+
+    /* ── PRICING ── */
+    .pricing {
+      padding: 80px 0;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .pricing-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .pricing-header h2 {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 14px;
+    }
+    .pricing-header p { color: var(--text-muted); max-width: 480px; margin: 0 auto; }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      align-items: start;
+    }
+    .price-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 36px 32px;
+      position: relative;
+      transition: all 0.2s;
+    }
+    .price-card.popular {
+      border-color: var(--accent);
+      box-shadow: 0 0 50px var(--accent-glow);
+    }
+    .price-card:hover {
+      transform: translateY(-4px);
+    }
+    .popular-badge {
+      position: absolute;
+      top: -13px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 4px 16px;
+      border-radius: 100px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+    }
+    .price-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+    .price {
+      margin-bottom: 8px;
+    }
+    .price .amount {
+      font-size: 3rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+    .price .period {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+    .price-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      min-height: 40px;
+    }
+    .price-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 24px 0;
+    }
+    .price-features {
+      list-style: none;
+      margin-bottom: 28px;
+    }
+    .price-features li {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      padding: 6px 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .price-features li::before {
+      content: '✓';
+      color: var(--green);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .price-btn {
+      display: block;
+      width: 100%;
+      padding: 13px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-align: center;
+      text-decoration: none;
+      transition: all 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+    .price-btn.primary {
+      background: var(--accent);
+      color: #fff;
+    }
+    .price-btn.primary:hover {
+      background: var(--accent-light);
+      box-shadow: 0 0 20px var(--accent-glow);
+      text-decoration: none;
+    }
+    .price-btn.secondary {
+      background: var(--surface2);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .price-btn.secondary:hover {
+      border-color: var(--text-muted);
+      text-decoration: none;
+    }
+    .price-guarantee {
+      text-align: center;
+      margin-top: 32px;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+    .price-guarantee strong { color: var(--text); }
+
+    /* ── CTA ── */
+    .cta-section {
+      padding: 100px 0;
+      text-align: center;
+      position: relative;
+    }
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cta-section h2 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      margin-bottom: 16px;
+      position: relative;
+    }
+    .cta-section p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      margin-bottom: 36px;
+      position: relative;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 0;
+      text-align: center;
+    }
+    footer p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+    footer a { color: var(--text-muted); }
+    footer a:hover { color: var(--text); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .benefits-grid,
+      .pricing-grid,
+      .steps {
+        grid-template-columns: 1fr;
+      }
+      .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .hero { padding: 70px 0 60px; }
+      .proof-logos { gap: 20px; }
+      .price-card.popular { box-shadow: 0 0 30px var(--accent-glow); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="container nav-inner">
+      <div class="logo">
+        <div class="logo-icon">📡</div>
+        PulseWatch
+      </div>
+      <a href="#pricing" class="nav-cta">Start Free Trial</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="badge">
+        <span class="badge-dot"></span>
+        2,000+ agencies monitoring competitors
+      </div>
+      <h1>
+        You're losing deals and you don't even know<br />
+        <span class="highlight">what your competitors just changed.</span>
+      </h1>
+      <p class="hero-sub">
+        PulseWatch watches your competitors' websites 24/7 — so you spot pricing changes,
+        new copy, and feature shifts before they cost you a single customer.
+      </p>
+      <div class="hero-actions">
+        <a href="#pricing" class="btn-primary">
+          Start free trial
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#how" class="btn-ghost">See how it works</a>
+      </div>
+      <p class="guarantee">🔒 No credit card required · Setup in 5 minutes · Cancel anytime</p>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats-bar">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat">
+          <div class="stat-number">2,000+</div>
+          <div class="stat-label">Agencies monitoring competitors</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">14M+</div>
+          <div class="stat-label">Changes detected this month</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">&lt;60s</div>
+          <div class="stat-label">Average time to detect a change</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section class="problem">
+    <div class="container">
+      <div class="section-label">The Problem</div>
+      <h2>You can't act on what you don't see</h2>
+      <p>Your competitors are moving fast. Changing copy, adjusting pricing, launching new features. But most agencies find out days or weeks too late — if at all.</p>
+      <div class="problem-grid">
+        <div class="problem-card">
+          <div class="icon">👻</div>
+          <h3>Blind to competitor moves</h3>
+          <p>You rely on luck or a tip from a colleague. Meanwhile, your competitor has already won three of your prospects.</p>
+        </div>
+        <div class="problem-card">
+          <div class="icon">⏰</div>
+          <h3>Reactive, never proactive</h3>
+          <p>By the time you hear about a competitor change, you've already lost momentum. The window to respond has already closed.</p>
+        </div>
+        <div class="problem-card">
+          <div class="icon">📉</div>
+          <h3>No data, no leverage</h3>
+          <p>Sales calls turn into guesswork. Without proof of competitor changes, your team can't build compelling counter-narratives.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFITS -->
+  <section class="benefits" id="benefits">
+    <div class="container">
+      <div class="benefits-header">
+        <div class="section-label">The Solution</div>
+        <h2>Three ways PulseWatch changes the game</h2>
+        <p>Know first. Act first. Win more.</p>
+      </div>
+      <div class="benefits-grid">
+        <div class="benefit-card acquire">
+          <div class="benefit-icon">🎯</div>
+          <span class="benefit-tag">Acquire</span>
+          <h3>Win deals you were losing</h3>
+          <p>Get instant alerts when a competitor changes their pricing or positioning. Update your sales deck and re-engage prospects before they buy elsewhere.</p>
+          <ul>
+            <li>Real-time change alerts via email & Slack</li>
+            <li>See exactly what changed and when</li>
+            <li>Historical comparison to spot trends</li>
+          </ul>
+        </div>
+        <div class="benefit-card defend">
+          <div class="benefit-icon">🛡️</div>
+          <span class="benefit-tag">Defend</span>
+          <h3>Protect your accounts</h3>
+          <p>Monitor your top customers' vendor stacks. If they're suddenly visiting competitor pages, you'll know before they ask for a competitor quote.</p>
+          <ul>
+            <li>Monitor up to 500 competitor URLs</li>
+            <li>Keyword-level change detection</li>
+            <li>Account health signals delivered daily</li>
+          </ul>
+        </div>
+        <div class="benefit-card feel">
+          <div class="benefit-icon">💎</div>
+          <span class="benefit-tag">Feel</span>
+          <h3>Confidence in every call</h3>
+          <p>Your team walks into every sales call knowing the competitor landscape cold. Turn competitor intelligence into a competitive moat.</p>
+          <ul>
+            <li>Shared team dashboards</li>
+            <li>One-click competitor reports</li>
+            <li>Export to PDF for client presentations</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how-it-works" id="how">
+    <div class="container">
+      <div class="how-header">
+        <div class="section-label">How It Works</div>
+        <h2>Up and running in 5 minutes</h2>
+        <p>No engineering required. No complex setup.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>Add your competitors</h3>
+          <p>Enter up to 500 competitor URLs. We'll scrape and index their visible content — copy, pricing, features, and more.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3>We watch 24/7</h3>
+          <p>Our engine checks every page every 60 seconds. The moment anything changes, we detect it and alert you.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>Act before they win</h3>
+          <p>Get alerts via email, Slack, or webhook. Review what changed, share with your team, and move faster than your competition.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing" id="pricing">
+    <div class="container">
+      <div class="pricing-header">
+        <div class="section-label">Pricing</div>
+        <h2>Start monitoring in minutes</h2>
+        <p>Simple, transparent pricing. No hidden fees, no surprise overages.</p>
+      </div>
+      <div class="pricing-grid">
+        <!-- Starter -->
+        <div class="price-card">
+          <h3>Starter</h3>
+          <div class="price">
+            <span class="amount">$97</span>
+            <span class="period">/mo</span>
+          </div>
+          <p class="price-desc">For solo consultants and small agencies getting started with competitor intelligence.</p>
+          <hr class="price-divider" />
+          <ul class="price-features">
+            <li>Monitor up to 25 competitor URLs</li>
+            <li>Checks every 15 minutes</li>
+            <li>Email & Slack alerts</li>
+            <li>7-day change history</li>
+            <li>1 user seat</li>
+            <li>Email support</li>
+          </ul>
+          <!-- TODO: Replace with your LemonSqueezy Starter product URL -->
+          <a href="#" onclick="alert('Replace this link with your LemonSqueezy Starter checkout URL.'); return false;" class="price-btn secondary">Start free trial</a>
+        </div>
+
+        <!-- Pro — popular -->
+        <div class="price-card popular">
+          <div class="popular-badge">Most Popular</div>
+          <h3>Pro</h3>
+          <div class="price">
+            <span class="amount">$297</span>
+            <span class="period">/mo</span>
+          </div>
+          <p class="price-desc">For growing agencies that need deeper coverage and faster detection across more competitors.</p>
+          <hr class="price-divider" />
+          <ul class="price-features">
+            <li>Monitor up to 150 competitor URLs</li>
+            <li>Checks every 60 seconds</li>
+            <li>Email, Slack & webhook alerts</li>
+            <li>90-day change history</li>
+            <li>5 user seats</li>
+            <li>Priority support</li>
+            <li>Keyword-level detection</li>
+            <li>Export to PDF</li>
+          </ul>
+          <!-- TODO: Replace with your LemonSqueezy Pro product URL -->
+          <a href="#" onclick="alert('Replace this link with your LemonSqueezy Pro checkout URL.'); return false;" class="price-btn primary">Start free trial</a>
+        </div>
+
+        <!-- Agency -->
+        <div class="price-card">
+          <h3>Agency</h3>
+          <div class="price">
+            <span class="amount">$797</span>
+            <span class="period">/mo</span>
+          </div>
+          <p class="price-desc">For agencies running client accounts at scale — white-label, unlimited seats, and advanced reporting.</p>
+          <hr class="price-divider" />
+          <ul class="price-features">
+            <li>Monitor up to 500 competitor URLs</li>
+            <li>Checks every 60 seconds</li>
+            <li>Email, Slack, webhook & SMS alerts</li>
+            <li>1-year change history</li>
+            <li>Unlimited user seats</li>
+            <li>Dedicated account manager</li>
+            <li>White-label reports</li>
+            <li>Client management dashboard</li>
+            <li>API access</li>
+          </ul>
+          <!-- TODO: Replace with your LemonSqueezy Agency product URL -->
+          <a href="#" onclick="alert('Replace this link with your LemonSqueezy Agency checkout URL.'); return false;" class="price-btn secondary">Start free trial</a>
+        </div>
+      </div>
+
+      <p class="price-guarantee">
+        <strong>30-day money-back guarantee.</strong> Not happy? We'll refund you in full, no questions asked.
+      </p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>Stop losing deals to<br /><span class="highlight">moves you didn't see coming.</span></h2>
+      <p>Join 2,000+ agencies that monitor their competitive landscape with PulseWatch.</p>
+      <a href="#pricing" class="btn-primary">
+        Start your free trial
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <p class="guarantee">🔒 No credit card required · Setup in 5 minutes · Cancel anytime</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>© 2026 PulseWatch · <a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="#">Contact</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>
