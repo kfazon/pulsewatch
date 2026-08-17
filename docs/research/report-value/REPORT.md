@@ -53,6 +53,7 @@ Napomena: vendor case studies i vendor surveyji pokazuju način pozicioniranja i
 |---|---|
 | Signal | Jedna materijalna promjena ili potvrđena prilika/problem |
 | Dokaz | URL, timestamp, before/after snapshot, citat i status izvora |
+| Entity/SKU match | `exact`, `variant` ili `family`, uz confidence; za proizvode navesti brand/model/EAN gdje postoji, pakiranje, kanal i lokaciju |
 | Klasifikacija | Potvrđeno / opažanje / hipoteza / ograničenje |
 | Confidence | Visok / srednji / nizak, uz razlog |
 | Poslovni kontekst | Koji klijentov cilj, kategoriju ili proces signal dodiruje |
@@ -78,6 +79,20 @@ Napomena: vendor case studies i vendor surveyji pokazuju način pozicioniranja i
 | Target | Očuvati dogovorenu maržu i prodajne jedinice bez općeg popusta. |
 | Rezultat | Nakon akcije: jedinice, marža, stockout, promet upita i klijentova ocjena korisnosti. |
 | Atribucija | PulseWatch je ubrzao odluku ako je klijent ranije nije imao iz drugog kanala; financijski učinak se ne prisvaja bez kontrolnog dokaza. |
+
+### Product-level quality gate
+
+Kod usporedbe cijene, promocije ili dostupnosti obvezno zapisati:
+
+- match class: `exact`, `variant` ili `family`;
+- brand, model i EAN/SKU kada postoje;
+- količinu, veličinu, pakiranje i uključenu dodatnu opremu;
+- web/fizički kanal, lokaciju i trenutak opažanja;
+- cijenu s/bez PDV-a kada je primjenjivo;
+- dostavu, loyalty uvjet i trajanje promocije;
+- javno prikazanu dostupnost odvojeno od potvrđene fizičke zalihe.
+
+`Variant` i `family` match ne smiju proizvesti tvrdnju “konkurent je jeftiniji” bez eksplicitne napomene o neusporedivosti. Jednokratni screenshot bez identiteta artikla i vremenskog konteksta nije dokaz tržišnog pomaka.
 
 ## 4. Arhitektura klijentskog reporta
 
@@ -231,12 +246,15 @@ Ako klijent ne daje nijedan interni KPI, usluga ostaje korisna za risk/market aw
 
 Svi uvjeti:
 
-1. 100% isporučenih signala ima dokaz, timestamp, klasifikaciju i ograničenje.
-2. Nema poznatog materijalnog promašaja u zaključanom scopeu zbog PulseWatch procesa.
-3. Najmanje tri signala klijent je eksplicitno ocijenio kao relevantna ili je dokumentirano da nije bilo materijalne promjene.
-4. Najmanje jedna odluka/akcija je provedena ili je klijent dokumentirano izbjegao nepotrebnu akciju.
-5. Za barem jednu akciju postoji baseline, cilj i dogovoren mjerni prozor.
-6. Sponsor ocjenjuje korisnost najmanje 8/10 i potvrđuje prioritete za idući ciklus.
+1. 100% isporučenih P1/P2 signala ima dokaz, timestamp, klasifikaciju i ograničenje.
+2. Najmanje 90% ugovorenih planiranih provjera izvršeno je ili je iznimka zabilježena s razlogom.
+3. Najmanje 90% P1/P2 isporuka koje ovise o PulseWatch procesu ispunilo je ugovoreni SLA.
+4. Nema poznatog materijalnog promašaja u zaključanom scopeu zbog PulseWatch procesa.
+5. Najmanje tri signala klijent je eksplicitno ocijenio kao relevantna ili je dokumentirano da nije bilo materijalne promjene.
+6. Najmanje 60% pregledanih signala owner je označio kao novo ili korisno; `unreviewed` se ne računa kao korisno.
+7. Najmanje dvije signalne ili monitoring-review kartice završile su dokumentiranom odlukom, testom ili svjesnom odlukom `ne reagirati / nastaviti bez promjene`.
+8. Za barem jednu akciju postoji baseline, cilj i dogovoren mjerni prozor.
+9. Sponsor ocjenjuje korisnost najmanje 8/10 i potvrđuje prioritete za idući ciklus.
 
 ### Pilot — STOP/REDESIGN
 
