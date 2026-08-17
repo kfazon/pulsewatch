@@ -9,7 +9,6 @@ from typing import Any
 
 from openai_client import summarize_diff_json
 
-
 MAX_INPUT_TOKENS = 500
 # Rough heuristic without tokenizer dependency.
 APPROX_CHARS_PER_TOKEN = 4

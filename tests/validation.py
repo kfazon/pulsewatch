@@ -1,7 +1,8 @@
-import os
 import json
-from bs4 import BeautifulSoup
+import os
 from difflib import unified_diff
+
+from bs4 import BeautifulSoup
 
 
 def test_html_wellformed(sample_capture_dir):

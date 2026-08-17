@@ -17,7 +17,11 @@ def main() -> None:
         "importance": 0.82,
         "summary": "Detected major product page update: new enterprise pricing tier and CTA wording changes.",
     }
-    send_alert(webhook_url=webhook, summary=sample_summary, target_url="https://competitor.example.com")
+    send_alert(
+        webhook_url=webhook,
+        summary=sample_summary,
+        target_url="https://competitor.example.com",
+    )
     print("Sample Discord alert sent successfully")
 
 

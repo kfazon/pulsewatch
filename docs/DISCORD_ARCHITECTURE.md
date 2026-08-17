@@ -136,18 +136,21 @@ change_logs (
 ```python
 import requests
 
+
 def send_digest(webhook_url: str, digest: dict):
     payload = {
-        "embeds": [{
-            "title": f"🔍 PulseWatch Daily — {digest['date']}",
-            "description": digest['summary'],
-            "color": 5814783,  # Blue
-            "fields": [
-                {"name": t['label'], "value": t['changes'], "inline": True}
-                for t in digest['targets']
-            ],
-            "footer": {"text": "PulseWatch — Never miss a move"}
-        }]
+        "embeds": [
+            {
+                "title": f"🔍 PulseWatch Daily — {digest['date']}",
+                "description": digest["summary"],
+                "color": 5814783,  # Blue
+                "fields": [
+                    {"name": t["label"], "value": t["changes"], "inline": True}
+                    for t in digest["targets"]
+                ],
+                "footer": {"text": "PulseWatch — Never miss a move"},
+            }
+        ]
     }
     requests.post(webhook_url, json=payload)
 ```
@@ -157,8 +160,9 @@ def send_digest(webhook_url: str, digest: dict):
 ```python
 import re
 
+
 def is_valid_discord_webhook(url: str) -> bool:
-    pattern = r'^https://discord(?:(?:app)?\.com/api)?/webhooks/\d+/.+$'
+    pattern = r"^https://discord(?:(?:app)?\.com/api)?/webhooks/\d+/.+$"
     return bool(re.match(pattern, url))
 ```
 

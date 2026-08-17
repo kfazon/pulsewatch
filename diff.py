@@ -5,7 +5,6 @@ from __future__ import annotations
 import difflib
 from pathlib import Path
 
-
 HTML_FILENAME = "page.html"
 
 
@@ -42,6 +41,8 @@ def diff_capture_dirs(old_dir: Path, new_dir: Path) -> dict:
         or (line.startswith("-") and not line.startswith("---"))
     )
     diff_path = new_dir / "diff.txt"
-    diff_path.write_text("\n".join(unified) + ("\n" if unified else ""), encoding="utf-8")
+    diff_path.write_text(
+        "\n".join(unified) + ("\n" if unified else ""), encoding="utf-8"
+    )
 
     return {"changed_lines_count": changed_lines_count, "diff_path": str(diff_path)}

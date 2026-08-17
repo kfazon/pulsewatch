@@ -7,7 +7,6 @@ import time
 
 from openai import OpenAI, RateLimitError
 
-
 DEFAULT_MODEL = "stepfun/step-3.5-flash:free"
 DEFAULT_BASE_URL = "https://openrouter.ai/api/v1"
 
@@ -20,7 +19,9 @@ def get_api_key() -> str:
     return api_key
 
 
-def summarize_diff_json(prompt: str, *, api_key: str | None = None, model: str = DEFAULT_MODEL) -> str:
+def summarize_diff_json(
+    prompt: str, *, api_key: str | None = None, model: str = DEFAULT_MODEL
+) -> str:
     """Call OpenAI and return raw JSON text response.
 
     Retries up to 2 additional times on rate limits.
