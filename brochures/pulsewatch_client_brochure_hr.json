@@ -80,7 +80,7 @@
       {
         "name": "30-dnevni pilot",
         "badge": "PREPORUČENI POČETAK",
-        "price": "1.500 € + PDV",
+        "price": "1.500 €",
         "fit": "Za tvrtku koja želi na stvarnim izvorima provjeriti vrijedi li PulseWatch više od sadašnjeg ručnog procesa.",
         "highlights": [
           "1 popis praćenja · do 30 javnih URL-ova",
@@ -93,7 +93,7 @@
       {
         "name": "Managed",
         "badge": "GLAVNI PAKET",
-        "price": "1.490 € + PDV / mj.",
+        "price": "1.490 € / mj.",
         "fit": "Za komercijalni tim kojem trebaju pravodobni provjereni signali, hitne obavijesti tijekom radnog dana i mjesečna odluka.",
         "highlights": [
           "Do 50 URL-ova · do 5 konkurenata ili prodajnih partnera",
@@ -106,7 +106,7 @@
       {
         "name": "Lite",
         "badge": "STANDARDIZIRANO",
-        "price": "690 € + PDV / mj.",
+        "price": "690 € / mj.",
         "fit": "Za stabilan i uži popis praćenja bez hitnih obavijesti, redovnih sastanaka i prilagođenog istraživanja.",
         "highlights": [
           "Do 20 URL-ova · do 3 konkurenata ili prodajnih partnera",
@@ -119,7 +119,7 @@
       {
         "name": "Managed Plus",
         "badge": "VEĆI OPSEG",
-        "price": "2.490 € + PDV / mj.",
+        "price": "2.490 € / mj.",
         "fit": "Za veći prihod pod rizikom, dva odvojena popisa praćenja ili više odgovornih osoba koje moraju redovito odlučivati.",
         "highlights": [
           "Do 100 URL-ova · do 10 konkurenata ili prodajnih partnera",
@@ -130,7 +130,7 @@
         "featured": false
       }
     ],
-    "note": "Sve cijene su bez PDV-a. Konačni izvori, pragovi, ritam i odgovornosti potvrđuju se u pisanoj ponudi. Izvori koji blokiraju automatizirani pristup, zahtijevaju prijavu ili nemaju pouzdan javni dokaz mogu biti isključeni ili posebno ugovoreni."
+    "note": "INMAR d.o.o. nije u sustavu PDV-a. PDV nije obračunat sukladno članku 90. stavku 2. Zakona o PDV-u. Istaknute cijene su konačne. Konačni izvori, pragovi, ritam i odgovornosti potvrđuju se u pisanoj ponudi. Izvori koji blokiraju automatizirani pristup, zahtijevaju prijavu ili nemaju pouzdan javni dokaz mogu biti isključeni ili posebno ugovoreni."
   },
   "comparison": {
     "intro": "Managed uključuje aktivnu operativnu podršku i pravodobnu reakciju. Lite je asinkrona, strogo ograničena usluga za standardiziran slučaj korištenja.",

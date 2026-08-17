@@ -24,9 +24,11 @@ def test_client_brochure_renders_six_page_pdf(tmp_path: Path) -> None:
     assert reader.metadata.title == "PulseWatch — paketi upravljanog tržišnog nadzora"
     assert reader.metadata.author.startswith("INMAR društvo")
     assert "30-dnevni pilot" in text
-    assert "1.500 € + PDV" in text
+    assert "1.500 €" in text
     assert "Managed Plus" in text
-    assert "2.490 € + PDV / mj." in text
+    assert "2.490 € / mj." in text
+    assert "+ PDV" not in text
+    assert "PDV nije obračunat sukladno članku 90. stavku 2." in text
     assert "Kristijan Fažon" in text
     assert "OIB: 33281217245" in text
     assert "Gardinovec 24" in text
