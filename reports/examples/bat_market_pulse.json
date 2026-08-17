@@ -1,0 +1,195 @@
+{
+  "title": "BAT MARKET PULSE",
+  "subtitle": "Konkurentski, promotivni i digitalni signali za BAT Prodajni centar Čakovec",
+  "tagline": "Od javne promjene do provjerenog prioriteta i preporučene komercijalne akcije.",
+  "meta": {
+    "client": "BAT Prodajni centar Čakovec · Rudolfa Steinera 2",
+    "date": "17.08.2026.",
+    "status": "Demonstracijski početni baseline — javni izvori",
+    "label": "DEMO · PUBLIC SOURCES ONLY",
+    "footer": "PulseWatch · INMAR d.o.o. · OIB 33281217245 · Demonstracijski javni baseline"
+  },
+  "publisher": {
+    "legal_name": "INMAR društvo s ograničenom odgovornošću za trgovinu i usluge",
+    "address": "Gardinovec 24, 40319 Belica, Hrvatska",
+    "oib": "33281217245",
+    "mbs": "070096926",
+    "mb_dzs": "02767392",
+    "registry_court": "Trgovački sud u Varaždinu",
+    "director": "Kristijan Fažon",
+    "email": "info@inmar.hr",
+    "phone": "+385 91 45 46 013",
+    "website": "https://inmar.hr"
+  },
+  "executive_intro": "Početni javni baseline pokazuje tri materijalna signala: kratku višekategorijsku akciju, izlaznu YATO rasprodaju i neujednačenu vidljivost valjanosti kataloga. Ovo nije tvrdnja o povijesno automatski detektiranim promjenama.",
+  "signals": [
+    {
+      "severity": "high",
+      "title": "Narančasta subota aktivira pet kategorija odjednom",
+      "finding": "Za 22.08.2026. objavljeno je 15% popusta na redovne cijene laminata, kosilica, boja i lakova te ručnih i električnih alata.",
+      "impact": "Kratak prozor povećava vrijednost sinkronizirane objave, provedbe uvjeta i mjerenja učinka po kategoriji.",
+      "action": "Prije početka provjeriti sve kanale i uvjete; nakon završetka arhivirati dokaz i usporediti promet i bruto dobit po kategoriji."
+    },
+    {
+      "severity": "high",
+      "title": "YATO alat izlazi iz asortimana uz 20% rasprodaju",
+      "finding": "BAT javno navodi 20% popusta na dostupni YATO aku i električni alat od 04.08.2026. do rasprodaje zaliha.",
+      "impact": "Izlazna rasprodaja može ubrzati prodaju, ali otvara pitanje zamjenskog brenda, dostupnosti i prijenosa potražnje.",
+      "action": "Pratiti status ponude do uklanjanja i unaprijed definirati zamjenski asortiman i prodajnu poruku."
+    },
+    {
+      "severity": "medium",
+      "title": "Valjanost letaka nije jednako vidljiva kao njihov naziv",
+      "finding": "Javna stranica navodi više tematskih letaka i kataloga, ali u dohvaćenom tekstu uz nazive nisu bili vidljivi datumi valjanosti.",
+      "impact": "Kupac teže razlikuje aktualnu ponudu od referentnog ili starijeg kataloga.",
+      "action": "Uz svaki dokument prikazati datum valjanosti, status ‘aktualno/arhiva’ i jedan kanonski URL."
+    }
+  ],
+  "strengths": {
+    "title": "Potvrđene snage",
+    "items": [
+      "Poslovnica Čakovec radi ponedjeljak–petak do 20:30 i subotom do 19:00 u ljetnom rasporedu.",
+      "Odvojeni kontakti za građevinu, elektro, alate, bijelu tehniku, boje, drvo, keramiku, vrt i druge odjele.",
+      "Javno naveden širok izbor od preko 80.000 artikala.",
+      "Dodatne usluge: dostava, 3D kupaonica, nijansiranje boja, rezanje i kantiranje drva.",
+      "Besplatna dostava za kupnje iznad 1.000 € na području Međimurja."
+    ]
+  },
+  "gaps": {
+    "title": "Javno vidljive praznine",
+    "items": [
+      "Nije javno potvrđena fizička zaliha po artiklu za poslovnicu Čakovec.",
+      "Nije pronađen jedinstveni rok provjere i rezervacije robe prije dolaska.",
+      "Valjanost kataloga nije uvijek vidljiva uz sam naziv dokumenta.",
+      "Nema zaključane usporedive košarice identičnih artikala prema konkurentima.",
+      "Nisu dostupni javni podaci o učinku akcija, upita i projektnih usluga."
+    ]
+  },
+  "positioning_conclusion": "BAT ne treba konkurirati samo širinom i popustom. Najobranjivija pozicija je kombinacija velikog lokalnog izbora, dugog radnog vremena, stručnog odjelnog kontakta i projektnih usluga. PulseWatch treba otkriti kada konkurentska akcija, usluga ili digitalna pogodnost smanjuje tu prednost.",
+  "competitor_intro": "Konkurenti su odabrani prema lokalnom ili regionalnom preklapanju. Kartice ne proglašavaju pobjednika bez EAN-identičnih cijena, provjerene lokalne zalihe i prodajnih rezultata.",
+  "competitors": [
+    {
+      "name": "Grama Čakovec",
+      "signal": "Lokalni široki format s gradnjom, vrtom, poljoprivredom, odjelnim kontaktima i webshopom.",
+      "response": "Naglasiti projektne usluge, dulje ljetno radno vrijeme i brzu lokalnu potvrdu robe."
+    },
+    {
+      "name": "Petrokov Čakovec",
+      "signal": "Lokalni specijalist za grijanje, hlađenje, instalacije i sanitarije.",
+      "response": "Mjeriti konverziju 3D kupaonice i povezati uslugu s kompletnom projektnom košaricom."
+    },
+    {
+      "name": "Vrtni centar Iva",
+      "signal": "Specijalist za bilje, sjeme, gnojiva, supstrate, vrtni alat i online kupnju.",
+      "response": "Pratiti sezonsku dostupnost i braniti poziciju kompletnim rješenjem za vrt i okućnicu."
+    }
+  ],
+  "monitoring": [
+    {
+      "title": "Akcije i uvjeti",
+      "baseline": "Aktivne su kratka Narančasta subota i YATO rasprodaja do isteka zaliha.",
+      "monitor": "Početak/kraj, kategorije, uvjeti plaćanja, iznimke, promjena teksta i uklanjanje nakon isteka."
+    },
+    {
+      "title": "Katalozi i letci",
+      "baseline": "Tematski dokumenti su javno navedeni, ali valjanost nije uvijek vidljiva u izvučenom tekstu.",
+      "monitor": "Novi PDF/URL, datum valjanosti, status aktualno/arhiva, prekinuta poveznica i distribucija po kanalima."
+    },
+    {
+      "title": "Lokalna zaliha i rezervacija",
+      "baseline": "Javni web ne dokazuje fizičku zalihu ni jedinstveni rok odgovora poslovnice.",
+      "monitor": "Nova usluga, promjena roka, pravila rezervacije, osobnog preuzimanja ili dostave."
+    },
+    {
+      "title": "Usporediva košarica",
+      "baseline": "Početni report ne proglašava BAT skupljim ili jeftinijim bez identičnih proizvoda i pakiranja.",
+      "monitor": "Do 20 zaključanih EAN-ova ili projektnih košarica: cijena, pakiranje, dostupnost, rok i dokaz."
+    }
+  ],
+  "actions_intro": "Akcije su poredane prema aktualnosti i mogućnosti provedbe. Svaka traži vlasnika i dokaz završetka kako signal ne bi ostao samo informacija.",
+  "actions": [
+    {
+      "priority": "P1",
+      "action": "Do 22.08. provjeriti Narančastu subotu na webu, newsletteru, društvenim kanalima i prodajnom mjestu; nakon akcije arhivirati dokaz i učinak.",
+      "owner": "Marketing + voditelji odjela",
+      "evidence": "Isti uvjeti na svim kanalima i izvještaj učinka po kategoriji."
+    },
+    {
+      "priority": "P1",
+      "action": "Za YATO izlaznu rasprodaju definirati zamjenski asortiman i pratiti javni status do uklanjanja akcije.",
+      "owner": "Nabava + odjel alata",
+      "evidence": "Zatvorena akcija, dokumentiran ostatak i spremna zamjenska ponuda."
+    },
+    {
+      "priority": "P2",
+      "action": "Uvesti datum valjanosti i status ‘aktualno/arhiva’ na svim letcima i katalozima.",
+      "owner": "Marketing / web partner",
+      "evidence": "Svaki dokument ima jasan rok i kanonski URL."
+    },
+    {
+      "priority": "P2",
+      "action": "Odabrati jednu kategoriju za javni standard ‘provjeri i rezerviraj’.",
+      "owner": "Direktor + vlasnik odjela",
+      "evidence": "Objavljen rok, evidencija upita i stopa stvarnog preuzimanja."
+    },
+    {
+      "priority": "P2",
+      "action": "Zaključati do 20 identičnih artikala ili usporedivih projektnih košarica za praćenje.",
+      "owner": "Komercijala / nabava",
+      "evidence": "Prvi before/after izvještaj bez neusporedivih pakiranja ili proizvoda."
+    }
+  ],
+  "offer": {
+    "intro": "Pilot treba dokazati da PulseWatch daje pravodobne, provjerljive i operativno korisne signale bez ERP integracije i pristupa osobnim podacima.",
+    "deliverables": [
+      {
+        "title": "Početni BAT baseline",
+        "description": "Ključne javne stranice, akcije, letci, usluge, radno vrijeme i početno stanje praćenih sposobnosti."
+      },
+      {
+        "title": "Tri lokalna konkurenta",
+        "description": "Akcije, usluge, lokalna dostupnost, preuzimanje i ključne prodajne poruke gdje postoji službeni dokaz."
+      },
+      {
+        "title": "Do 20 artikala",
+        "description": "Samo unaprijed zaključani identični EAN-ovi, pakiranja ili usporedive projektne košarice."
+      },
+      {
+        "title": "Tjedni signal",
+        "description": "Upozorenje samo kada promjena prelazi dogovoreni prag važnosti."
+      },
+      {
+        "title": "Završni PDF",
+        "description": "Što se promijenilo, before/after dokaz, mogući učinak i preporučena akcija."
+      },
+      {
+        "title": "Upravljački pregled",
+        "description": "Jedan sastanak za odluke, vlasnike i zatvaranje nevažnih ili netočnih signala."
+      }
+    ],
+    "success": "Pilot prolazi ako najmanje jedan pravodoban signal dovede do dokumentirane komercijalne ili zaštitne akcije, uz prihvatljivu stopu lažnih alarma i potpun dokaz izvora."
+  },
+  "methodology": [
+    "Korišteni su samo javno dostupni izvori provjereni 17.08.2026.",
+    "Scope je BAT Prodajni centar Čakovec, Rudolfa Steinera 2; druga BAT lokacija nije analizirana kao isti objekt.",
+    "Online kategorija ili proizvod ne dokazuje fizičku zalihu, cijenu ni dostupnost u poslovnici.",
+    "Nisu korišteni interni promet, marže, zalihe, ugovori, CRM podaci ni prodajni rezultati.",
+    "Nije provedena fizička posjeta, kupnja, tajna kupnja ni sigurnosno testiranje.",
+    "‘Nije pronađeno’ znači samo da tvrdnja nije potvrđena na pregledanim javnim stranicama.",
+    "Ovo je početni baseline, ne dokaz automatski detektirane povijesne promjene."
+  ],
+  "sources": [
+    {"label": "BAT naslovnica", "url": "https://batprodajnicentar.hr/"},
+    {"label": "BAT kontakt i odjeli", "url": "https://batprodajnicentar.hr/kontakt/"},
+    {"label": "BAT dodatne usluge", "url": "https://batprodajnicentar.hr/dodatne-usluge/"},
+    {"label": "BAT aktualni letci", "url": "https://batprodajnicentar.hr/aktualni-letci/"},
+    {"label": "BAT ljetno radno vrijeme", "url": "https://batprodajnicentar.hr/2026/03/26/ljetno-radno-vrijeme-u-bat-u/"},
+    {"label": "BAT Narančasta subota 22.8.", "url": "https://batprodajnicentar.hr/2026/08/17/narancasta-subota-22-8-laminati-kosilice-boje-lakovi-alat/"},
+    {"label": "BAT YATO rasprodaja", "url": "https://batprodajnicentar.hr/2026/08/06/yato-alat-20-posto-popusta-bat/"},
+    {"label": "Grama naslovnica", "url": "https://grama.com.hr/"},
+    {"label": "Grama kontakt", "url": "https://grama.com.hr/kontakt/"},
+    {"label": "Petrokov Čakovec", "url": "https://petrokov.hr/poslovnica-cakovec/"},
+    {"label": "Vrtni centar Iva", "url": "https://vrtnicentariva.hr/"},
+    {"label": "Vrtni centar Iva kontakt", "url": "https://vrtnicentariva.hr/kontakt/"}
+  ]
+}

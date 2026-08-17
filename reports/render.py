@@ -518,6 +518,7 @@ def _offer_columns(data: dict[str, Any], styles: dict[str, ParagraphStyle]) -> T
 
 def render_report(data: dict[str, Any], output_path: str | Path) -> Path:
     """Render a report payload and return the created PDF path."""
+    rl_config.invariant = 1
     _register_fonts()
     styles = _styles()
     output = Path(output_path)

@@ -1,0 +1,157 @@
+{
+  "version": 1,
+  "sources": [
+    {
+      "id": 1,
+      "url": "https://batprodajnicentar.hr",
+      "title": "BAT Prodajni centar — naslovnica",
+      "accessed": "2026-08-17",
+      "quotes": [
+        {
+          "text": "Besplatna dostava Za sve kupnje iznad 1000€ na području Međimurja",
+          "added": "2026-08-17"
+        },
+        {
+          "text": "Veliki izbor proizvoda Preko 80.000 artikala u ponudi",
+          "added": "2026-08-17"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "url": "https://batprodajnicentar.hr/kontakt",
+      "title": "BAT kontakt i odjeli",
+      "accessed": "2026-08-17",
+      "quotes": [
+        {
+          "text": "Poslovnica Čakovec Adresa Rudolfa Steinera 2, HR-40000 Čakovec Telefon +385 (0)40 389 900 E-mail bat@batprodajnicentar.hr",
+          "added": "2026-08-17"
+        },
+        {
+          "text": "Maloprodaja Info pult 040 389 916 info@batprodajnicentar.hr Građevinski materijal 040 389 921 gradjevina@batprodajnicentar.hr",
+          "added": "2026-08-17"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "url": "https://batprodajnicentar.hr/dodatne-usluge",
+      "title": "BAT dodatne usluge",
+      "accessed": "2026-08-17",
+      "quotes": [
+        {
+          "text": "Dostava na kućni prag Opširnije 3D dizajn i vizualizacija Vaše preuređene kupaonice Opširnije Miješanje / nijansiranje boja Opširnije Rezanje drva i kantiranje",
+          "added": "2026-08-17"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "url": "https://batprodajnicentar.hr/aktualni-letci",
+      "title": "BAT letci",
+      "accessed": "2026-08-17",
+      "quotes": [
+        {
+          "text": "Pregledajte naše aktualne letke i tematske kataloge i ne propustite najnoviju ponudu i akcije!",
+          "added": "2026-08-17"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "url": "https://batprodajnicentar.hr/2026/03/26/ljetno-radno-vrijeme-u-bat-u",
+      "title": "BAT ljetno radno vrijeme",
+      "accessed": "2026-08-17",
+      "quotes": [
+        {
+          "text": "Prodajni centar Čakovec • Ponedjeljak – petak: 7:00 – 20:30 • Subota: 7:00 – 19:00",
+          "added": "2026-08-17"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "url": "https://batprodajnicentar.hr/2026/08/17/narancasta-subota-22-8-laminati-kosilice-boje-lakovi-alat",
+      "title": "BAT Narančasta subota 22.8.",
+      "accessed": "2026-08-17",
+      "quotes": [
+        {
+          "text": "U subotu, 22. kolovoza , stiže nova Narančasta subota! Iskoristite 15% popusta na redovne cijene laminata, kosilica, boja i lakova te ručnih i električnih alata .",
+          "added": "2026-08-17"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "url": "https://batprodajnicentar.hr/2026/08/06/yato-alat-20-posto-popusta-bat",
+      "title": "BAT YATO rasprodaja",
+      "accessed": "2026-08-17",
+      "quotes": [
+        {
+          "text": "Akcija traje: od 4. 8. 2026. do rasprodaje zaliha.",
+          "added": "2026-08-17"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "url": "https://grama.com.hr",
+      "title": "Grama naslovnica",
+      "accessed": "2026-08-17",
+      "quotes": [
+        {
+          "text": "Preko našeg web shopa možete kupovati različite proizvode za uređenje doma, preparate i gnojiva za poljoprivredu i vrt te različite proizvode za uređenje okoliša vašeg doma.",
+          "added": "2026-08-17"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "url": "https://grama.com.hr/kontakt",
+      "title": "Grama kontakt",
+      "accessed": "2026-08-17",
+      "quotes": [
+        {
+          "text": "Grama Ul. Zrinsko Frankopanska 15 40000, Čakovec Tel: 040 328 720 E-mail: info@grama-trgovina.com",
+          "added": "2026-08-17"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "url": "https://petrokov.hr/poslovnica-cakovec",
+      "title": "Petrokov poslovnica Čakovec",
+      "accessed": "2026-08-17",
+      "quotes": [
+        {
+          "text": "Poslovnica Čakovec Josipa Kozarca 21, 40000 Čakovec, HR +385 (0)40 296 014 poslovnica.cakovec@petrokov.hr Radno vrijeme: pon-pet 07-16h, sub NE RADI",
+          "added": "2026-08-17"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "url": "https://vrtnicentariva.hr",
+      "title": "Vrtni centar Iva",
+      "accessed": "2026-08-17",
+      "quotes": [
+        {
+          "text": "Osim šume biljaka imamo i sve što pomaže u njihovom uzgoju. Biljke i biljčice, sjeme i sjemenčice, tegle, teglice, gnojiva, supstrati i svi mogući alati.",
+          "added": "2026-08-17"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "url": "https://vrtnicentariva.hr/kontakt",
+      "title": "Vrtni centar Iva kontakt",
+      "accessed": "2026-08-17",
+      "quotes": [
+        {
+          "text": "Poslovnica Štefanec Braće Radića 54, Štefanec 40000 Čakovec",
+          "added": "2026-08-17"
+        }
+      ]
+    }
+  ]
+}
