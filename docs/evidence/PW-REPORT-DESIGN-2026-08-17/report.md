@@ -84,6 +84,17 @@ Confirmed:
 
 The generated PDF has searchable text and embedded Unicode fonts, but it is not yet a tagged PDF/UA document. Formal reading-order and accessibility conformance require a separate implementation and validation gate.
 
+## GitHub delivery
+
+- Pull request: https://github.com/kfazon/pulsewatch/pull/11
+- Milestone: https://github.com/kfazon/pulsewatch/milestone/2
+- Signal schema/lifecycle/dedupe: https://github.com/kfazon/pulsewatch/issues/12
+- Evidence trace and source health: https://github.com/kfazon/pulsewatch/issues/13
+- Analyst review/action closure: https://github.com/kfazon/pulsewatch/issues/14
+- Grama pilot approval gate: https://github.com/kfazon/pulsewatch/issues/15
+
+The first two push/PR workflow runs for commit `fbef5e5` both completed successfully, and PR #11 reported `CLEAN`/mergeable before this evidence-link update.
+
 ## Artifact
 
 Local delivery file:
