@@ -14,6 +14,10 @@
         {
           "text": "Veliki izbor proizvoda Preko 80.000 artikala u ponudi",
           "added": "2026-08-17"
+        },
+        {
+          "text": "NAŠI ODJELI\nGrađevinski materijal\nDrvo i drvna galanterija\nKeramika i sanitarije\nBijela tehnika, audio-video, mali kućanski uređaji\nGrijanje i hlađenje\nRasvjeta i elektromaterijal\nBoje i lakovi\nAlati i zaštitna oprema\nBicikli, auto i biciklistička oprema\nVrt i okućnica\nSve za domaćinstvo\nTepisi i PVC podne podloge\nKućni tekstil\nRibolov\nKućni ljubimci",
+          "added": "2026-08-17"
         }
       ]
     },
@@ -185,6 +189,42 @@
       "quotes": [
         {
           "text": "Promocija traje od 20. srpnja do 20. rujna 2026. ili do isteka zaliha",
+          "added": "2026-08-17"
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "url": "https://www.pevex.hr/cakovec",
+      "title": "PEVEX prodajni centar Čakovec",
+      "accessed": "2026-08-17",
+      "quotes": [
+        {
+          "text": "**Prodajni centar PEVEX Čakovec**mjesto je ugodne i povoljne kupovine te prvi izbor za kupnju proizvoda za izgradnju, opremanje i uređenje doma i vrta. U prodajnom centru pronađi proizvode osam prodajnih programa: **[Građevina i boje](https://pevex.hr/gradjevina-i-boje \"Građevina i boje\")**, [**Željeznarija**](https://pevex.hr/zeljeznarija \"Željeznarija\"), **[Vrt i sezona](https://pevex.hr/vrt-i-sezona \"Vrt i sezona\")**, [**Elektronika**](https://pevex.hr/elektronika \"Elektronika\"), [**Dom i dizajn**](https://pevex.hr/dom-i-dizajn \"Dom i dizajn\"), [**Keramika i sanitarije**](https://pevex.hr/keramika-i-sanitarije \"Keramika i sanitarije\"), **[Kućanski uređaji](https://pevex.hr/kucanski-uredjaji \"Kućanski uređaji\")** i **[Široka potrošnja](https://pevex.hr/siroka-potrosnja \"Široka potrošnja\")**. Ne zaboravi uzeti predah od kupovine u našem **Samofino by Pevex caffe baru**. Ako kupuješ online iz udobnosti svog doma, uz **[Click & Collect uslugu](https://pevex.hr/novosti/novo-od-sada-webshop-usluga-click-collect-na-svim-pevex-lokacijama \"Click & Collect uslugu\")** preuzmi narudžbu u **prodajnom centru PEVEX Čakovec**!",
+          "added": "2026-08-17"
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "url": "https://www.pevex.hr/vrt-i-sezona/sezona/bazen",
+      "title": "PEVEX bazeni",
+      "accessed": "2026-08-17",
+      "quotes": [
+        {
+          "text": "Kada razmišljaš o postavljanju bazena, imaš izbor između montažnih bazena i bazena na napuhavanje.",
+          "added": "2026-08-17"
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "url": "https://www.bauhaus.hr/prodajni-centri/prodajni-centar-varazdin/fc/958",
+      "title": "BAUHAUS prodajni centar Varaždin",
+      "accessed": "2026-08-17",
+      "quotes": [
+        {
+          "text": "Sigurnosna provjera vaše veze",
           "added": "2026-08-17"
         }
       ]

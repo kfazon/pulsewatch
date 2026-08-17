@@ -59,7 +59,7 @@ def test_bat_example_report_renders_six_page_pdf(tmp_path: Path) -> None:
     assert reader.metadata.author.startswith("INMAR društvo")
     assert "Rudolfa Steinera 2" in text
     assert "Narančasta subota" in text
-    assert "Tri lokalna konkurenta" in text
+    assert "Dva prioritetna konkurenta" in text
     assert "Ovo je početni baseline" in text
 
 

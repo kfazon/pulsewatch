@@ -21,7 +21,7 @@
     "phone": "+385 91 45 46 013",
     "website": "https://inmar.hr"
   },
-  "executive_intro": "Početni javni baseline pokazuje tri materijalna signala: kratku višekategorijsku akciju, izlaznu YATO rasprodaju i Gorenje promociju s naknadnom prijavom za poklon. Ovo nije tvrdnja o povijesno automatski detektiranim promjenama.",
+  "executive_intro": "Početni javni baseline sada pokriva svih 15 službeno navedenih BAT odjela, sezonski signal bazena te lokalni PEVEX Čakovec i regionalni BAUHAUS Varaždin. Tri aktualna promotivna signala ostaju Narančasta subota, YATO rasprodaja i Gorenje promocija. Ovo nije tvrdnja o povijesno automatski detektiranim promjenama.",
   "signals": [
     {
       "severity": "high",
@@ -48,12 +48,12 @@
   "strengths": {
     "title": "Potvrđene snage",
     "items": [
+      "Službeno je navedeno 15 odjela: gradnja, drvo, keramika/sanitarije, tehnika, grijanje/hlađenje, elektro/rasvjeta, boje, alati, bicikli/auto, vrt, domaćinstvo, podovi/tepisi, tekstil, ribolov i ljubimci.",
+      "Službeni BAT letci dodatno navode bazene, pribor i njegu bazena kao sezonsku ponudu; to ne potvrđuje fizičku zalihu.",
       "Poslovnica Čakovec radi ponedjeljak–petak do 20:30 i subotom do 19:00 u ljetnom rasporedu.",
-      "Odvojeni kontakti za građevinu, elektro, alate, bijelu tehniku, boje, drvo, keramiku, vrt i druge odjele.",
-      "Javno naveden širok izbor od preko 80.000 artikala.",
+      "Odvojeni odjelni kontakti omogućuju stručan put za projektne i specijalističke kupnje.",
       "Dodatne usluge: dostava, 3D kupaonica, nijansiranje boja, rezanje i kantiranje drva.",
-      "Gotovina, avans po ponudi, virman, kartice i obročno plaćanje od 2 do 12 rata.",
-      "Besplatna dostava iznad 1.000 € u Međimurskoj županiji za robu osim građevinskog materijala."
+      "Plaćanje uključuje 2–12 rata; uvjeti besplatne dostave javno su opisani za Međimursku županiju."
     ]
   },
   "gaps": {
@@ -67,22 +67,17 @@
     ]
   },
   "positioning_conclusion": "BAT ne treba konkurirati samo širinom i popustom. Najobranjivija pozicija je kombinacija velikog lokalnog izbora, dugog radnog vremena, stručnog odjelnog kontakta i projektnih usluga. PulseWatch treba otkriti kada konkurentska akcija, usluga ili digitalna pogodnost smanjuje tu prednost.",
-  "competitor_intro": "Konkurenti su odabrani prema lokalnom ili regionalnom preklapanju. Kartice ne proglašavaju pobjednika bez EAN-identičnih cijena, provjerene lokalne zalihe i prodajnih rezultata.",
+  "competitor_intro": "PEVEX Čakovec potvrđen je službenom lokalnom stranicom i osam lokalnih prodajnih programa. BAUHAUS Varaždin je uključen kao regionalni veliki DIY konkurent, ali njegova službena stranica vraća sigurnosnu provjeru; lokalne kategorije, usluge i zaliha nisu predstavljene kao potvrđene.",
   "competitors": [
     {
-      "name": "Grama Čakovec",
-      "signal": "Lokalni široki format s gradnjom, vrtom, poljoprivredom, odjelnim kontaktima i webshopom.",
-      "response": "Naglasiti projektne usluge, dulje ljetno radno vrijeme i brzu lokalnu potvrdu robe."
+      "name": "PEVEX Čakovec",
+      "signal": "Službena lokalna stranica potvrđuje osam programa, od građevine i vrta do elektronike, sanitarija i kućanskih uređaja; naveden je Click & Collect.",
+      "response": "Pratiti akcije, radno vrijeme, bazene i usporedive košarice; online ponuda nije dokaz lokalne zalihe."
     },
     {
-      "name": "Petrokov Čakovec",
-      "signal": "Lokalni specijalist za grijanje, hlađenje, instalacije i sanitarije.",
-      "response": "Mjeriti konverziju 3D kupaonice i povezati uslugu s kompletnom projektnom košaricom."
-    },
-    {
-      "name": "Vrtni centar Iva",
-      "signal": "Specijalist za bilje, sjeme, gnojiva, supstrate, vrtni alat i online kupnju.",
-      "response": "Pratiti sezonsku dostupnost i braniti poziciju kompletnim rješenjem za vrt i okućnicu."
+      "name": "BAUHAUS Varaždin",
+      "signal": "Regionalni veliki DIY format uključen preko službenog URL-a centra; stranica je pri provjeri vratila sigurnosnu provjeru.",
+      "response": "Lokalne usluge, akcije, kategorije i zalihu pratiti tek nakon dokazivog dohvaćanja; ne pretpostavljati ih."
     }
   ],
   "monitoring": [
@@ -148,8 +143,8 @@
         "description": "Ključne javne stranice, akcije, letci, usluge, radno vrijeme i početno stanje praćenih sposobnosti."
       },
       {
-        "title": "Tri lokalna konkurenta",
-        "description": "Akcije, usluge, lokalna dostupnost, preuzimanje i ključne prodajne poruke gdje postoji službeni dokaz."
+        "title": "Dva prioritetna konkurenta",
+        "description": "PEVEX Čakovec i BAUHAUS Varaždin: akcije, usluge, lokalna dostupnost, preuzimanje i ključne prodajne poruke gdje postoji službeni dokaz."
       },
       {
         "title": "Do 20 artikala",
@@ -174,26 +169,84 @@
     "Korišteni su samo javno dostupni izvori provjereni 17.08.2026.",
     "Scope je BAT Prodajni centar Čakovec, Rudolfa Steinera 2; druga BAT lokacija nije analizirana kao isti objekt.",
     "Online kategorija ili proizvod ne dokazuje fizičku zalihu, cijenu ni dostupnost u poslovnici.",
+    "PEVEX lokalni programi potvrđeni su na službenoj stranici Čakovec; BAUHAUS lokalni detalji nisu potvrđeni jer je službena stranica vratila sigurnosnu provjeru.",
     "Nisu korišteni interni promet, marže, zalihe, ugovori, CRM podaci ni prodajni rezultati.",
     "Nije provedena fizička posjeta, kupnja, tajna kupnja ni sigurnosno testiranje.",
     "‘Nije pronađeno’ znači samo da tvrdnja nije potvrđena na pregledanim javnim stranicama.",
     "Ovo je početni baseline, ne dokaz automatski detektirane povijesne promjene."
   ],
   "sources": [
-    {"label": "BAT naslovnica", "url": "https://batprodajnicentar.hr/"},
-    {"label": "BAT kontakt i odjeli", "url": "https://batprodajnicentar.hr/kontakt/"},
-    {"label": "BAT dodatne usluge", "url": "https://batprodajnicentar.hr/dodatne-usluge/"},
-    {"label": "BAT aktualni letci", "url": "https://batprodajnicentar.hr/aktualni-letci/"},
-    {"label": "BAT ljetno radno vrijeme", "url": "https://batprodajnicentar.hr/2026/03/26/ljetno-radno-vrijeme-u-bat-u/"},
-    {"label": "BAT Narančasta subota 22.8.", "url": "https://batprodajnicentar.hr/2026/08/17/narancasta-subota-22-8-laminati-kosilice-boje-lakovi-alat/"},
-    {"label": "BAT YATO rasprodaja", "url": "https://batprodajnicentar.hr/2026/08/06/yato-alat-20-posto-popusta-bat/"},
-    {"label": "BAT načini plaćanja", "url": "https://batprodajnicentar.hr/nacini-i-pogodnosti-placanja/"},
-    {"label": "BAT opći uvjeti poslovanja", "url": "https://batprodajnicentar.hr/opci-uvjeti-poslovanja/"},
-    {"label": "BAT Gorenje promocija", "url": "https://batprodajnicentar.hr/2026/08/11/gorenje-perilica-posuda-ledomat/"},
-    {"label": "Grama naslovnica", "url": "https://grama.com.hr/"},
-    {"label": "Grama kontakt", "url": "https://grama.com.hr/kontakt/"},
-    {"label": "Petrokov Čakovec", "url": "https://petrokov.hr/poslovnica-cakovec/"},
-    {"label": "Vrtni centar Iva", "url": "https://vrtnicentariva.hr/"},
-    {"label": "Vrtni centar Iva kontakt", "url": "https://vrtnicentariva.hr/kontakt/"}
+    {
+      "label": "BAT naslovnica",
+      "url": "https://batprodajnicentar.hr/"
+    },
+    {
+      "label": "BAT kontakt i odjeli",
+      "url": "https://batprodajnicentar.hr/kontakt/"
+    },
+    {
+      "label": "BAT dodatne usluge",
+      "url": "https://batprodajnicentar.hr/dodatne-usluge/"
+    },
+    {
+      "label": "BAT aktualni letci",
+      "url": "https://batprodajnicentar.hr/aktualni-letci/"
+    },
+    {
+      "label": "BAT ljetno radno vrijeme",
+      "url": "https://batprodajnicentar.hr/2026/03/26/ljetno-radno-vrijeme-u-bat-u/"
+    },
+    {
+      "label": "BAT Narančasta subota 22.8.",
+      "url": "https://batprodajnicentar.hr/2026/08/17/narancasta-subota-22-8-laminati-kosilice-boje-lakovi-alat/"
+    },
+    {
+      "label": "BAT YATO rasprodaja",
+      "url": "https://batprodajnicentar.hr/2026/08/06/yato-alat-20-posto-popusta-bat/"
+    },
+    {
+      "label": "BAT načini plaćanja",
+      "url": "https://batprodajnicentar.hr/nacini-i-pogodnosti-placanja/"
+    },
+    {
+      "label": "BAT opći uvjeti poslovanja",
+      "url": "https://batprodajnicentar.hr/opci-uvjeti-poslovanja/"
+    },
+    {
+      "label": "BAT Gorenje promocija",
+      "url": "https://batprodajnicentar.hr/2026/08/11/gorenje-perilica-posuda-ledomat/"
+    },
+    {
+      "label": "Grama naslovnica",
+      "url": "https://grama.com.hr/"
+    },
+    {
+      "label": "Grama kontakt",
+      "url": "https://grama.com.hr/kontakt/"
+    },
+    {
+      "label": "Petrokov Čakovec",
+      "url": "https://petrokov.hr/poslovnica-cakovec/"
+    },
+    {
+      "label": "Vrtni centar Iva",
+      "url": "https://vrtnicentariva.hr/"
+    },
+    {
+      "label": "Vrtni centar Iva kontakt",
+      "url": "https://vrtnicentariva.hr/kontakt/"
+    },
+    {
+      "label": "PEVEX Čakovec",
+      "url": "https://www.pevex.hr/cakovec"
+    },
+    {
+      "label": "PEVEX bazeni",
+      "url": "https://www.pevex.hr/vrt-i-sezona/sezona/bazen"
+    },
+    {
+      "label": "BAUHAUS Varaždin — službena stranica, blokirana pri provjeri",
+      "url": "https://www.bauhaus.hr/prodajni-centri/prodajni-centar-varazdin/fc/958"
+    }
   ]
 }

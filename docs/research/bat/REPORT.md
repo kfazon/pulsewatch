@@ -12,7 +12,9 @@
 
 **Potvrđeno:** BAT javno navodi poslovnicu na adresi Rudolfa Steinera 2, s centralnim telefonom i odvojenim kontaktima za više prodajnih odjela.[2] Ljetno radno vrijeme poslovnice je ponedjeljak–petak 7:00–20:30 i subota 7:00–19:00.[5]
 
-**Potvrđeno:** Javna ponuda kombinira širok asortiman, preko 80.000 artikala kao marketinški navod, specijalističke kontakte i dodatne usluge.[1][2][3]
+**Potvrđeno:** BAT službeno navodi 15 odjela: građevinski materijal; drvo i drvnu galanteriju; keramiku i sanitarije; bijelu tehniku, audio-video i male kućanske uređaje; grijanje i hlađenje; rasvjetu i elektromaterijal; boje i lakove; alate i zaštitnu opremu; bicikle, auto i biciklističku opremu; vrt i okućnicu; sve za domaćinstvo; tepihe i PVC podne podloge; kućni tekstil; ribolov; kućne ljubimce.[1]
+
+**Potvrđeno:** Službeni BAT letci dodatno navode bazene, pribor i njegu bazena kao sezonski katalog, ali to nije zaseban službeno imenovan odjel niti dokaz trenutačne fizičke zalihe.[4]
 
 **Potvrđeno:** Besplatna dostava iznad 1.000 € na području Međimurske županije vrijedi za robu osim građevinskog materijala; za građevinski materijal cijena dostave daje se na upit.[14]
 
@@ -34,17 +36,21 @@
 | Potvrđeno | Dostava | Besplatna iznad 1.000 € na području Međimurske županije za robu osim građevinskog materijala; građevinski materijal na upit | [14] |
 | Ograničenje | Fizička zaliha | Nije potvrđena iz javnog web prikaza | — |
 
-## 2. Asortiman i usluge
+## 2. Cijela javno navedena ponuda i usluge
 
 BAT javno navodi dostavu na kućni prag, 3D dizajn kupaonice, miješanje/nijansiranje boja, rezanje i kantiranje drva, preuzimanje otpadne ambalaže, cvjetnu/poklon galeriju, caffe bar i kiosk brze hrane.[3]
 
-| Kupovni zadatak | Javno vidljiva sposobnost | Poslovna važnost | Status |
+| Skupina | Službeno navedeni BAT odjeli / signal | Poslovna važnost | Status |
 |---|---|---|---|
-| Gradnja i renovacija | Građevinski odjel, drvo, keramika, sanitarije, boje i alati | Visoka vrijednost košarice i potreba za savjetom | Potvrđeno |
-| Vrt i okućnica | Vrtni centar, kosilice, vrtni katalozi | Sezonalnost i lokalna konkurencija | Potvrđeno |
-| Dom i tehnika | Bijela/audio-video tehnika i široka potrošnja | Akcije, pokloni i cjenovna usporedba | Potvrđeno |
-| Projektna usluga | 3D kupaonica, miješanje boja, rezanje/kantiranje | Diferencijacija od čistog webshopa | Potvrđeno |
-| Online dostupnost | Web kategorije i košarica | Indikator digitalnog asortimana | Ne dokazuje zalihu poslovnice |
+| Gradnja | Građevinski materijal; drvo i drvna galanterija; keramika i sanitarije | Projektne košarice, savjetovanje i dostava | Potvrđeno [1] |
+| Završni radovi | Rasvjeta i elektromaterijal; boje i lakovi; alati i zaštitna oprema | Višekategorijske akcije i stručni odjelni kontakti | Potvrđeno [1][2] |
+| Dom i tehnika | Bijela tehnika, audio-video i mali kućanski uređaji; grijanje i hlađenje; sve za domaćinstvo | Akcije, pokloni, usporedive cijene i servisni slijed | Potvrđeno [1] |
+| Mobilnost | Bicikli, auto i biciklistička oprema | Sezonske kampanje, montaža i dodatna oprema kao pitanja za sastanak | Odjel potvrđen [1]; usluge nisu potvrđene |
+| Vrt i sezona | Vrt i okućnica; bazeni, pribor i njega bazena u službenom letku | Izrazita sezonalnost, vrijeme i lokalna konkurencija | Odjel potvrđen [1]; bazeni kao katalog [4] |
+| Podovi i tekstil | Tepisi i PVC podne podloge; kućni tekstil | Uređenje doma i križna prodaja | Potvrđeno [1] |
+| Hobi i ljubimci | Ribolov; kućni ljubimci | Specijalistička, ponavljajuća kupnja | Potvrđeno [1] |
+| Projektne usluge | 3D kupaonica, miješanje/nijansiranje boja, rezanje i kantiranje drva | Diferencijacija od čistog webshopa | Potvrđeno [3] |
+| Online signal | Web kategorije, proizvodi i letci | Indikator širine javne ponude | Ne dokazuje zalihu, cijenu ni dostupnost u poslovnici |
 
 ## 3. Aktualni javni signali
 
@@ -56,7 +62,7 @@ BAT javno navodi dostavu na kućni prag, 3D dizajn kupaonice, miješanje/nijansi
 | SREDNJE | Tematski katalozi bez vidljivih datuma u izvučenom tekstu | Kupac teže procjenjuje je li katalog aktualan | Uz svaki katalog prikazati datum valjanosti i status “aktualno/arhiva” |
 | SREDNJE | Nije javno potvrđen jedinstveni rok provjere zalihe i rezervacije | Kupac prije dolaska možda mora zvati pojedini odjel | Pilotirati “provjeri i rezerviraj” za jednu projektnu kategoriju |
 
-## 4. Lokalni konkurentski okvir
+## 4. Lokalni i regionalni konkurentski okvir
 
 Grama u Čakovcu javno kombinira fizički centar, odjelne kontakte i webshop za dom, poljoprivredu, vrt i okoliš.[8][9]
 
@@ -64,12 +70,17 @@ Petrokov ima lokalnu poslovnicu u Josipa Kozarca 21 i specijalistički okvir gri
 
 Vrtni centar Iva u Štefancu specijaliziran je za bilje, sjeme, tegle, gnojiva, supstrate i vrtni alat te javno prikazuje webshop.[11][12]
 
+PEVEX Čakovec na službenoj lokalnoj stranici potvrđuje osam prodajnih programa: građevinu i boje, željeznariju, vrt i sezonu, elektroniku, dom i dizajn, keramiku i sanitarije, kućanske uređaje i široku potrošnju.[16] Na istoj lokalnoj stranici potvrđeni su Click & Collect, adresa Globetka 2 i radno vrijeme ponedjeljak–subota 7:30–21:00.[16] PEVEX službena ponuda bazena uključuje montažne bazene, bazene na napuhavanje, pribor i sredstva za održavanje.[17] Online kategorije nisu dokaz fizičke zalihe u Čakovcu.
+
+BAUHAUS Varaždin uključen je kao regionalni veliki DIY konkurent preko aktualnog kanonskog službenog URL-a. Službena stranica je tijekom provjere vratila sigurnosnu provjeru, pa report ne tvrdi lokalno radno vrijeme, pojedine usluge, kategorije ni zalihu kao potvrđene činjenice.[18]
+
 | Konkurent | Dokazivo preklapanje | Što pratiti | Ograničenje |
 |---|---|---|---|
 | Grama Čakovec | Gradnja, vrt, poljoprivreda, okoliš, webshop | Katalozi, sezonske akcije, lokalna usluga/preuzimanje | Nije napravljena EAN-identična cjenovna košarica |
+| PEVEX Čakovec | Osam lokalno potvrđenih programa, uključujući elektroniku, kućanske uređaje, vrt, građevinu, sanitarije i široku potrošnju | Akcije po programu, Click & Collect, radno vrijeme, bazeni i usporedive košarice | Online kategorija ne potvrđuje lokalnu zalihu [16][17] |
 | Petrokov Čakovec | Grijanje, hlađenje, instalacije, sanitarije | Stručne ponude, projektna prodaja, akcije po brandu | Uži specijalistički format, nije usporediv s cijelim BAT-om |
 | Vrtni centar Iva | Bilje, vrt, gnojiva, supstrati, alati, webshop | Sezonska dostupnost, click/preuzimanje, sadržaj i savjeti | Uži vrtni specijalist |
-| BAUHAUS Varaždin | Regionalni veliki DIY format | Usluge, rezervacija/preuzimanje, akcije i projektne kategorije | Službena lokacijska stranica bila je blokirana ovom dohvatom; detalji nisu korišteni kao dokaz |
+| BAUHAUS Varaždin | Regionalni veliki DIY format; aktualni službeni URL centra pronađen | Akcije, usluge, rezervacija/preuzimanje i projektne kategorije čim dohvat bude moguć | Službena stranica vratila je sigurnosnu provjeru; lokalni detalji nisu korišteni kao dokaz [18] |
 
 ## 5. Operativne hipoteze za test
 
@@ -116,6 +127,22 @@ Korišteni su samo javni izvori provjereni 17.08.2026.[unverified] Nisu korište
 [1] https://batprodajnicentar.hr — BAT Prodajni centar — naslovnica
     > "Besplatna dostava Za sve kupnje iznad 1000€ na području Međimurja"
     > "Veliki izbor proizvoda Preko 80.000 artikala u ponudi"
+    > "NAŠI ODJELI
+Građevinski materijal
+Drvo i drvna galanterija
+Keramika i sanitarije
+Bijela tehnika, audio-video, mali kućanski uređaji
+Grijanje i hlađenje
+Rasvjeta i elektromaterijal
+Boje i lakovi
+Alati i zaštitna oprema
+Bicikli, auto i biciklistička oprema
+Vrt i okućnica
+Sve za domaćinstvo
+Tepisi i PVC podne podloge
+Kućni tekstil
+Ribolov
+Kućni ljubimci"
 [2] https://batprodajnicentar.hr/kontakt — BAT kontakt i odjeli
     > "Poslovnica Čakovec Adresa Rudolfa Steinera 2, HR-40000 Čakovec Telefon +385 (0)40 389 900 E-mail bat@batprodajnicentar.hr"
     > "Maloprodaja Info pult 040 389 916 info@batprodajnicentar.hr Građevinski materijal 040 389 921 gradjevina@batprodajnicentar.hr"
@@ -145,3 +172,9 @@ Korišteni su samo javni izvori provjereni 17.08.2026.[unverified] Nisu korište
     > "Dostava sve robe, osim građevinskog materijala, na kućni prag - u iznosu iznad 1.000 € – je na području Međimurske županije - besplatna. Cijenu dostave građevinskog materijala, ovisno o količini, vrijednosti i načinu isporuke, dajemo na upit."
 [15] https://batprodajnicentar.hr/2026/08/11/gorenje-perilica-posuda-ledomat — BAT Gorenje perilica + ledomat
     > "Promocija traje od 20. srpnja do 20. rujna 2026. ili do isteka zaliha"
+[16] https://www.pevex.hr/cakovec — PEVEX prodajni centar Čakovec
+    > "**Prodajni centar PEVEX Čakovec**mjesto je ugodne i povoljne kupovine te prvi izbor za kupnju proizvoda za izgradnju, opremanje i uređenje doma i vrta. U prodajnom centru pronađi proizvode osam prodajnih programa: **[Građevina i boje](https://pevex.hr/gradjevina-i-boje "Građevina i boje")**, [**Željeznarija**](https://pevex.hr/zeljeznarija "Željeznarija"), **[Vrt i sezona](https://pevex.hr/vrt-i-sezona "Vrt i sezona")**, [**Elektronika**](https://pevex.hr/elektronika "Elektronika"), [**Dom i dizajn**](https://pevex.hr/dom-i-dizajn "Dom i dizajn"), [**Keramika i sanitarije**](https://pevex.hr/keramika-i-sanitarije "Keramika i sanitarije"), **[Kućanski uređaji](https://pevex.hr/kucanski-uredjaji "Kućanski uređaji")** i **[Široka potrošnja](https://pevex.hr/siroka-potrosnja "Široka potrošnja")**. Ne zaboravi uzeti predah od kupovine u našem **Samofino by Pevex caffe baru**. Ako kupuješ online iz udobnosti svog doma, uz **[Click & Collect uslugu](https://pevex.hr/novosti/novo-od-sada-webshop-usluga-click-collect-na-svim-pevex-lokacijama "Click & Collect uslugu")** preuzmi narudžbu u **prodajnom centru PEVEX Čakovec**!"
+[17] https://www.pevex.hr/vrt-i-sezona/sezona/bazen — PEVEX bazeni
+    > "Kada razmišljaš o postavljanju bazena, imaš izbor između montažnih bazena i bazena na napuhavanje."
+[18] https://www.bauhaus.hr/prodajni-centri/prodajni-centar-varazdin/fc/958 — BAUHAUS prodajni centar Varaždin
+    > "Sigurnosna provjera vaše veze"
