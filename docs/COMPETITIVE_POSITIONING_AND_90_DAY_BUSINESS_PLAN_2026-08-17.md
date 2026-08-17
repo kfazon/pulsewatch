@@ -9,7 +9,7 @@
 | Pitanje | Odluka |
 |---|---|
 | Što prodajemo? | Upravljanu funkciju tržišnog nadzora: provjeren signal, dokaz, poslovno značenje, preporučena akcija i praćenje ishoda. |
-| Kome prvo? | Regionalni vlasnici brendova, ekskluzivni distributeri i specijalizirani trgovci kojima promjene cijena, promocija, dostupnosti, asortimana ili prodajne poruke neposredno utječu na maržu ili prodaju. |
+| Kome prvo? | Regionalni vlasnici brendova i ekskluzivni distributeri koji trebaju dokaz promjene cijene, dostupnosti ili promotivne poruke na 20–100 unaprijed poznatih reseller URL-ova. |
 | Glavni paket | **PulseWatch Managed — 1.490 EUR/mj. + PDV**, najmanje 3 mjeseca. |
 | Ulaz | **Plaćeni 30-dnevni pilot — 1.500 EUR + PDV**, unaprijed. |
 | Lite | **690 EUR/mj. + PDV**, asinkron i strogo ograničen; nuditi tek nakon pilota i stabilne automatizacije. |
@@ -47,7 +47,7 @@ Ovaj sloj prodaje automatizirano otkrivanje promjene, screenshot, povijest i oba
 | Visualping | Free; Personal od 14 USD/mj.; Business od 140 USD/mj.; Solutions na upit.[1][22] | Vizualne/tekstualne promjene, AI, timovi, integracije i alerti. | Odabrati prave stranice, razlikovati buku od signala i odlučiti što napraviti. |
 | Distill | Free; plaćeni planovi od 15 USD/mj.[2] | Praćenje stranica i lokalni/cloud monitori s obavijestima. | Konfiguracija, održavanje monitora i poslovna interpretacija. |
 | ChangeTower | Lite od 12 USD/mj.; viši planovi i enterprise postoje.[16] | Change monitoring, arhiva, uvjeti, alerti i enterprise mogućnosti. | Pretvoriti promjenu u prioritet i odgovornu akciju. |
-| Wachete | Free i niski usage planovi; službena stranica prikazuje mjesečne/godišnje pretplate bez limita ukupnih provjera.[9] | Promjene, cijene, dostupnost, compliance arhiva, e-mail/mobile/chat alerti. | Kontrola usporedivosti, lažnih alarma i posljedica za posao. |
+| Wachete | Besplatni plan je javno naveden; aktualni iznosi i količinski limiti plaćenih planova nisu dovoljno pouzdano prikazani u dostupnoj službenoj HTML verziji.[9] | Promjene, cijene, dostupnost, compliance arhiva, e-mail/mobile/chat alerti. | Kontrola usporedivosti, lažnih alarma i posljedica za posao. |
 | Hexowatch | Planovi postoje; pouzdan aktualni iznos nije potvrđen iz dostupne službene HTML stranice.[8] | Vizualni, sadržajni, cjenovni, source-code, technology i WHOIS monitoring. | Analitičku provjeru i upravljanje odlukama. |
 | Browse AI | Free; Personal 19 USD/mj.; Professional od 69 USD/mj.; premium managed extraction od 500 USD/mj. prema službenoj pricing stranici.[30] | No-code scraping/monitoring, AI change detection, web-to-API i integracije; skuplji sloj uključuje upravljanu ekstrakciju. | Specifičnu tržišnu interpretaciju i executive decision workflow. |
 | changedetection.io | Open-source/self-hosted i hosted opcija.[34] | Promjene, restock/price alerti i prilagodljivi filteri. | Hosting ili konfiguraciju, QA i sve poslovne odluke. |
@@ -138,14 +138,20 @@ Nitko nas **ne mora** uzeti. Kupac će nas uzeti samo ako u plaćenom pilotu pok
 
 ## 3. Točan početni kupac i problem
 
+### Zaključani početni wedge
+
+> **Managed evidence desk za regionalnog vlasnika brenda ili ekskluzivnog distributera: na 20–100 poznatih reseller ponuda otkriti i dokazati promjenu cijene, dostupnosti ili promotivne tvrdnje unutar jednog radnog dana te komercijalistu dati prioritetnu listu za akciju.**
+
+Mjerilo nije broj monitora ni PDF-ova. Mjerilo je broj pravodobno obrađenih relevantnih odstupanja, provedene komercijalne akcije i procijenjena ili potvrđena sačuvana bruto-marža.
+
 ### Idealni prvi profil kupca
 
-- regionalni vlasnik brenda, ekskluzivni distributer ili specijalizirani trgovac;
+- regionalni vlasnik brenda ili ekskluzivni distributer;
 - 20–500 zaposlenih ili dovoljno velik promet da 1.490 EUR/mj. nije eksperiment bez vlasnika;
-- 5+ važnih konkurenata, marketplace sellera ili ovlaštenih prodavača;
-- javne cijene, promocije, asortiman, availability ili komercijalne poruke mijenjaju se barem tjedno;
+- 20–100 unaprijed poznatih reseller/prodajnih URL-ova;
+- javne cijene, promocije, dostupnost ili komercijalne poruke mijenjaju se dovoljno često da zakašnjela reakcija ugrožava maržu ili odnos s kanalom;
 - danas se praćenje radi ručno, stihijski ili nitko nije jasno odgovoran;
-- postoji komercijalni direktor/category manager/e-commerce direktor koji može djelovati;
+- postoji komercijalni direktor ili channel/e-commerce manager koji može djelovati;
 - jedna propuštena promjena može vrijediti više od 1.500 EUR kroz maržu, izgubljenu prodaju, pogrešnu kampanju ili zakašnjelu reakciju.
 
 ### Ne uzimati kao prvi projekt
@@ -249,7 +255,7 @@ Pretpostavke: 70% doprinosna marža nakon direktne isporuke, 15% prihoda ostaje 
 | 5.500 EUR | 10.084 EUR |
 | 6.000 EUR | 10.924 EUR |
 
-**Operativni cilj dok računovođa ne potvrdi broj: 9.500–10.500 EUR MRR.**
+**Operativni cilj dok računovođa ne potvrdi broj: 9.500–10.500 EUR MRR.** Ne koristi se niži model od približno 6.700 EUR MRR koji pretpostavlja isplatu dobiti i unaprijed odabrane porezne faktore: to nije dovoljno sigurna osnova za mjesečnu egzistenciju, plaću/doprinose, churn i stvarne delivery troškove INMAR-a.
 
 ### Scenariji paketa
 
@@ -485,8 +491,8 @@ Po klijentu se automatski bilježi:
 ## 11. Sljedeće konkretne akcije
 
 1. Računovođa: dati ukupni mjesečni trošak društva za cilj od 3.500 EUR osobnog novca.
-2. Kristijan: odabrati jednu početnu nišu između regionalnog vlasnika brenda, ekskluzivnog distributera i specijaliziranog trgovca.
-3. Agent: pripremiti 50-account universe i 30 prioriteta iz izabrane niše.
+2. Kristijan: potvrditi zaključani wedge regionalnih vlasnika brendova i ekskluzivnih distributera s 20–100 poznatih reseller URL-ova.
+3. Agent: pripremiti 50-account universe i 30 prioriteta iz toga wedgea.
 4. Agent: dovršiti signal/evidence/dedupe/time-metering operativnu jezgru.
 5. Kristijan + agent: izraditi 3 bounded sample signala i prodajni one-pager.
 6. Kristijan: voditi discovery i zatvoriti prvi pilot; agent priprema sve istraživanje, materijal i follow-up draft.
