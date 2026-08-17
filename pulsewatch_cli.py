@@ -29,7 +29,9 @@ def _load_urls_from_config(config_path: Path) -> list[str]:
     elif isinstance(data, dict) and isinstance(data.get("urls"), list):
         urls = [u for u in data["urls"] if isinstance(u, str) and u.strip()]
     else:
-        raise click.ClickException("Invalid config format. Expected a list of URLs or {urls: [...]}.")
+        raise click.ClickException(
+            "Invalid config format. Expected a list of URLs or {urls: [...]}."
+        )
 
     if not urls:
         raise click.ClickException("Config contains no valid URLs.")
@@ -44,7 +46,12 @@ def cli() -> None:
 
 @cli.command("capture")
 @click.argument("url", required=False)
-@click.option("--config", "config_path", type=click.Path(exists=True, dir_okay=False, path_type=Path), help="YAML file with target URLs.")
+@click.option(
+    "--config",
+    "config_path",
+    type=click.Path(exists=True, dir_okay=False, path_type=Path),
+    help="YAML file with target URLs.",
+)
 def capture_command(url: str | None, config_path: Path | None) -> None:
     """Capture URL HTML + screenshot and persist artifacts."""
     from capture import capture_batch, capture_html_and_screenshot
@@ -81,13 +88,31 @@ def capture_command(url: str | None, config_path: Path | None) -> None:
 
 
 @cli.command("diff")
-@click.argument("old_dir", type=click.Path(exists=True, file_okay=False, path_type=Path))
-@click.argument("new_dir", type=click.Path(exists=True, file_okay=False, path_type=Path))
+@click.argument(
+    "old_dir", type=click.Path(exists=True, file_okay=False, path_type=Path)
+)
+@click.argument(
+    "new_dir", type=click.Path(exists=True, file_okay=False, path_type=Path)
+)
 def diff_command(old_dir: Path, new_dir: Path) -> None:
     """Diff two capture directories and write diff.txt to NEW_DIR."""
     result = diff_capture_dirs(old_dir, new_dir)
     click.echo(f"Changed lines: {result['changed_lines_count']}")
     click.echo(f"Diff output: {result['diff_path']}")
+
+
+@cli.command("report")
+@click.argument(
+    "input_path",
+    type=click.Path(exists=True, dir_okay=False, path_type=Path),
+)
+@click.argument("output_path", type=click.Path(dir_okay=False, path_type=Path))
+def report_command(input_path: Path, output_path: Path) -> None:
+    """Render a structured JSON payload as a PulseWatch executive PDF."""
+    from reports.render import render_json
+
+    result = render_json(input_path, output_path)
+    click.echo(f"Report saved: {result}")
 
 
 if __name__ == "__main__":

@@ -5,7 +5,7 @@ from __future__ import annotations
 import json
 import logging
 import os
-from datetime import datetime, timedelta
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from typing import Any
 
@@ -31,7 +31,7 @@ def _parse_capture_date(path: Path, data_dir: Path) -> datetime | None:
 
     date_str = parts[1]
     try:
-        return datetime.strptime(date_str, "%Y-%m-%d")
+        return datetime.strptime(date_str, "%Y-%m-%d").replace(tzinfo=UTC)
     except ValueError:
         return None
 
@@ -60,7 +60,7 @@ def check_and_send_digest(data_dir: str = "data") -> int:
         return 0
 
     base = Path(data_dir)
-    now = datetime.utcnow()
+    now = datetime.now(UTC)
     cutoff = now - timedelta(days=7)
 
     digest_items: list[dict[str, Any]] = []

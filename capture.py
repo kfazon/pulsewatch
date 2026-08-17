@@ -7,7 +7,6 @@ import logging
 import os
 import time
 from pathlib import Path
-from typing import Dict
 
 from playwright.sync_api import sync_playwright
 
@@ -15,12 +14,11 @@ from alerts.queue import enqueue_alert
 from storage import capture_directory_for_url, save_capture_artifacts
 from summarize import summarize, write_summary_file
 
-
 DEFAULT_TIMEOUT_MS = 30000
 logger = logging.getLogger(__name__)
 
 
-def capture_html_and_screenshot(url: str, output_dir: Path) -> Dict[str, str]:
+def capture_html_and_screenshot(url: str, output_dir: Path) -> dict[str, str]:
     """Capture page HTML and full-page screenshot for a URL.
 
     Args:
@@ -49,7 +47,9 @@ def capture_html_and_screenshot(url: str, output_dir: Path) -> Dict[str, str]:
     return {"html": html, "screenshot_path": str(screenshot_path)}
 
 
-def _build_unified_diff(old_html: str, new_html: str, old_name: str, new_name: str) -> str:
+def _build_unified_diff(
+    old_html: str, new_html: str, old_name: str, new_name: str
+) -> str:
     old_lines = old_html.splitlines()
     new_lines = new_html.splitlines()
     unified = list(
@@ -85,7 +85,11 @@ def capture_batch(urls: list[str], output_dir: str = "data") -> dict:
             try:
                 capture_dir = capture_directory_for_url(url, base_dir=Path(output_dir))
                 html_path = Path(capture_dir) / "page.html"
-                previous_html = html_path.read_text(encoding="utf-8") if html_path.exists() else None
+                previous_html = (
+                    html_path.read_text(encoding="utf-8")
+                    if html_path.exists()
+                    else None
+                )
 
                 captured = capture_html_and_screenshot(url, capture_dir)
                 save_capture_artifacts(
@@ -117,7 +121,9 @@ def capture_batch(urls: list[str], output_dir: str = "data") -> dict:
 
                         summarized_count += 1
                     else:
-                        logger.warning("OPENAI_API_KEY not set; skipping summarization for %s", url)
+                        logger.warning(
+                            "OPENAI_API_KEY not set; skipping summarization for %s", url
+                        )
 
                 captured_count += 1
                 success = True

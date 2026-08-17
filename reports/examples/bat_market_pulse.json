@@ -1,0 +1,252 @@
+{
+  "title": "BAT MARKET PULSE",
+  "subtitle": "Konkurentski, promotivni i digitalni signali za BAT Prodajni centar Čakovec",
+  "tagline": "Od javne promjene do provjerenog prioriteta i preporučene komercijalne akcije.",
+  "meta": {
+    "client": "BAT Prodajni centar Čakovec · Rudolfa Steinera 2",
+    "date": "17.08.2026.",
+    "status": "Demonstracijski početni baseline — javni izvori",
+    "label": "DEMO · PUBLIC SOURCES ONLY",
+    "footer": "PulseWatch · INMAR d.o.o. · OIB 33281217245 · Demonstracijski javni baseline"
+  },
+  "publisher": {
+    "legal_name": "INMAR društvo s ograničenom odgovornošću za trgovinu i usluge",
+    "address": "Gardinovec 24, 40319 Belica, Hrvatska",
+    "oib": "33281217245",
+    "mbs": "070096926",
+    "mb_dzs": "02767392",
+    "registry_court": "Trgovački sud u Varaždinu",
+    "director": "Kristijan Fažon",
+    "email": "info@inmar.hr",
+    "phone": "+385 91 45 46 013",
+    "website": "https://inmar.hr"
+  },
+  "executive_intro": "Početni javni baseline sada pokriva svih 15 službeno navedenih BAT odjela, sezonski signal bazena te lokalni PEVEX Čakovec i regionalni BAUHAUS Varaždin. Tri aktualna promotivna signala ostaju Narančasta subota, YATO rasprodaja i Gorenje promocija. Ovo nije tvrdnja o povijesno automatski detektiranim promjenama.",
+  "signals": [
+    {
+      "severity": "high",
+      "title": "Narančasta subota aktivira pet kategorija odjednom",
+      "finding": "Za 22.08.2026. objavljeno je 15% za gotovinu ili jednokratnu karticu te 10% na rate, uz javno navedena isključenja.",
+      "impact": "Kratak prozor povećava vrijednost sinkronizirane objave, provedbe uvjeta i mjerenja učinka po kategoriji.",
+      "action": "Prije početka provjeriti sve kanale i uvjete; nakon završetka arhivirati dokaz i usporediti promet i bruto dobit po kategoriji."
+    },
+    {
+      "severity": "high",
+      "title": "YATO alat izlazi iz asortimana uz 20% rasprodaju",
+      "finding": "BAT javno navodi 20% popusta na dostupni YATO aku i električni alat od 04.08.2026. do rasprodaje zaliha.",
+      "impact": "Izlazna rasprodaja može ubrzati prodaju, ali otvara pitanje zamjenskog brenda, dostupnosti i prijenosa potražnje.",
+      "action": "Pratiti status ponude do uklanjanja i unaprijed definirati zamjenski asortiman i prodajnu poruku."
+    },
+    {
+      "severity": "medium",
+      "title": "Gorenje promocija traži naknadnu prijavu kupca",
+      "finding": "Uz odabranu Gorenje perilicu posuđa ledomat je na poklon do 20.09.2026. ili isteka zaliha, uz prijavu i dokaz kupnje.",
+      "impact": "Vrijednost promocije ovisi o jasnom objašnjenju uvjeta i pravodobnoj prijavi nakon kupnje.",
+      "action": "Pratiti rok, uvjete, uklanjanje objave i provjeriti razumije li kupac cijeli slijed do ostvarenja poklona."
+    }
+  ],
+  "strengths": {
+    "title": "Potvrđene snage",
+    "items": [
+      "Službeno je navedeno 15 odjela: gradnja, drvo, keramika/sanitarije, tehnika, grijanje/hlađenje, elektro/rasvjeta, boje, alati, bicikli/auto, vrt, domaćinstvo, podovi/tepisi, tekstil, ribolov i ljubimci.",
+      "Službeni BAT letci dodatno navode bazene, pribor i njegu bazena kao sezonsku ponudu; to ne potvrđuje fizičku zalihu.",
+      "Poslovnica Čakovec radi ponedjeljak–petak do 20:30 i subotom do 19:00 u ljetnom rasporedu.",
+      "Odvojeni odjelni kontakti omogućuju stručan put za projektne i specijalističke kupnje.",
+      "Dodatne usluge: dostava, 3D kupaonica, nijansiranje boja, rezanje i kantiranje drva.",
+      "Plaćanje uključuje 2–12 rata; uvjeti besplatne dostave javno su opisani za Međimursku županiju."
+    ]
+  },
+  "gaps": {
+    "title": "Javno vidljive praznine",
+    "items": [
+      "Nije javno potvrđena fizička zaliha po artiklu za poslovnicu Čakovec.",
+      "Nije pronađen jedinstveni rok provjere i rezervacije robe prije dolaska.",
+      "Valjanost kataloga nije uvijek vidljiva uz sam naziv dokumenta.",
+      "Nema zaključane usporedive košarice identičnih artikala prema konkurentima.",
+      "Nisu dostupni javni podaci o učinku akcija, upita i projektnih usluga."
+    ]
+  },
+  "positioning_conclusion": "BAT ne treba konkurirati samo širinom i popustom. Najobranjivija pozicija je kombinacija velikog lokalnog izbora, dugog radnog vremena, stručnog odjelnog kontakta i projektnih usluga. PulseWatch treba otkriti kada konkurentska akcija, usluga ili digitalna pogodnost smanjuje tu prednost.",
+  "competitor_intro": "PEVEX Čakovec potvrđen je službenom lokalnom stranicom i osam lokalnih prodajnih programa. BAUHAUS Varaždin je uključen kao regionalni veliki DIY konkurent, ali njegova službena stranica vraća sigurnosnu provjeru; lokalne kategorije, usluge i zaliha nisu predstavljene kao potvrđene.",
+  "competitors": [
+    {
+      "name": "PEVEX Čakovec",
+      "signal": "Službena lokalna stranica potvrđuje osam programa, od građevine i vrta do elektronike, sanitarija i kućanskih uređaja; naveden je Click & Collect.",
+      "response": "Pratiti akcije, radno vrijeme, bazene i usporedive košarice; online ponuda nije dokaz lokalne zalihe."
+    },
+    {
+      "name": "BAUHAUS Varaždin",
+      "signal": "Regionalni veliki DIY format uključen preko službenog URL-a centra; stranica je pri provjeri vratila sigurnosnu provjeru.",
+      "response": "Lokalne usluge, akcije, kategorije i zalihu pratiti tek nakon dokazivog dohvaćanja; ne pretpostavljati ih."
+    }
+  ],
+  "monitoring": [
+    {
+      "title": "Akcije i uvjeti",
+      "baseline": "Aktivne su Narančasta subota, YATO rasprodaja i Gorenje promocija do roka ili isteka zaliha.",
+      "monitor": "Početak/kraj, kategorije, uvjeti plaćanja, iznimke, promjena teksta i uklanjanje nakon isteka."
+    },
+    {
+      "title": "Katalozi i letci",
+      "baseline": "Tematski dokumenti su javno navedeni, ali valjanost nije uvijek vidljiva u izvučenom tekstu.",
+      "monitor": "Novi PDF/URL, datum valjanosti, status aktualno/arhiva, prekinuta poveznica i distribucija po kanalima."
+    },
+    {
+      "title": "Lokalna zaliha i rezervacija",
+      "baseline": "Javni web ne dokazuje fizičku zalihu ni jedinstveni rok odgovora poslovnice.",
+      "monitor": "Nova usluga, promjena roka, pravila rezervacije, osobnog preuzimanja ili dostave."
+    },
+    {
+      "title": "Usporediva košarica",
+      "baseline": "Početni report ne proglašava BAT skupljim ili jeftinijim bez identičnih proizvoda i pakiranja.",
+      "monitor": "Do 20 zaključanih EAN-ova ili projektnih košarica: cijena, pakiranje, dostupnost, rok i dokaz."
+    }
+  ],
+  "actions_intro": "Akcije su poredane prema aktualnosti i mogućnosti provedbe. Svaka traži vlasnika i dokaz završetka kako signal ne bi ostao samo informacija.",
+  "actions": [
+    {
+      "priority": "P1",
+      "action": "Do 22.08. provjeriti Narančastu subotu na webu, newsletteru, društvenim kanalima i prodajnom mjestu; nakon akcije arhivirati dokaz i učinak.",
+      "owner": "Marketing + voditelji odjela",
+      "evidence": "Isti uvjeti na svim kanalima i izvještaj učinka po kategoriji."
+    },
+    {
+      "priority": "P1",
+      "action": "Za YATO izlaznu rasprodaju definirati zamjenski asortiman i pratiti javni status do uklanjanja akcije.",
+      "owner": "Nabava + odjel alata",
+      "evidence": "Zatvorena akcija, dokumentiran ostatak i spremna zamjenska ponuda."
+    },
+    {
+      "priority": "P2",
+      "action": "Uvesti datum valjanosti i status ‘aktualno/arhiva’ na svim letcima i katalozima.",
+      "owner": "Marketing / web partner",
+      "evidence": "Svaki dokument ima jasan rok i kanonski URL."
+    },
+    {
+      "priority": "P2",
+      "action": "Odabrati jednu kategoriju za javni standard ‘provjeri i rezerviraj’.",
+      "owner": "Direktor + vlasnik odjela",
+      "evidence": "Objavljen rok, evidencija upita i stopa stvarnog preuzimanja."
+    },
+    {
+      "priority": "P2",
+      "action": "Zaključati do 20 identičnih artikala ili usporedivih projektnih košarica za praćenje.",
+      "owner": "Komercijala / nabava",
+      "evidence": "Prvi before/after izvještaj bez neusporedivih pakiranja ili proizvoda."
+    }
+  ],
+  "offer": {
+    "intro": "Pilot treba dokazati da PulseWatch daje pravodobne, provjerljive i operativno korisne signale bez ERP integracije i pristupa osobnim podacima.",
+    "deliverables": [
+      {
+        "title": "Početni BAT baseline",
+        "description": "Ključne javne stranice, akcije, letci, usluge, radno vrijeme i početno stanje praćenih sposobnosti."
+      },
+      {
+        "title": "Dva prioritetna konkurenta",
+        "description": "PEVEX Čakovec i BAUHAUS Varaždin: akcije, usluge, lokalna dostupnost, preuzimanje i ključne prodajne poruke gdje postoji službeni dokaz."
+      },
+      {
+        "title": "Do 20 artikala",
+        "description": "Samo unaprijed zaključani identični EAN-ovi, pakiranja ili usporedive projektne košarice."
+      },
+      {
+        "title": "Tjedni signal",
+        "description": "Upozorenje samo kada promjena prelazi dogovoreni prag važnosti."
+      },
+      {
+        "title": "Završni PDF",
+        "description": "Što se promijenilo, before/after dokaz, mogući učinak i preporučena akcija."
+      },
+      {
+        "title": "Upravljački pregled",
+        "description": "Jedan sastanak za odluke, vlasnike i zatvaranje nevažnih ili netočnih signala."
+      }
+    ],
+    "success": "Pilot prolazi ako najmanje jedan pravodoban signal dovede do dokumentirane komercijalne ili zaštitne akcije, uz prihvatljivu stopu lažnih alarma i potpun dokaz izvora."
+  },
+  "methodology": [
+    "Korišteni su samo javno dostupni izvori provjereni 17.08.2026.",
+    "Scope je BAT Prodajni centar Čakovec, Rudolfa Steinera 2; druga BAT lokacija nije analizirana kao isti objekt.",
+    "Online kategorija ili proizvod ne dokazuje fizičku zalihu, cijenu ni dostupnost u poslovnici.",
+    "PEVEX lokalni programi potvrđeni su na službenoj stranici Čakovec; BAUHAUS lokalni detalji nisu potvrđeni jer je službena stranica vratila sigurnosnu provjeru.",
+    "Nisu korišteni interni promet, marže, zalihe, ugovori, CRM podaci ni prodajni rezultati.",
+    "Nije provedena fizička posjeta, kupnja, tajna kupnja ni sigurnosno testiranje.",
+    "‘Nije pronađeno’ znači samo da tvrdnja nije potvrđena na pregledanim javnim stranicama.",
+    "Ovo je početni baseline, ne dokaz automatski detektirane povijesne promjene."
+  ],
+  "sources": [
+    {
+      "label": "BAT naslovnica",
+      "url": "https://batprodajnicentar.hr/"
+    },
+    {
+      "label": "BAT kontakt i odjeli",
+      "url": "https://batprodajnicentar.hr/kontakt/"
+    },
+    {
+      "label": "BAT dodatne usluge",
+      "url": "https://batprodajnicentar.hr/dodatne-usluge/"
+    },
+    {
+      "label": "BAT aktualni letci",
+      "url": "https://batprodajnicentar.hr/aktualni-letci/"
+    },
+    {
+      "label": "BAT ljetno radno vrijeme",
+      "url": "https://batprodajnicentar.hr/2026/03/26/ljetno-radno-vrijeme-u-bat-u/"
+    },
+    {
+      "label": "BAT Narančasta subota 22.8.",
+      "url": "https://batprodajnicentar.hr/2026/08/17/narancasta-subota-22-8-laminati-kosilice-boje-lakovi-alat/"
+    },
+    {
+      "label": "BAT YATO rasprodaja",
+      "url": "https://batprodajnicentar.hr/2026/08/06/yato-alat-20-posto-popusta-bat/"
+    },
+    {
+      "label": "BAT načini plaćanja",
+      "url": "https://batprodajnicentar.hr/nacini-i-pogodnosti-placanja/"
+    },
+    {
+      "label": "BAT opći uvjeti poslovanja",
+      "url": "https://batprodajnicentar.hr/opci-uvjeti-poslovanja/"
+    },
+    {
+      "label": "BAT Gorenje promocija",
+      "url": "https://batprodajnicentar.hr/2026/08/11/gorenje-perilica-posuda-ledomat/"
+    },
+    {
+      "label": "Grama naslovnica",
+      "url": "https://grama.com.hr/"
+    },
+    {
+      "label": "Grama kontakt",
+      "url": "https://grama.com.hr/kontakt/"
+    },
+    {
+      "label": "Petrokov Čakovec",
+      "url": "https://petrokov.hr/poslovnica-cakovec/"
+    },
+    {
+      "label": "Vrtni centar Iva",
+      "url": "https://vrtnicentariva.hr/"
+    },
+    {
+      "label": "Vrtni centar Iva kontakt",
+      "url": "https://vrtnicentariva.hr/kontakt/"
+    },
+    {
+      "label": "PEVEX Čakovec",
+      "url": "https://www.pevex.hr/cakovec"
+    },
+    {
+      "label": "PEVEX bazeni",
+      "url": "https://www.pevex.hr/vrt-i-sezona/sezona/bazen"
+    },
+    {
+      "label": "BAUHAUS Varaždin — službena stranica, blokirana pri provjeri",
+      "url": "https://www.bauhaus.hr/prodajni-centri/prodajni-centar-varazdin/fc/958"
+    }
+  ]
+}

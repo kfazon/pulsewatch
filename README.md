@@ -62,3 +62,17 @@ python pulsewatch_cli.py diff data/example.com/2026-03-18/abc123 data/example.co
 Outputs:
 - changed lines count
 - `diff.txt` path (written to the new capture directory)
+
+### Render an executive PDF report
+
+```bash
+python pulsewatch_cli.py report \
+  reports/examples/grama_market_pulse.json \
+  artifacts/report.pdf
+```
+
+The `report` command turns a structured JSON payload into a branded A4 executive PDF. The reusable visual and evidence rules are documented in [`docs/REPORT_DESIGN_SYSTEM.md`](docs/REPORT_DESIGN_SYSTEM.md).
+
+Commercial packaging, estimated unit economics and safe client-capacity limits are documented in [`docs/COMMERCIAL_MODEL_AND_UNIT_ECONOMICS_2026-08-17.md`](docs/COMMERCIAL_MODEL_AND_UNIT_ECONOMICS_2026-08-17.md).
+
+The evidence-grounded competitor matrix, current Managed/Lite packages, role split and 90-day path to paid validation are documented in [`docs/COMPETITIVE_POSITIONING_AND_90_DAY_BUSINESS_PLAN_2026-08-17.md`](docs/COMPETITIVE_POSITIONING_AND_90_DAY_BUSINESS_PLAN_2026-08-17.md).

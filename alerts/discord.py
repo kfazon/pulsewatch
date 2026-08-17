@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import json
 import logging
-from datetime import datetime
+from datetime import UTC, datetime
 from typing import Any
 from urllib import error, request
 
@@ -46,7 +46,9 @@ def send_alert(webhook_url: str, summary: dict[str, Any], target_url: str) -> No
     """Send one high-importance change alert as a Discord embed."""
     importance = max(0.0, min(1.0, float(summary.get("importance", 0.0))))
     category = str(summary.get("category", "other"))
-    summary_text = str(summary.get("summary", "")).strip() or "No summary text provided."
+    summary_text = (
+        str(summary.get("summary", "")).strip() or "No summary text provided."
+    )
 
     payload = {
         "embeds": [
@@ -63,7 +65,7 @@ def send_alert(webhook_url: str, summary: dict[str, Any], target_url: str) -> No
                     },
                     {"name": "Summary", "value": summary_text[:1024], "inline": False},
                 ],
-                "timestamp": datetime.utcnow().isoformat() + "Z",
+                "timestamp": datetime.now(UTC).isoformat(),
             }
         ]
     }
@@ -99,7 +101,7 @@ def send_digest(webhook_url: str, summaries: list[dict[str, Any]]) -> None:
                 "title": "📊 Weekly PulseWatch Digest",
                 "description": joined,
                 "color": 0x3498DB,
-                "timestamp": datetime.utcnow().isoformat() + "Z",
+                "timestamp": datetime.now(UTC).isoformat(),
             }
         ]
     }

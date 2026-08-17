@@ -1,19 +1,25 @@
 name: CI/CD Pipeline
 
-on: [push]
+on:
+  push:
+  pull_request:
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.12'
-    - name: Install dependencies
-      run: pip install -r requirements.txt && playwright install
-    - name: Lint
-      run: python -m ruff check . && python -m ruff format --check .
-    - name: Test
-      run: python -m pytest tests/ -v --tb=short
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: |
+          pip install -r requirements-dev.txt
+          playwright install --with-deps chromium
+      - name: Lint
+        run: |
+          python -m ruff check .
+          python -m ruff format --check .
+      - name: Test
+        run: python -m pytest tests/ -v --tb=short

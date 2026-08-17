@@ -27,11 +27,16 @@ def _alert_worker() -> None:
         summary, target_url = _ALERT_QUEUE.get()
         try:
             if webhook_url:
-                send_alert(webhook_url=webhook_url, summary=summary, target_url=target_url)
+                send_alert(
+                    webhook_url=webhook_url, summary=summary, target_url=target_url
+                )
             else:
-                logger.info("Dropped alert for %s because DISCORD_WEBHOOK_URL is missing", target_url)
-        except Exception as exc:  # noqa: BLE001
-            logger.exception("Failed sending queued alert for %s: %s", target_url, exc)
+                logger.info(
+                    "Dropped alert for %s because DISCORD_WEBHOOK_URL is missing",
+                    target_url,
+                )
+        except Exception:
+            logger.exception("Failed sending queued alert for %s", target_url)
         finally:
             _ALERT_QUEUE.task_done()
             time.sleep(1.0)  # max 1 msg/sec
@@ -45,7 +50,9 @@ def _ensure_worker_started() -> None:
     with _WORKER_LOCK:
         if _WORKER_STARTED:
             return
-        thread = threading.Thread(target=_alert_worker, name="discord-alert-worker", daemon=True)
+        thread = threading.Thread(
+            target=_alert_worker, name="discord-alert-worker", daemon=True
+        )
         thread.start()
         _WORKER_STARTED = True
         logger.info("Started Discord alert queue worker thread")
