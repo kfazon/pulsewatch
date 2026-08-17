@@ -47,6 +47,10 @@ Tables are reserved for concise lookup data and precise values. Long narrative c
 - Numeric columns should be right aligned when introduced.
 - Every severity value must include a text label; color alone is insufficient.
 
+## Value contract
+
+The evidence contract below is the minimum baseline. Recurring managed-intelligence reports must also follow the [report value contract](research/report-value/REPORT.md): each material signal is tied to a decision, owner, deadline, KPI baseline/target, action status, measured result and transparent attribution level.
+
 ## Evidence contract
 
 Every reported signal must contain:
@@ -58,6 +62,8 @@ Every reported signal must contain:
 - source or evidence reference;
 - detection/baseline date;
 - known limitations.
+
+For a first baseline report, fields that require client participation may remain explicitly `not available`. They become mandatory when a signal is promoted into an action during a paid pilot or recurring engagement.
 
 A first report is explicitly labeled as a baseline. It must not imply that a historical change was automatically detected before monitoring was activated.
 
