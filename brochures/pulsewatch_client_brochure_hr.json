@@ -1,0 +1,223 @@
+{
+  "metadata": {
+    "title": "PulseWatch — paketi upravljanog tržišnog nadzora",
+    "subject": "Klijentska brošura usluge PulseWatch Managed Intelligence"
+  },
+  "cover": {
+    "title": "Važne tržišne promjene. Provjerene i spremne za akciju.",
+    "subtitle": "Upravljani nadzor cijena, dostupnosti, promocija i tržišnih poruka za vlasnike brendova i distributere.",
+    "promise": "Ne šaljemo vam još jedan niz alarma. Isporučujemo dokaz, poslovno značenje i jasan sljedeći korak.",
+    "validity": "Paketi i cijene za nove upite · vrijedi do 30.09.2026."
+  },
+  "problem": {
+    "intro": "Cijene, zalihe, promocije i tvrdnje na prodajnim kanalima mijenjaju se svakodnevno. Ručno praćenje troši vrijeme, a obični monitoring alati često samo premjeste problem: umjesto traženja promjene, vaš tim sada mora pregledavati desetke alarma.",
+    "without": [
+      "Nitko nije jasno odgovoran za praćenje odabranih prodajnih kanala.",
+      "Promjena se primijeti kasno, nakon upita kupca ili pada prodaje.",
+      "Screenshot postoji, ali nije jasno što znači za cijenu, maržu ili odnos s partnerom.",
+      "Tim troši vrijeme na lažne alarme i promjene bez poslovne vrijednosti."
+    ],
+    "with": [
+      "INMAR postavlja i održava dogovoreni popis javnih izvora.",
+      "Svaki važan nalaz provjerava se prije slanja klijentu.",
+      "Dobivate URL, vrijeme i dokaz promjene prije/poslije.",
+      "Signal završava procjenom učinka, preporukom, vlasnikom i rokom."
+    ],
+    "statement": "PulseWatch je vaš vanjski tim za tržišni nadzor: spaja automatizirano praćenje, dokazni trag, AI pomoć i ljudsku provjeru u jednu operativnu uslugu.",
+    "themes": [
+      {
+        "title": "Cijene, promocije i dostupnost",
+        "text": "Promjene cijena, akcija, dostupnosti, uvjeta ponude i načina isticanja proizvoda na odabranim stranicama prodajnih partnera i konkurenata."
+      },
+      {
+        "title": "Asortiman, kanali i tržišna poruka",
+        "text": "Novi proizvodi, uklonjeni artikli, promjene kategorija, kampanje, prodajne tvrdnje, usluge i druge javne promjene koje mogu utjecati na odluku kupca."
+      }
+    ]
+  },
+  "workflow": {
+    "intro": "Na početku ne pokušavamo pratiti sve. Zajedno biramo jednu poslovnu odluku i ograničen skup izvora na kojima promjena može utjecati na prodaju, maržu ili odnos s kanalom.",
+    "steps": [
+      {
+        "title": "Dogovaramo poslovno pitanje",
+        "text": "Primjer: gdje naši prodajni partneri mijenjaju cijenu, dostupnost ili promotivnu poruku za prioritetne proizvode?"
+      },
+      {
+        "title": "Postavljamo odobrene javne izvore",
+        "text": "Definiramo proizvode, konkurente, prodajne partnere, URL-ove, teme i pragove važnosti."
+      },
+      {
+        "title": "Sustav bilježi promjenu i dokaz",
+        "text": "Snimka izvora, snimka zaslona i usporedba prije/poslije čuvaju ono što se stvarno promijenilo i kada."
+      },
+      {
+        "title": "AI pomaže, čovjek provjerava",
+        "text": "Automatizacija ubrzava obradu; važan signal prolazi završnu analitičku provjeru prije isporuke."
+      },
+      {
+        "title": "Signal pretvaramo u akciju",
+        "text": "Dobivate prioritet, poslovni učinak, preporuku, vlasnika i rok — kroz hitnu obavijest, sažetak ili izvršni izvještaj."
+      }
+    ],
+    "signal": [
+      {
+        "label": "DOKAZ",
+        "text": "Izvorni URL, vrijeme provjere, snimka zaslona ili spremljeni dokaz te jasna razlika prije/poslije."
+      },
+      {
+        "label": "ZNAČENJE",
+        "text": "Zašto promjena može utjecati na prodaju, maržu, kampanju, kanal ili odnos s partnerom."
+      },
+      {
+        "label": "AKCIJA",
+        "text": "Što predlažemo napraviti, tko treba preuzeti signal, do kada i kako zatvoriti ishod."
+      }
+    ]
+  },
+  "packages": {
+    "intro": "Početni pilot potvrđuje postoji li stvarna vrijednost za vaš tim. Nakon njega biramo paket prema potrebnoj brzini, broju izvora i količini ljudske analize.",
+    "items": [
+      {
+        "name": "30-dnevni pilot",
+        "badge": "PREPORUČENI POČETAK",
+        "price": "1.500 € + PDV",
+        "fit": "Za tvrtku koja želi na stvarnim izvorima provjeriti vrijedi li PulseWatch više od sadašnjeg ručnog procesa.",
+        "highlights": [
+          "1 popis praćenja · do 30 javnih URL-ova",
+          "Klijent + do 5 konkurenata ili prodajnih partnera",
+          "Do 2 provjerena sažetka tjedno i završni upravljački izvještaj",
+          "Početni i završni sastanak za odluku"
+        ],
+        "featured": true
+      },
+      {
+        "name": "Managed",
+        "badge": "GLAVNI PAKET",
+        "price": "1.490 € + PDV / mj.",
+        "fit": "Za komercijalni tim kojem trebaju pravodobni provjereni signali, hitne obavijesti tijekom radnog dana i mjesečna odluka.",
+        "highlights": [
+          "Do 50 URL-ova · do 5 konkurenata ili prodajnih partnera",
+          "Do 3 teme i 12 provjerenih signala mjesečno",
+          "Tjedni sažetak + mjesečni upravljački izvještaj",
+          "45-min mjesečni sastanak za odluke · minimum 3 mjeseca"
+        ],
+        "featured": true
+      },
+      {
+        "name": "Lite",
+        "badge": "STANDARDIZIRANO",
+        "price": "690 € + PDV / mj.",
+        "fit": "Za stabilan i uži popis praćenja bez hitnih obavijesti, redovnih sastanaka i prilagođenog istraživanja.",
+        "highlights": [
+          "Do 20 URL-ova · do 3 konkurenata ili prodajnih partnera",
+          "1 tema · do 5 provjerenih signala mjesečno",
+          "2–3 provjere tjedno",
+          "Mjesečni sažetak za odluku · dostupno nakon pilota"
+        ],
+        "featured": false
+      },
+      {
+        "name": "Managed Plus",
+        "badge": "VEĆI OPSEG",
+        "price": "2.490 € + PDV / mj.",
+        "fit": "Za veći prihod pod rizikom, dva odvojena popisa praćenja ili više odgovornih osoba koje moraju redovito odlučivati.",
+        "highlights": [
+          "Do 100 URL-ova · do 10 konkurenata ili prodajnih partnera",
+          "Do 2 popisa praćenja i 25 provjerenih signala mjesečno",
+          "Prioritetna obavijest + tjedni 30-min sastanak",
+          "Mjesečni izvještaj + kvartalni pregled trendova"
+        ],
+        "featured": false
+      }
+    ],
+    "note": "Sve cijene su bez PDV-a. Konačni izvori, pragovi, ritam i odgovornosti potvrđuju se u pisanoj ponudi. Izvori koji blokiraju automatizirani pristup, zahtijevaju prijavu ili nemaju pouzdan javni dokaz mogu biti isključeni ili posebno ugovoreni."
+  },
+  "comparison": {
+    "intro": "Managed uključuje aktivnu operativnu podršku i pravodobnu reakciju. Lite je asinkrona, strogo ograničena usluga za standardiziran slučaj korištenja.",
+    "rows": [
+      {
+        "label": "Popis praćenja",
+        "managed": "1 poslovni popis praćenja; do 5 konkurenata ili prodajnih partnera",
+        "lite": "1 tema; do 3 konkurenata ili prodajnih partnera"
+      },
+      {
+        "label": "Javni izvori",
+        "managed": "Do 50 URL-ova; dnevna provjera gdje izvor dopušta",
+        "lite": "Do 20 URL-ova; 2–3 provjere tjedno"
+      },
+      {
+        "label": "Provjereni signali",
+        "managed": "Do 12 važnih signala mjesečno",
+        "lite": "Do 5 signala mjesečno"
+      },
+      {
+        "label": "Hitna obavijest",
+        "managed": "Unutar radnog dana za unaprijed dogovoreni prag visoke važnosti",
+        "lite": "Nije uključeno"
+      },
+      {
+        "label": "Redovna isporuka",
+        "managed": "Tjedni sažetak + mjesečni upravljački PDF",
+        "lite": "Mjesečni sažetak za odluku/PDF"
+      },
+      {
+        "label": "Sastanak",
+        "managed": "45 min mjesečno",
+        "lite": "Nema redovnog sastanka"
+      },
+      {
+        "label": "Akcijski status",
+        "managed": "Vlasnik, rok i status važnog signala",
+        "lite": "Preporuka bez kontinuiranog praćenja provedbe"
+      },
+      {
+        "label": "Najbolje odgovara",
+        "managed": "Aktivnom komercijalnom timu ili timu za prodajne kanale i internetsku trgovinu",
+        "lite": "Stabilnom popisu praćenja s manjom hitnošću"
+      }
+    ],
+    "boundaries": [
+      {
+        "title": "Što nije uključeno",
+        "text": "ERP/CRM integracije, 24/7 nadzor, masovni SKU repricing, privatni izvori bez autorizacije, pravna ili forenzička mišljenja te neograničeno prilagođeno istraživanje."
+      },
+      {
+        "title": "Kada mijenjamo opseg",
+        "text": "Novi tip izvora, više popisa praćenja, veća količina signala, dodatne odgovorne osobe ili posebna analiza dogovaraju se kao viši paket ili zaseban projekt."
+      }
+    ],
+    "important": "PulseWatch radi s javno dostupnim ili izričito odobrenim izvorima. Ne jamčimo da će svaki izvor uvijek biti dostupan niti da će svaka promjena imati poslovni učinak. Naša isporuka uključuje transparentan dokazni trag, jasno označena ograničenja i ljudsku provjeru važnih isporučenih signala."
+  },
+  "closing": {
+    "intro": "Najbolji početak nije duga prezentacija ni široka implementacija. Dovoljni su jedna važna poslovna odluka, osoba koja može djelovati i ograničena lista javnih izvora.",
+    "steps": [
+      {
+        "title": "30-minutni razgovor",
+        "text": "Biramo odluku, signal i osobu koja će reagirati. Ako problem nije dovoljno važan, to ćemo reći odmah."
+      },
+      {
+        "title": "Jedan ograničeni primjer signala",
+        "text": "Na javnom izvoru pokazujemo kako izgleda dokaz, interpretacija i preporučena akcija — bez besplatnog mjeseca rada."
+      },
+      {
+        "title": "Plaćeni 30-dnevni pilot",
+        "text": "Dogovaramo do 30 URL-ova, pragove, ritam, metrike i završnu odluku: nastaviti, promijeniti opseg ili stati."
+      }
+    ],
+    "cta": "Dogovorite uvodni razgovor za PulseWatch pilot",
+    "contact": "info@inmar.hr · +385 91 45 46 013 · https://inmar.hr"
+  },
+  "publisher": {
+    "short_name": "INMAR d.o.o.",
+    "legal_name": "INMAR društvo s ograničenom odgovornošću za trgovinu i usluge",
+    "address": "Gardinovec 24, 40319 Belica, Hrvatska",
+    "oib": "33281217245",
+    "mbs": "070096926",
+    "mb_dzs": "02767392",
+    "registry_court": "Trgovački sud u Varaždinu",
+    "director": "Kristijan Fažon",
+    "email": "info@inmar.hr",
+    "phone": "+385 91 45 46 013",
+    "website": "https://inmar.hr"
+  }
+}
