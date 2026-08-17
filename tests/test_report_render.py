@@ -27,14 +27,16 @@ def test_grama_v2_report_renders_decision_first_pdf(tmp_path: Path) -> None:
     assert 6 <= len(reader.pages) <= 8
     assert reader.metadata.title == "GRAMA MARKET PULSE"
     assert reader.metadata.author == "INMAR d.o.o."
-    assert "Executive decision brief" in text
-    assert "ČINJENICA / OPAŽANJE" in text
-    assert "POSLOVNO ZNAČENJE — HIPOTEZA" in text
-    assert "Value scorecard — baseline i pilot" in text
-    assert "Akcijski registar" in text
+    assert "Najvažnije odluke" in text
+    assert "ŠTO SMO VIDJELI" in text
+    assert "ZAŠTO JE VAŽNO — NAŠA PROCJENA" in text
+    assert "Kako ćemo mjeriti korist pilota" in text
+    assert "Tko treba što napraviti" in text
     assert "Povjerljivi digitalni signal" in text
-    assert "Demonstracijska pilot ponuda" in text
-    assert "1.500 € + PDV" in text
+    assert "Prijedlog probnog rada — 30 dana" in text
+    assert "Konačna cijena: 1.500 €" in text
+    assert "INMAR d.o.o. nije u sustavu PDV-a" in text
+    assert "+ PDV" not in text
 
 
 def test_cover_limits_publisher_identifiers_and_later_has_full_block(
@@ -78,8 +80,8 @@ def test_bat_v2_marks_pevex_primary_and_bauhaus_blocked(tmp_path: Path) -> None:
     assert "glavni lokalni konkurent" in text
     assert "BAUHAUS Varaždin" in text
     assert "sekundaran / blokiran" in text
-    assert "Ovo je početni baseline" in text
-    assert "detected change" in text
+    assert "Ovo je početno stanje" in text
+    assert "detected change" not in text
 
 
 def test_report_supports_croatian_unicode(tmp_path: Path) -> None:

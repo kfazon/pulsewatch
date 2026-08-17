@@ -1,12 +1,12 @@
 {
   "title": "GRAMA MARKET PULSE",
   "subtitle": "Konkurentski i digitalni signali za Gramu Čakovec i TSH",
-  "tagline": "Od javnog baselinea do provjerenog prioriteta i preporučene akcije.",
+  "tagline": "Od javnog nalaza do jasnog prioriteta i preporučene akcije.",
   "meta": {
     "date": "17.08.2026.",
-    "status": "Demonstracijski početni baseline — javni izvori",
-    "label": "DEMO · PUBLIC SOURCES ONLY",
-    "footer": "PulseWatch · demonstracijski pilot · javni baseline",
+    "status": "Početni pregled javnih izvora",
+    "label": "DEMO · JAVNI IZVORI",
+    "footer": "PulseWatch · početni javni pregled",
     "prepared_for": "Grama Čakovec / Tvornica stočne hrane d.d."
   },
   "publisher": {
@@ -21,7 +21,7 @@
     "phone": "+385 91 45 46 013",
     "website": "https://inmar.hr"
   },
-  "executive_intro": "Početni pregled pokazuje četiri komercijalno važna signala i jedan povjerljivi korporativni web-signal. Ovo je početno stanje, ne tvrdnja da je PulseWatch ranije automatski detektirao povijesnu promjenu.",
+  "executive_intro": "Tri stvari sada traže odluku: povjerljivi TSH web-signal, neusklađeni kanali kataloga i nejasan rok lokalne rezervacije. Ovo je početno stanje, a ne dokaz ranije otkrivene promjene.",
   "signals": [
     {
       "severity": "critical",
@@ -122,66 +122,66 @@
       "monitor": "Do 20 unaprijed zaključanih usporedivih artikala, cijena, pakiranje, dostupnost, akcijski rok i arhiva dokaza."
     }
   ],
-  "actions_intro": "Prioriteti su poredani prema riziku i mogućnosti provedbe. Svaki potez ima imenovanog vlasnika i dokaz završetka, kako report ne bi ostao samo informacija.",
+  "actions_intro": "Prikazane su tri najvažnije akcije s najvećim rizikom i najbržom mogućom reakcijom. Za svaku je navedeno tko je vodi i kako se potvrđuje da je završena.",
   "actions": [
     {
       "priority": "P0",
       "action": "Povjerljivo pregledati TSH web, CMS korisnike, dodatke, datoteke, backlinkove i indeksaciju; uklanjati tek nakon čuvanja dokaza i backupa.",
       "owner": "TSH IT / web partner",
       "evidence": "Dokumentiran uzrok ili barem sigurno uklonjen javni sadržaj uz pregled pristupa i indeksacije.",
-      "due_date": "dogovoriti na pilot kick-offu",
-      "status": "new",
-      "kpi_baseline": "unknown — interni KPI nije dostavljen",
-      "kpi_target": "dogovoriti na pilot kick-offu"
+      "due_date": "dogovoriti na početnom sastanku",
+      "status": "novo",
+      "kpi_baseline": "nije poznato — interni podatak nije dostavljen",
+      "kpi_target": "dogovoriti na početnom sastanku"
     },
     {
       "priority": "P1",
       "action": "Uskladiti Grama katalog kroz jedan kanonski URL i datum valjanosti.",
       "owner": "Marketing / Grama",
       "evidence": "Web, Google profil i društveni kanali prikazuju isti aktualni katalog.",
-      "due_date": "dogovoriti na pilot kick-offu",
-      "status": "new",
-      "kpi_baseline": "unknown — interni KPI nije dostavljen",
-      "kpi_target": "dogovoriti na pilot kick-offu"
+      "due_date": "dogovoriti na početnom sastanku",
+      "status": "novo",
+      "kpi_baseline": "nije poznato — interni podatak nije dostavljen",
+      "kpi_target": "dogovoriti na početnom sastanku"
     },
     {
       "priority": "P1",
       "action": "Odabrati jednu kategoriju za javni standard ‘provjeri i rezerviraj’.",
       "owner": "Direktorica + vlasnik odjela",
       "evidence": "Objavljen rok koji odjel može dosljedno ispunjavati i jednostavna evidencija ishoda.",
-      "due_date": "dogovoriti na pilot kick-offu",
-      "status": "new",
-      "kpi_baseline": "unknown — interni KPI nije dostavljen",
-      "kpi_target": "dogovoriti na pilot kick-offu"
+      "due_date": "dogovoriti na početnom sastanku",
+      "status": "novo",
+      "kpi_baseline": "nije poznato — interni podatak nije dostavljen",
+      "kpi_target": "dogovoriti na početnom sastanku"
     },
     {
       "priority": "P2",
       "action": "Zaključati usporedivu košaricu do 20 artikala za praćenje cijene i akcija.",
       "owner": "Nabava / komercijala",
-      "evidence": "Prvi before/after izvještaj bez neusporedivih proizvoda i pakiranja.",
-      "due_date": "dogovoriti na pilot kick-offu",
-      "status": "new",
-      "kpi_baseline": "unknown — interni KPI nije dostavljen",
-      "kpi_target": "dogovoriti na pilot kick-offu"
+      "evidence": "Prva usporedba prije i poslije bez neusporedivih proizvoda i pakiranja.",
+      "due_date": "dogovoriti na početnom sastanku",
+      "status": "novo",
+      "kpi_baseline": "nije poznato — interni podatak nije dostavljen",
+      "kpi_target": "dogovoriti na početnom sastanku"
     },
     {
       "priority": "P2",
-      "action": "Uvesti mjesečni konkurentski executive brief s vlasnikom svake akcije.",
+      "action": "Uvesti kratki mjesečni pregled konkurenata s odgovornom osobom za svaku akciju.",
       "owner": "Uprava / marketing",
       "evidence": "Mjesečna odluka: reagirati, pratiti ili zatvoriti signal uz zapis razloga.",
-      "due_date": "dogovoriti na pilot kick-offu",
-      "status": "new",
-      "kpi_baseline": "unknown — interni KPI nije dostavljen",
-      "kpi_target": "dogovoriti na pilot kick-offu"
+      "due_date": "dogovoriti na početnom sastanku",
+      "status": "novo",
+      "kpi_baseline": "nije poznato — interni podatak nije dostavljen",
+      "kpi_target": "dogovoriti na početnom sastanku"
     }
   ],
   "offer": {
-    "intro": "Ovo je demonstracijska/pilot ponuda, ne tvrdnja o već dokazanoj komercijalnoj vrijednosti. Pilot validira korisnost zatvorene upravljačke petlje uz javne izvore i dogovorene minimalne interne KPI-je bez osobnih podataka.",
-    "scope": "Grama Čakovec i TSH javne domene, pet zaključanih konkurenata, do 20 usporedivih artikala ili košarica; TSH signal ostaje povjerljivo odvojen.",
-    "cadence": "30 dana: planirane provjere, P1 alert do 4 radna sata nakon verificirane detekcije, P2 sljedeći radni dan, tjedni digest i završni review.",
-    "acceptance_kpi": "100% P1/P2 s dokazom i ograničenjem; ≥90% planiranih provjera i SLA; ≥2 dokumentirane odluke/akcije; za ≥1 akciju baseline, cilj i mjerni prozor.",
-    "price": "Prijedlog: 1.500 € + PDV za 30-dnevni demonstracijski pilot.",
-    "limitation": "Bez internih KPI-ja, financijski ROI i uzročnost ostaju unknown; pilot ne obećava prihod, maržu ili tržišni učinak."
+    "intro": "Ovo je prijedlog probnog rada. Tijekom 30 dana provjerava se pomaže li PulseWatch Grami da ranije vidi važne signale, donese odluku i provjeri rezultat.",
+    "scope": "Grama Čakovec i javne TSH stranice, pet unaprijed odabranih konkurenata te do 20 usporedivih artikala ili košarica. TSH nalaz ostaje povjerljivo odvojen.",
+    "cadence": "30 dana: redovite provjere, hitna obavijest najkasnije 4 radna sata nakon potvrde, ostale važne obavijesti sljedeći radni dan, tjedni sažetak i završni pregled.",
+    "acceptance_kpi": "Najmanje 90% dogovorenih provjera na vrijeme, svaki važan nalaz s dokazom te najmanje dvije dokumentirane odluke ili akcije.",
+    "price": "Konačna cijena: 1.500 € za 30-dnevni demonstracijski pilot. INMAR d.o.o. nije u sustavu PDV-a.",
+    "limitation": "Bez internih podataka ne možemo dokazati utjecaj na prihod, maržu ili prodaju."
   },
   "confidential": {
     "finding": "Javno potvrđeno 17.08.2026.: na službenoj TSH naslovnici, između legitimnog korporativnog sadržaja, prikazana su dva opsežna teksta o PSK Casinu s vanjskim poveznicama.",
@@ -211,7 +211,7 @@
     "Nije provedena kupnja, tajna kupnja ni sigurnosno testiranje.",
     "Službeni izvori imaju prednost; sekundarni agregatori jasno su označeni.",
     "‘Nije pronađeno’ znači samo da tvrdnja nije potvrđena na pregledanim javnim stranicama.",
-    "Ovo je početni baseline, ne dokaz automatski detektirane povijesne promjene.",
+    "Ovo je početno stanje, a ne dokaz ranije automatski otkrivene promjene.",
     "Klasifikacija u karticama razdvaja činjenicu/opažanje, hipotezu i ograničenje; bez povijesnog niza ne tvrdi se automatski detektirana promjena."
   ],
   "sources": [
@@ -278,7 +278,7 @@
       "kpi_baseline": "nepoznato — nema internog sigurnosnog nalaza",
       "kpi_target": "dokaz, backup i dokumentirana tehnička provjera",
       "limitation": "Nije dokazano kompromitiranje, opseg ni ugroza podataka.",
-      "entity_sku_match": "exact — službena TSH domena; nije SKU"
+      "entity_sku_match": "točno podudaranje — službena TSH domena; nije proizvod"
     },
     {
       "priority": "P1",
@@ -292,8 +292,8 @@
       "due_date": "sljedeći ciklus objave",
       "kpi_baseline": "nepoznato — nema mjerenja kanala",
       "kpi_target": "100% provjerenih kanala vodi na aktualni katalog",
-      "limitation": "Nema before/after mjerenja ni tvrdnje da je promjena detektirana.",
-      "entity_sku_match": "exact — Grama katalog; nije SKU"
+      "limitation": "Nema mjerenja prije i poslije ni dokaza kada je promjena nastala.",
+      "entity_sku_match": "točno podudaranje — Grama katalog; nije proizvod"
     },
     {
       "priority": "P1",
@@ -308,35 +308,35 @@
       "kpi_baseline": "nepoznato — nema vremena odgovora",
       "kpi_target": "dogovoriti: rok odgovora i stopa preuzimanja",
       "limitation": "Nije dokazana fizička zaliha ni konkurentska prednost po cijeni.",
-      "entity_sku_match": "family — kategorija za pilot; bez SKU usporedbe"
+      "entity_sku_match": "skupina proizvoda — kategorija za pilot; bez usporedbe pojedinačnih artikala"
     }
   ],
-  "value_intro": "Scorecard je namjerno ograničen na dokaz isporuke, planirane provjere, SLA i odluke/akcije. Financijski ROI ostaje unknown bez agregiranih internih podataka i kontrolnog dizajna.",
+  "value_intro": "Pilot se ocjenjuje po tome jesu li provjere odrađene na vrijeme, jesu li važni nalazi dokazani i jesu li doveli do odluke. Financijski učinak nije poznat bez internih podataka Grame.",
   "value_scorecard": [
     {
-      "metric": "Dokazna pokrivenost",
-      "baseline": "baseline: javni dokaz uz prioritetne kartice",
-      "target": "100% P1/P2 isporuka s dokazom, timestampom, klasifikacijom i ograničenjem",
-      "evidence": "evidence ledger; financijski učinak: unknown"
+      "metric": "Nalazi s dokazom",
+      "baseline": "početno stanje: javni dokaz uz svaki važan nalaz",
+      "target": "Svaki važan nalaz ima izvor, datum provjere i jasno ograničenje",
+      "evidence": "popis izvora; financijski učinak nije poznat"
     },
     {
       "metric": "Planirane provjere",
-      "baseline": "unknown — pilot još nije počeo",
-      "target": "≥90% ugovorenih provjera ili evidentirana iznimka",
+      "baseline": "nije poznato — pilot još nije počeo",
+      "target": "Najmanje 90% dogovorenih provjera ili zapisano objašnjenje iznimke",
       "evidence": "dnevnik provjera i razlog iznimke"
     },
     {
-      "metric": "SLA isporuke",
-      "baseline": "unknown — nije mjeren",
-      "target": "≥90% P1/P2 unutar dogovorenog SLA",
-      "evidence": "timestamp detekcije i verificirane isporuke"
+      "metric": "Brzina obavijesti",
+      "baseline": "nije poznato — još nije mjereno",
+      "target": "Najmanje 90% važnih obavijesti unutar dogovorenog roka",
+      "evidence": "datum i vrijeme nalaza te potvrđene isporuke"
     },
     {
       "metric": "Odluke i akcije",
-      "baseline": "0 izmjerenih odluka u demonstracijskom baselineu",
-      "target": "≥2 dokumentirane odluke, testa ili odluke „ne reagirati”",
-      "evidence": "action register; attribution i ROI: unknown"
+      "baseline": "0 izmjerenih odluka u ovom početnom pregledu",
+      "target": "Najmanje dvije zapisane odluke, akcije ili odluke „ne reagirati”",
+      "evidence": "popis odluka i akcija; financijski učinak nije poznat"
     }
   ],
-  "baseline_notice": "Ovo je početni baseline. Nema povijesnog before/after niza pa report ne tvrdi „detected change”. Činjenice, opažanja, hipoteze i ograničenja odvojeni su u karticama."
+  "baseline_notice": "Ovo je početno stanje. Nema ranijih usporedivih mjerenja, zato report ne tvrdi da je PulseWatch već otkrio promjenu."
 }

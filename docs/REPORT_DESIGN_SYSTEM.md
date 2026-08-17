@@ -26,12 +26,12 @@ PulseWatch reports are decision documents, not raw monitoring dumps. Each report
 ## Information hierarchy
 
 1. Minimal cover: report identity, prepared-for/status metadata and concise publisher identity.
-2. Executive decision brief with at most three priority cards.
-3. Value scorecard and action register.
-4. Market position and named monitoring scope.
-5. Competitor radar as secondary context: public signal + evidence status + recommended response.
+2. Plain-language decision summary with at most three priority cards.
+3. Benefit measures and agreed actions, using client-facing labels rather than internal jargon.
+4. Market position and the specific items being monitored.
+5. Competitor overview as secondary context: public signal + evidence status + recommended response.
 6. Confidential findings, if present.
-7. Proposed pilot.
+7. Proposed 30-day trial with a final price and plain-language success measures.
 8. Method, sources and full legal publisher identity.
 
 ## Table policy
@@ -52,7 +52,7 @@ The evidence contract below is the minimum baseline. Recurring managed-intellige
 
 ## Evidence contract
 
-Every reported signal must contain:
+Every reported signal must contain the following information, but the client-facing labels use plain questions such as “Što smo vidjeli?”, “Zašto je važno?” and “Što treba napraviti?”:
 
 - severity;
 - finding;

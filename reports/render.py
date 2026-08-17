@@ -319,15 +319,19 @@ def _decision_card(
     return _card(
         item["title"],
         [
-            ("Činjenica / opažanje", item["fact_observation"]),
-            ("Pouzdanost", item["confidence"]),
-            ("Dokaz i timestamp", item["evidence"]),
-            ("Poslovno značenje — hipoteza", item["business_hypothesis"]),
-            ("Preporuka", item["recommendation"]),
-            ("Vlasnik · rok", f"{item['owner']} · {item['due_date']}"),
-            ("KPI", f"baseline: {item['kpi_baseline']} | cilj: {item['kpi_target']}"),
-            ("Ograničenje", item["limitation"]),
-            ("Entity/SKU match", item["entity_sku_match"]),
+            ("Što smo vidjeli", item["fact_observation"]),
+            ("Dokaz", f"{item['evidence']} · {item['confidence']}"),
+            ("Zašto je važno — naša procjena", item["business_hypothesis"]),
+            ("Što treba napraviti", item["recommendation"]),
+            ("Tko · do kada", f"{item['owner']} · {item['due_date']}"),
+            (
+                "Kako mjeriti",
+                f"sada: {item['kpi_baseline']} | cilj: {item['kpi_target']}",
+            ),
+            (
+                "Što još ne znamo",
+                f"{item['limitation']} Usporedba: {item['entity_sku_match']}",
+            ),
         ],
         styles,
         item.get("priority", "P2"),
@@ -337,7 +341,7 @@ def _decision_card(
 def _action_register(
     items: list[dict[str, Any]], styles: dict[str, ParagraphStyle]
 ) -> Table:
-    header = ["Prioritet / status", "Akcija / vlasnik / rok", "KPI / dokaz završetka"]
+    header = ["Važnost / stanje", "Što treba napraviti", "Kako znamo da je gotovo"]
     rows: list[list[Any]] = [[Paragraph(x, styles["label"]) for x in header]]
     for item in items:
         rows.append(
@@ -352,7 +356,7 @@ def _action_register(
                     styles["small"],
                 ),
                 Paragraph(
-                    f"<b>Baseline:</b> {_safe(item['kpi_baseline'])}<br/>"
+                    f"<b>Sada:</b> {_safe(item['kpi_baseline'])}<br/>"
                     f"<b>Cilj:</b> {_safe(item['kpi_target'])}<br/>"
                     f"<b>Dokaz:</b> {_safe(item['evidence'])}",
                     styles["small"],
@@ -382,7 +386,7 @@ def _scorecard(items: list[dict[str, Any]], styles: dict[str, ParagraphStyle]) -
     rows = [
         [
             Paragraph(x, styles["label"])
-            for x in ["Mjera", "Baseline", "Pilot cilj / plan", "Dokaz / ograničenje"]
+            for x in ["Što mjerimo", "Sada", "Cilj pilota", "Kako dokazujemo"]
         ]
     ]
     for item in items:
@@ -455,14 +459,14 @@ def render_report(data: dict[str, Any], output_path: str | Path) -> Path:
     output = Path(output_path)
     output.parent.mkdir(parents=True, exist_ok=True)
     story: list[Any] = _cover(data, styles)
-    story.extend(_section("1. Executive decision brief", styles))
+    story.extend(_section("1. Najvažnije odluke", styles))
     story.append(Paragraph(_safe(data["executive_intro"]), styles["body"]))
     for item in data["decision_brief"][:3]:
         story.append(_decision_card(item, styles))
     story.append(
         KeepTogether(
             [
-                *_section("2. Value scorecard — baseline i pilot", styles),
+                *_section("2. Kako ćemo mjeriti korist pilota", styles),
                 Paragraph(_safe(data["value_intro"]), styles["body"]),
                 _scorecard(data["value_scorecard"], styles),
             ]
@@ -470,14 +474,14 @@ def render_report(data: dict[str, Any], output_path: str | Path) -> Path:
     )
     story.append(Spacer(1, 8))
     story.append(Paragraph(_safe(data["baseline_notice"]), styles["body"]))
-    story.extend(_section("3. Akcijski registar", styles))
+    story.extend(_section("3. Tko treba što napraviti", styles))
     story.append(Paragraph(_safe(data["actions_intro"]), styles["body"]))
-    story.append(_action_register(data["actions"], styles))
+    story.append(_action_register(data["actions"][:3], styles))
     first_monitoring, *remaining_monitoring = data["monitoring"]
     story.append(
         KeepTogether(
             [
-                *_section("4. Tržišna pozicija i scope monitoringa", styles),
+                *_section("4. Što pratimo", styles),
                 Paragraph(_safe(data["positioning_conclusion"]), styles["body"]),
             ]
         )
@@ -486,8 +490,8 @@ def render_report(data: dict[str, Any], output_path: str | Path) -> Path:
         _card(
             first_monitoring["title"],
             [
-                ("Baseline", first_monitoring["baseline"]),
-                ("Planirana provjera", first_monitoring["monitor"]),
+                ("Sadašnje stanje", first_monitoring["baseline"]),
+                ("Što provjeravamo", first_monitoring["monitor"]),
             ],
             styles,
         )
@@ -497,23 +501,23 @@ def render_report(data: dict[str, Any], output_path: str | Path) -> Path:
             _card(
                 item["title"],
                 [
-                    ("Baseline", item["baseline"]),
-                    ("Planirana provjera", item["monitor"]),
+                    ("Sadašnje stanje", item["baseline"]),
+                    ("Što provjeravamo", item["monitor"]),
                 ],
                 styles,
             )
         )
     story.append(PageBreak())
-    story.extend(_section("5. Konkurentski radar — sekundarno", styles))
+    story.extend(_section("5. Konkurenti — što je važno pratiti", styles))
     story.append(Paragraph(_safe(data["competitor_intro"]), styles["body"]))
     for item in data["competitors"]:
         story.append(
             _card(
                 item["name"],
                 [
-                    ("Javni signal", item["signal"]),
-                    ("Status", item.get("status", "potvrđeno")),
-                    ("Preporučeni odgovor", item["response"]),
+                    ("Što smo javno potvrdili", item["signal"]),
+                    ("Koliko je potvrđeno", item.get("status", "potvrđeno")),
+                    ("Što predlažemo", item["response"]),
                 ],
                 styles,
             )
@@ -531,18 +535,18 @@ def render_report(data: dict[str, Any], output_path: str | Path) -> Path:
             story.append(Paragraph(f"• {_safe(item)}", styles["small"]))
     story.append(PageBreak())
     number = 7 if data.get("confidential") else 6
-    story.extend(_section(f"{number}. Demonstracijska pilot ponuda", styles))
+    story.extend(_section(f"{number}. Prijedlog probnog rada — 30 dana", styles))
     offer = data["offer"]
     story.append(Paragraph(_safe(offer["intro"]), styles["body"]))
     story.append(
         _card(
             "30 dana · prijedlog",
             [
-                ("Named scope", offer["scope"]),
-                ("Ritam", offer["cadence"]),
-                ("Acceptance KPI", offer["acceptance_kpi"]),
+                ("Što je uključeno", offer["scope"]),
+                ("Koliko često provjeravamo", offer["cadence"]),
+                ("Kada je pilot uspješan", offer["acceptance_kpi"]),
                 ("Cijena", offer["price"]),
-                ("Ograničenje", offer["limitation"]),
+                ("Što pilot ne može dokazati", offer["limitation"]),
             ],
             styles,
             "P1",
