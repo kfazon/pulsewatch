@@ -1,4 +1,4 @@
-"""Render a structured PulseWatch executive report as a branded PDF."""
+"""Deterministic v2 PulseWatch client-report PDF renderer."""
 
 from __future__ import annotations
 
@@ -29,82 +29,71 @@ from reportlab.platypus import (
 PAGE_WIDTH, PAGE_HEIGHT = A4
 MARGIN = 17 * mm
 CONTENT_WIDTH = PAGE_WIDTH - 2 * MARGIN
-
-NAVY = colors.HexColor("#10243E")
-BLUE = colors.HexColor("#176B87")
-TEAL = colors.HexColor("#21A0A0")
-INK = colors.HexColor("#152936")
-MUTED = colors.HexColor("#60717B")
-LINE = colors.HexColor("#D9E2E7")
-SURFACE = colors.HexColor("#F4F7F9")
-PALE_TEAL = colors.HexColor("#EAF6F5")
-WHITE = colors.white
-
-SEVERITY = {
-    "critical": ("KRITIČNO", colors.HexColor("#A72525"), colors.HexColor("#FCEBEC")),
-    "high": ("VISOKO", colors.HexColor("#B35F00"), colors.HexColor("#FFF2DF")),
-    "medium": ("SREDNJE", colors.HexColor("#48637A"), colors.HexColor("#EAF0F5")),
-    "low": ("NISKO", colors.HexColor("#2D6A4F"), colors.HexColor("#E8F4ED")),
+NAVY, BLUE, TEAL = (
+    colors.HexColor("#10243E"),
+    colors.HexColor("#176B87"),
+    colors.HexColor("#21A0A0"),
+)
+INK, MUTED, LINE = (
+    colors.HexColor("#152936"),
+    colors.HexColor("#60717B"),
+    colors.HexColor("#D9E2E7"),
+)
+SURFACE, PALE_TEAL, WHITE = (
+    colors.HexColor("#F4F7F9"),
+    colors.HexColor("#EAF6F5"),
+    colors.white,
+)
+PRIORITY = {
+    "P0": colors.HexColor("#A72525"),
+    "P1": colors.HexColor("#B35F00"),
+    "P2": BLUE,
 }
 
 
 def _register_fonts() -> None:
-    """Use ReportLab-bundled Unicode fonts for reproducible output."""
-    font_dir = Path(rl_config.TTFSearchPath[0])
-    candidates = [
+    for directory in [
         Path(__import__("reportlab").__file__).parent / "fonts",
-        font_dir,
-    ]
-    for directory in candidates:
-        regular = directory / "Vera.ttf"
-        bold = directory / "VeraBd.ttf"
-        italic = directory / "VeraIt.ttf"
+        Path(rl_config.TTFSearchPath[0]),
+    ]:
+        regular, bold, italic = (
+            directory / "Vera.ttf",
+            directory / "VeraBd.ttf",
+            directory / "VeraIt.ttf",
+        )
         if regular.exists() and bold.exists() and italic.exists():
             pdfmetrics.registerFont(TTFont("PW-Regular", regular))
             pdfmetrics.registerFont(TTFont("PW-Bold", bold))
             pdfmetrics.registerFont(TTFont("PW-Italic", italic))
             pdfmetrics.registerFontFamily(
-                "PW",
-                normal="PW-Regular",
-                bold="PW-Bold",
-                italic="PW-Italic",
+                "PW", normal="PW-Regular", bold="PW-Bold", italic="PW-Italic"
             )
             return
     raise RuntimeError("ReportLab Vera fonts were not found")
 
 
 def _safe(value: Any) -> str:
-    text = html.escape(str(value), quote=False)
-    return text.replace("\n", "<br/>")
+    return html.escape(str(value), quote=False).replace("\n", "<br/>")
 
 
 def _styles() -> dict[str, ParagraphStyle]:
     return {
         "body": ParagraphStyle(
-            "PWBody",
+            "body",
             fontName="PW-Regular",
             fontSize=9.2,
-            leading=13.8,
+            leading=13.2,
             textColor=INK,
-            spaceAfter=7,
+            spaceAfter=6,
         ),
-        "body_small": ParagraphStyle(
-            "PWBodySmall",
-            fontName="PW-Regular",
-            fontSize=8.6,
-            leading=12.2,
-            textColor=INK,
+        "small": ParagraphStyle(
+            "small", fontName="PW-Regular", fontSize=8, leading=9.6, textColor=INK
         ),
         "label": ParagraphStyle(
-            "PWLabel",
-            fontName="PW-Bold",
-            fontSize=7.3,
-            leading=9,
-            textColor=MUTED,
-            spaceAfter=2,
+            "label", fontName="PW-Bold", fontSize=8.1, leading=10, textColor=MUTED
         ),
         "h1": ParagraphStyle(
-            "PWH1",
+            "h1",
             fontName="PW-Bold",
             fontSize=22,
             leading=27,
@@ -112,7 +101,7 @@ def _styles() -> dict[str, ParagraphStyle]:
             spaceAfter=8,
         ),
         "h2": ParagraphStyle(
-            "PWH2",
+            "h2",
             fontName="PW-Bold",
             fontSize=15,
             leading=19,
@@ -120,15 +109,15 @@ def _styles() -> dict[str, ParagraphStyle]:
             spaceAfter=7,
         ),
         "h3": ParagraphStyle(
-            "PWH3",
+            "h3",
             fontName="PW-Bold",
-            fontSize=10.8,
-            leading=14,
+            fontSize=10.4,
+            leading=13,
             textColor=NAVY,
-            spaceAfter=4,
+            spaceAfter=3,
         ),
         "cover_brand": ParagraphStyle(
-            "PWCoverBrand",
+            "cover_brand",
             fontName="PW-Bold",
             fontSize=12,
             leading=15,
@@ -136,51 +125,39 @@ def _styles() -> dict[str, ParagraphStyle]:
             alignment=TA_CENTER,
         ),
         "cover_title": ParagraphStyle(
-            "PWCoverTitle",
+            "cover_title",
             fontName="PW-Bold",
-            fontSize=31,
-            leading=35,
+            fontSize=29,
+            leading=34,
             textColor=WHITE,
             alignment=TA_CENTER,
         ),
         "cover_subtitle": ParagraphStyle(
-            "PWCoverSubtitle",
+            "cover_subtitle",
             fontName="PW-Regular",
-            fontSize=12,
-            leading=17,
+            fontSize=11.5,
+            leading=16,
             textColor=WHITE,
             alignment=TA_CENTER,
         ),
         "cover_meta": ParagraphStyle(
-            "PWCoverMeta",
+            "cover_meta",
             fontName="PW-Regular",
             fontSize=9,
-            leading=14,
-            textColor=INK,
-            alignment=TA_CENTER,
-        ),
-        "publisher": ParagraphStyle(
-            "PWPublisher",
-            fontName="PW-Regular",
-            fontSize=7.8,
-            leading=10.6,
+            leading=13,
             textColor=INK,
             alignment=TA_CENTER,
         ),
         "source": ParagraphStyle(
-            "PWSource",
+            "source",
             fontName="PW-Regular",
-            fontSize=8,
-            leading=11,
+            fontSize=8.1,
+            leading=10.5,
             textColor=MUTED,
-            spaceAfter=4,
+            spaceAfter=3,
         ),
         "chip": ParagraphStyle(
-            "PWChip",
-            fontName="PW-Bold",
-            fontSize=7.4,
-            leading=8.8,
-            alignment=TA_CENTER,
+            "chip", fontName="PW-Bold", fontSize=8.1, leading=10, alignment=TA_CENTER
         ),
     }
 
@@ -193,46 +170,44 @@ def _page_header_footer(canvas, doc) -> None:
         canvas.line(
             MARGIN, PAGE_HEIGHT - 13 * mm, PAGE_WIDTH - MARGIN, PAGE_HEIGHT - 13 * mm
         )
-        canvas.setFont("PW-Bold", 7.5)
+        canvas.setFont("PW-Bold", 8)
         canvas.setFillColor(NAVY)
         canvas.drawString(MARGIN, PAGE_HEIGHT - 10 * mm, "PULSEWATCH")
-        canvas.setFont("PW-Regular", 6.7)
+        canvas.setFont("PW-Regular", 8)
         canvas.setFillColor(MUTED)
         canvas.drawRightString(
-            PAGE_WIDTH - MARGIN,
-            PAGE_HEIGHT - 10 * mm,
-            str(doc.report_label),
+            PAGE_WIDTH - MARGIN, PAGE_HEIGHT - 10 * mm, str(doc.report_label)
         )
-    canvas.setStrokeColor(LINE)
-    canvas.line(MARGIN, 12 * mm, PAGE_WIDTH - MARGIN, 12 * mm)
-    canvas.setFont("PW-Regular", 6.5)
-    canvas.setFillColor(MUTED)
-    canvas.drawString(MARGIN, 8 * mm, str(doc.footer_text))
-    canvas.drawRightString(PAGE_WIDTH - MARGIN, 8 * mm, str(doc.page))
+        canvas.setStrokeColor(LINE)
+        canvas.line(MARGIN, 12 * mm, PAGE_WIDTH - MARGIN, 12 * mm)
+        canvas.setFont("PW-Regular", 8)
+        canvas.setFillColor(MUTED)
+        canvas.drawString(MARGIN, 8 * mm, str(doc.footer_text))
+        canvas.drawRightString(PAGE_WIDTH - MARGIN, 8 * mm, str(doc.page))
     canvas.restoreState()
 
 
-def _section_title(title: str, styles: dict[str, ParagraphStyle]) -> list[Any]:
+def _section(title: str, styles: dict[str, ParagraphStyle]) -> list[Any]:
     return [
         Paragraph(_safe(title), styles["h2"]),
         HRFlowable(width="100%", thickness=1.2, color=TEAL),
-        Spacer(1, 7),
+        Spacer(1, 6),
     ]
 
 
 def _cover(data: dict[str, Any], styles: dict[str, ParagraphStyle]) -> list[Any]:
-    title_box = Table(
+    box = Table(
         [
             [Paragraph("PULSEWATCH", styles["cover_brand"])],
-            [Spacer(1, 7)],
+            [Spacer(1, 6)],
             [Paragraph(_safe(data["title"]), styles["cover_title"])],
             [Spacer(1, 5)],
             [Paragraph(_safe(data["subtitle"]), styles["cover_subtitle"])],
         ],
         colWidths=[CONTENT_WIDTH],
-        rowHeights=[15 * mm, 5 * mm, 36 * mm, 4 * mm, 23 * mm],
+        rowHeights=[14 * mm, 5 * mm, 35 * mm, 4 * mm, 23 * mm],
     )
-    title_box.setStyle(
+    box.setStyle(
         TableStyle(
             [
                 ("BACKGROUND", (0, 0), (-1, -1), NAVY),
@@ -243,273 +218,229 @@ def _cover(data: dict[str, Any], styles: dict[str, ParagraphStyle]) -> list[Any]
             ]
         )
     )
-    meta = data["meta"]
-    cover: list[Any] = [
-        Spacer(1, 20 * mm),
-        title_box,
-        Spacer(1, 12 * mm),
-        Paragraph(f"<b>Klijent:</b> {_safe(meta['client'])}", styles["cover_meta"]),
-        Paragraph(f"<b>Datum:</b> {_safe(meta['date'])}", styles["cover_meta"]),
-        Paragraph(f"<b>Status:</b> {_safe(meta['status'])}", styles["cover_meta"]),
-    ]
-
-    publisher = data.get("publisher")
-    if publisher:
-        publisher_lines = [
-            f"<b>{_safe(publisher['legal_name'])}</b>",
-            _safe(publisher["address"]),
-            f"OIB: {_safe(publisher['oib'])} · MBS: {_safe(publisher['mbs'])}",
-            f"{_safe(publisher['registry_court'])} · MB DZS: {_safe(publisher['mb_dzs'])}",
-            f"Direktor: {_safe(publisher['director'])}",
-            f"{_safe(publisher['email'])} · {_safe(publisher['phone'])}",
-            _safe(publisher["website"]),
-        ]
-        publisher_box = Table(
-            [
-                [Paragraph("IZRADIO I IZDAJE", styles["label"])],
-                [Paragraph("<br/>".join(publisher_lines), styles["publisher"])],
-            ],
-            colWidths=[CONTENT_WIDTH * 0.72],
-            hAlign="CENTER",
-        )
-        publisher_box.setStyle(
-            TableStyle(
-                [
-                    ("BACKGROUND", (0, 0), (-1, -1), SURFACE),
-                    ("BOX", (0, 0), (-1, -1), 0.6, LINE),
-                    ("ALIGN", (0, 0), (-1, -1), "CENTER"),
-                    ("TOPPADDING", (0, 0), (-1, -1), 6),
-                    ("BOTTOMPADDING", (0, 0), (-1, -1), 6),
-                    ("LEFTPADDING", (0, 0), (-1, -1), 10),
-                    ("RIGHTPADDING", (0, 0), (-1, -1), 10),
-                ]
-            )
-        )
-        cover.extend([Spacer(1, 8 * mm), publisher_box])
-
-    cover.extend(
+    meta, publisher = data["meta"], data["publisher"]
+    # Cover must contain exactly the three permitted publisher identifiers.
+    publisher_text = "<br/>".join(
         [
-            Spacer(1, 8 * mm),
-            HRFlowable(width="32%", thickness=3, color=TEAL, hAlign="CENTER"),
-            Spacer(1, 6 * mm),
-            Paragraph(_safe(data["tagline"]), styles["cover_meta"]),
-            PageBreak(),
+            "<b>INMAR d.o.o.</b>",
+            _safe(publisher["address"]),
+            "Kristijan Fažon — direktor i odgovorna osoba",
         ]
     )
-    return cover
-
-
-def _severity_card(
-    signal: dict[str, Any], styles: dict[str, ParagraphStyle]
-) -> KeepTogether:
-    key = str(signal.get("severity", "medium")).lower()
-    label, accent, background = SEVERITY.get(key, SEVERITY["medium"])
-    chip_style = ParagraphStyle(f"Chip-{key}", parent=styles["chip"], textColor=accent)
-    title = Paragraph(_safe(signal["title"]), styles["h3"])
-    details = Paragraph(
-        f"<font color='#60717B'><b>NALAZ</b></font><br/>{_safe(signal['finding'])}"
-        f"<br/><br/><font color='#60717B'><b>POSLOVNI UČINAK</b></font><br/>"
-        f"{_safe(signal['impact'])}"
-        f"<br/><br/><font color='#60717B'><b>PREPORUKA</b></font><br/>"
-        f"{_safe(signal['action'])}",
-        styles["body_small"],
+    identity = Table(
+        [
+            [Paragraph("IZRADIO I IZDAJE", styles["label"])],
+            [Paragraph(publisher_text, styles["cover_meta"])],
+        ],
+        colWidths=[CONTENT_WIDTH * 0.72],
+        hAlign="CENTER",
     )
-    card = Table(
-        [[Paragraph(label, chip_style), [title, details]]],
-        colWidths=[22 * mm, CONTENT_WIDTH - 22 * mm],
-        hAlign="LEFT",
-    )
-    card.setStyle(
+    identity.setStyle(
         TableStyle(
             [
-                ("BACKGROUND", (0, 0), (0, 0), background),
-                ("BACKGROUND", (1, 0), (1, 0), WHITE),
+                ("BACKGROUND", (0, 0), (-1, -1), SURFACE),
+                ("BOX", (0, 0), (-1, -1), 0.6, LINE),
+                ("ALIGN", (0, 0), (-1, -1), "CENTER"),
+                ("TOPPADDING", (0, 0), (-1, -1), 6),
+                ("BOTTOMPADDING", (0, 0), (-1, -1), 6),
+            ]
+        )
+    )
+    return [
+        Spacer(1, 20 * mm),
+        box,
+        Spacer(1, 11 * mm),
+        Paragraph(
+            f"<b>Pripremljeno za:</b> {_safe(meta['prepared_for'])}",
+            styles["cover_meta"],
+        ),
+        Paragraph(f"<b>Datum:</b> {_safe(meta['date'])}", styles["cover_meta"]),
+        Paragraph(f"<b>Status:</b> {_safe(meta['status'])}", styles["cover_meta"]),
+        Spacer(1, 8 * mm),
+        identity,
+        Spacer(1, 8 * mm),
+        HRFlowable(width="32%", thickness=3, color=TEAL, hAlign="CENTER"),
+        Spacer(1, 6 * mm),
+        Paragraph(_safe(data["tagline"]), styles["cover_meta"]),
+        PageBreak(),
+    ]
+
+
+def _card(
+    title: str,
+    blocks: list[tuple[str, str]],
+    styles: dict[str, ParagraphStyle],
+    priority: str = "P2",
+) -> KeepTogether:
+    accent = PRIORITY.get(priority, TEAL)
+    content: list[Any] = [Paragraph(_safe(title), styles["h3"])]
+    for label, text in blocks:
+        content.extend(
+            [
+                Paragraph(_safe(label).upper(), styles["label"]),
+                Paragraph(_safe(text), styles["small"]),
+                Spacer(1, 3),
+            ]
+        )
+    table = Table(
+        [
+            [
+                Paragraph(
+                    priority,
+                    ParagraphStyle(
+                        f"priority-{priority}", parent=styles["chip"], textColor=accent
+                    ),
+                ),
+                content,
+            ]
+        ],
+        colWidths=[17 * mm, CONTENT_WIDTH - 17 * mm],
+    )
+    table.setStyle(
+        TableStyle(
+            [
+                ("BACKGROUND", (0, 0), (0, 0), SURFACE),
                 ("BOX", (0, 0), (-1, -1), 0.6, LINE),
                 ("LINEBEFORE", (0, 0), (0, 0), 3, accent),
                 ("VALIGN", (0, 0), (-1, -1), "TOP"),
                 ("LEFTPADDING", (0, 0), (-1, -1), 8),
                 ("RIGHTPADDING", (0, 0), (-1, -1), 8),
-                ("TOPPADDING", (0, 0), (-1, -1), 8),
-                ("BOTTOMPADDING", (0, 0), (-1, -1), 8),
+                ("TOPPADDING", (0, 0), (-1, -1), 7),
+                ("BOTTOMPADDING", (0, 0), (-1, -1), 6),
             ]
         )
     )
-    return KeepTogether([card, Spacer(1, 8)])
+    return KeepTogether([table, Spacer(1, 7)])
 
 
-def _two_column_lists(
-    left: dict[str, Any],
-    right: dict[str, Any],
-    styles: dict[str, ParagraphStyle],
-) -> Table:
-    def content(block: dict[str, Any]) -> list[Any]:
-        items: list[Any] = [Paragraph(_safe(block["title"]), styles["h3"])]
-        for item in block["items"]:
-            items.append(Paragraph(f"• {_safe(item)}", styles["body_small"]))
-            items.append(Spacer(1, 3))
-        return items
-
-    table = Table(
-        [[content(left), content(right)]],
-        colWidths=[CONTENT_WIDTH / 2 - 4, CONTENT_WIDTH / 2 - 4],
-        hAlign="LEFT",
+def _decision_card(
+    item: dict[str, Any], styles: dict[str, ParagraphStyle]
+) -> KeepTogether:
+    return _card(
+        item["title"],
+        [
+            ("Činjenica / opažanje", item["fact_observation"]),
+            ("Pouzdanost", item["confidence"]),
+            ("Dokaz i timestamp", item["evidence"]),
+            ("Poslovno značenje — hipoteza", item["business_hypothesis"]),
+            ("Preporuka", item["recommendation"]),
+            ("Vlasnik · rok", f"{item['owner']} · {item['due_date']}"),
+            ("KPI", f"baseline: {item['kpi_baseline']} | cilj: {item['kpi_target']}"),
+            ("Ograničenje", item["limitation"]),
+            ("Entity/SKU match", item["entity_sku_match"]),
+        ],
+        styles,
+        item.get("priority", "P2"),
     )
+
+
+def _action_register(
+    items: list[dict[str, Any]], styles: dict[str, ParagraphStyle]
+) -> Table:
+    header = ["Prioritet / status", "Akcija / vlasnik / rok", "KPI / dokaz završetka"]
+    rows: list[list[Any]] = [[Paragraph(x, styles["label"]) for x in header]]
+    for item in items:
+        rows.append(
+            [
+                Paragraph(
+                    f"<b>{_safe(item['priority'])}</b><br/>{_safe(item['status'])}",
+                    styles["small"],
+                ),
+                Paragraph(
+                    f"<b>{_safe(item['action'])}</b><br/>"
+                    f"{_safe(item['owner'])} · {_safe(item['due_date'])}",
+                    styles["small"],
+                ),
+                Paragraph(
+                    f"<b>Baseline:</b> {_safe(item['kpi_baseline'])}<br/>"
+                    f"<b>Cilj:</b> {_safe(item['kpi_target'])}<br/>"
+                    f"<b>Dokaz:</b> {_safe(item['evidence'])}",
+                    styles["small"],
+                ),
+            ]
+        )
+    table = Table(rows, colWidths=[25 * mm, 78 * mm, 67 * mm], repeatRows=1)
     table.setStyle(
         TableStyle(
             [
-                ("BACKGROUND", (0, 0), (-1, -1), SURFACE),
-                ("BOX", (0, 0), (-1, -1), 0.6, LINE),
+                ("BACKGROUND", (0, 0), (-1, 0), NAVY),
+                ("TEXTCOLOR", (0, 0), (-1, 0), WHITE),
+                ("GRID", (0, 0), (-1, -1), 0.45, LINE),
                 ("VALIGN", (0, 0), (-1, -1), "TOP"),
-                ("LEFTPADDING", (0, 0), (-1, -1), 10),
-                ("RIGHTPADDING", (0, 0), (-1, -1), 10),
-                ("TOPPADDING", (0, 0), (-1, -1), 10),
-                ("BOTTOMPADDING", (0, 0), (-1, -1), 10),
-                ("LINEBEFORE", (1, 0), (1, 0), 0.6, LINE),
+                ("BACKGROUND", (0, 1), (-1, -1), WHITE),
+                ("LEFTPADDING", (0, 0), (-1, -1), 5),
+                ("RIGHTPADDING", (0, 0), (-1, -1), 5),
+                ("TOPPADDING", (0, 0), (-1, -1), 5),
+                ("BOTTOMPADDING", (0, 0), (-1, -1), 5),
             ]
         )
     )
     return table
 
 
-def _competitor_card(
-    item: dict[str, Any], styles: dict[str, ParagraphStyle]
-) -> KeepTogether:
-    name = Paragraph(_safe(item["name"]), styles["h3"])
-    signal = Paragraph(
-        f"<font color='#60717B'><b>JAVNI SIGNAL</b></font><br/>{_safe(item['signal'])}",
-        styles["body_small"],
-    )
-    response = Paragraph(
-        f"<font color='#60717B'><b>PREPORUČENI ODGOVOR</b></font><br/>"
-        f"{_safe(item['response'])}",
-        styles["body_small"],
-    )
-    card = Table(
-        [[name], [Table([[signal, response]], colWidths=[CONTENT_WIDTH / 2 - 12] * 2)]],
-        colWidths=[CONTENT_WIDTH],
-        hAlign="LEFT",
-    )
-    card.setStyle(
+def _scorecard(items: list[dict[str, Any]], styles: dict[str, ParagraphStyle]) -> Table:
+    rows = [
+        [
+            Paragraph(x, styles["label"])
+            for x in ["Mjera", "Baseline", "Pilot cilj / plan", "Dokaz / ograničenje"]
+        ]
+    ]
+    for item in items:
+        rows.append(
+            [
+                Paragraph(_safe(item["metric"]), styles["small"]),
+                Paragraph(_safe(item["baseline"]), styles["small"]),
+                Paragraph(_safe(item["target"]), styles["small"]),
+                Paragraph(_safe(item["evidence"]), styles["small"]),
+            ]
+        )
+    table = Table(rows, colWidths=[39 * mm, 38 * mm, 47 * mm, 46 * mm], repeatRows=1)
+    table.setStyle(
         TableStyle(
             [
                 ("BACKGROUND", (0, 0), (-1, 0), PALE_TEAL),
-                ("BOX", (0, 0), (-1, -1), 0.6, LINE),
+                ("GRID", (0, 0), (-1, -1), 0.45, LINE),
                 ("VALIGN", (0, 0), (-1, -1), "TOP"),
-                ("LEFTPADDING", (0, 0), (-1, -1), 10),
-                ("RIGHTPADDING", (0, 0), (-1, -1), 10),
-                ("TOPPADDING", (0, 0), (-1, -1), 7),
-                ("BOTTOMPADDING", (0, 0), (-1, -1), 7),
-            ]
-        )
-    )
-    return KeepTogether([card, Spacer(1, 8)])
-
-
-def _action_card(
-    item: dict[str, Any], styles: dict[str, ParagraphStyle]
-) -> KeepTogether:
-    key = str(item.get("priority", "P2"))
-    accent = {"P0": colors.HexColor("#A72525"), "P1": BLUE}.get(key, TEAL)
-    priority_style = ParagraphStyle(
-        f"Priority-{key}", parent=styles["chip"], textColor=accent
-    )
-    text = Paragraph(
-        f"<b>{_safe(item['action'])}</b><br/>"
-        f"<font color='#60717B'>VLASNIK</font>  {_safe(item['owner'])}<br/>"
-        f"<font color='#60717B'>DOKAZ ZAVRŠETKA</font>  {_safe(item['evidence'])}",
-        styles["body_small"],
-    )
-    card = Table(
-        [[Paragraph(key, priority_style), text]],
-        colWidths=[18 * mm, CONTENT_WIDTH - 18 * mm],
-    )
-    card.setStyle(
-        TableStyle(
-            [
-                ("BOX", (0, 0), (-1, -1), 0.6, LINE),
-                ("BACKGROUND", (0, 0), (0, 0), SURFACE),
-                ("LINEBEFORE", (0, 0), (0, 0), 3, accent),
-                ("VALIGN", (0, 0), (-1, -1), "TOP"),
-                ("LEFTPADDING", (0, 0), (-1, -1), 8),
-                ("RIGHTPADDING", (0, 0), (-1, -1), 8),
-                ("TOPPADDING", (0, 0), (-1, -1), 7),
-                ("BOTTOMPADDING", (0, 0), (-1, -1), 7),
-            ]
-        )
-    )
-    return KeepTogether([card, Spacer(1, 7)])
-
-
-def _monitor_grid(
-    items: list[dict[str, Any]], styles: dict[str, ParagraphStyle]
-) -> Table:
-    cells: list[list[Any]] = []
-    for item in items:
-        cells.append(
-            [
-                Paragraph(_safe(item["title"]), styles["h3"]),
-                Paragraph(
-                    f"<font color='#60717B'><b>POČETNO STANJE</b></font><br/>"
-                    f"{_safe(item['baseline'])}",
-                    styles["body_small"],
-                ),
-                Spacer(1, 5),
-                Paragraph(
-                    f"<font color='#176B87'><b>PULSEWATCH PRATI</b></font><br/>"
-                    f"{_safe(item['monitor'])}",
-                    styles["body_small"],
-                ),
-            ]
-        )
-
-    rows: list[list[Any]] = []
-    for index in range(0, len(cells), 2):
-        row = [cells[index]]
-        row.append(cells[index + 1] if index + 1 < len(cells) else [])
-        rows.append(row)
-
-    table = Table(rows, colWidths=[CONTENT_WIDTH / 2 - 4] * 2, hAlign="LEFT")
-    table.setStyle(
-        TableStyle(
-            [
-                ("BACKGROUND", (0, 0), (-1, -1), PALE_TEAL),
-                ("GRID", (0, 0), (-1, -1), 0.5, LINE),
-                ("VALIGN", (0, 0), (-1, -1), "TOP"),
-                ("LEFTPADDING", (0, 0), (-1, -1), 9),
-                ("RIGHTPADDING", (0, 0), (-1, -1), 9),
-                ("TOPPADDING", (0, 0), (-1, -1), 8),
-                ("BOTTOMPADDING", (0, 0), (-1, -1), 8),
+                ("LEFTPADDING", (0, 0), (-1, -1), 6),
+                ("RIGHTPADDING", (0, 0), (-1, -1), 6),
+                ("TOPPADDING", (0, 0), (-1, -1), 6),
+                ("BOTTOMPADDING", (0, 0), (-1, -1), 6),
             ]
         )
     )
     return table
 
 
-def _offer_columns(data: dict[str, Any], styles: dict[str, ParagraphStyle]) -> Table:
-    cells: list[list[Any]] = []
-    for item in data["deliverables"]:
-        cells.append(
-            [
-                Paragraph(_safe(item["title"]), styles["h3"]),
-                Paragraph(_safe(item["description"]), styles["body_small"]),
-            ]
-        )
-    rows: list[list[Any]] = []
-    for index in range(0, len(cells), 2):
-        row = [cells[index]]
-        row.append(cells[index + 1] if index + 1 < len(cells) else [])
-        rows.append(row)
-    table = Table(rows, colWidths=[CONTENT_WIDTH / 2 - 4] * 2, hAlign="LEFT")
+def _publisher_detail(
+    publisher: dict[str, Any], styles: dict[str, ParagraphStyle]
+) -> Table:
+    text = "<br/>".join(
+        [
+            f"<b>{_safe(publisher['legal_name'])}</b>",
+            _safe(publisher["address"]),
+            f"OIB: {_safe(publisher['oib'])} · MBS: {_safe(publisher['mbs'])} · MB DZS: {_safe(publisher['mb_dzs'])}",
+            _safe(publisher["registry_court"]),
+            f"Direktor i odgovorna osoba: {_safe(publisher['director'])}",
+            f"{_safe(publisher['email'])} · {_safe(publisher['phone'])} · {_safe(publisher['website'])}",
+        ]
+    )
+    table = Table(
+        [
+            [Paragraph("IZDAVATELJ", styles["label"])],
+            [Paragraph(text, styles["small"])],
+        ],
+        colWidths=[CONTENT_WIDTH],
+    )
     table.setStyle(
         TableStyle(
             [
                 ("BACKGROUND", (0, 0), (-1, -1), SURFACE),
-                ("GRID", (0, 0), (-1, -1), 0.5, LINE),
-                ("VALIGN", (0, 0), (-1, -1), "TOP"),
+                ("BOX", (0, 0), (-1, -1), 0.6, LINE),
+                ("ALIGN", (0, 0), (-1, -1), "LEFT"),
                 ("LEFTPADDING", (0, 0), (-1, -1), 10),
                 ("RIGHTPADDING", (0, 0), (-1, -1), 10),
-                ("TOPPADDING", (0, 0), (-1, -1), 9),
-                ("BOTTOMPADDING", (0, 0), (-1, -1), 9),
+                ("TOPPADDING", (0, 0), (-1, -1), 7),
+                ("BOTTOMPADDING", (0, 0), (-1, -1), 7),
             ]
         )
     )
@@ -517,106 +448,121 @@ def _offer_columns(data: dict[str, Any], styles: dict[str, ParagraphStyle]) -> T
 
 
 def render_report(data: dict[str, Any], output_path: str | Path) -> Path:
-    """Render a report payload and return the created PDF path."""
+    """Render a v2 report payload deterministically and return its PDF path."""
     rl_config.invariant = 1
     _register_fonts()
     styles = _styles()
     output = Path(output_path)
     output.parent.mkdir(parents=True, exist_ok=True)
-
-    story: list[Any] = []
-    story.extend(_cover(data, styles))
-
-    story.extend(_section_title("1. Izvršni sažetak", styles))
+    story: list[Any] = _cover(data, styles)
+    story.extend(_section("1. Executive decision brief", styles))
     story.append(Paragraph(_safe(data["executive_intro"]), styles["body"]))
-    story.append(Spacer(1, 2))
-    for signal in data["signals"]:
-        story.append(_severity_card(signal, styles))
-
-    story.append(PageBreak())
-    story.extend(_section_title("2. Tržišna pozicija", styles))
-    story.append(_two_column_lists(data["strengths"], data["gaps"], styles))
-    story.append(Spacer(1, 12))
-    story.append(Paragraph("Zaključak", styles["h3"]))
-    story.append(Paragraph(_safe(data["positioning_conclusion"]), styles["body"]))
-
-    story.extend(_section_title("3. Konkurentski radar", styles))
-    story.append(Paragraph(_safe(data["competitor_intro"]), styles["body"]))
-    for item in data["competitors"]:
-        story.append(_competitor_card(item, styles))
-
-    story.append(PageBreak())
-    story.extend(_section_title("4. Signali za kontinuirano praćenje", styles))
-    story.append(_monitor_grid(data["monitoring"], styles))
-    story.append(Spacer(1, 12))
-
-    story.extend(_section_title("5. Preporučeni potezi", styles))
+    for item in data["decision_brief"][:3]:
+        story.append(_decision_card(item, styles))
+    story.append(
+        KeepTogether(
+            [
+                *_section("2. Value scorecard — baseline i pilot", styles),
+                Paragraph(_safe(data["value_intro"]), styles["body"]),
+                _scorecard(data["value_scorecard"], styles),
+            ]
+        )
+    )
+    story.append(Spacer(1, 8))
+    story.append(Paragraph(_safe(data["baseline_notice"]), styles["body"]))
+    story.extend(_section("3. Akcijski registar", styles))
     story.append(Paragraph(_safe(data["actions_intro"]), styles["body"]))
-    for item in data["actions"]:
-        story.append(_action_card(item, styles))
-
-    story.append(PageBreak())
-    story.extend(_section_title("6. Predloženi PulseWatch pilot", styles))
-    story.append(Paragraph(_safe(data["offer"]["intro"]), styles["body"]))
-    story.append(_offer_columns(data["offer"], styles))
-    story.append(Spacer(1, 12))
-    story.append(Paragraph("Kriterij uspjeha", styles["h3"]))
-    story.append(Paragraph(_safe(data["offer"]["success"]), styles["body"]))
-
-    confidential = data.get("confidential")
-    if confidential:
-        story.append(Spacer(1, 14))
-        story.extend(_section_title("7. Povjerljivi digitalni signal", styles))
+    story.append(_action_register(data["actions"], styles))
+    first_monitoring, *remaining_monitoring = data["monitoring"]
+    story.append(
+        KeepTogether(
+            [
+                *_section("4. Tržišna pozicija i scope monitoringa", styles),
+                Paragraph(_safe(data["positioning_conclusion"]), styles["body"]),
+            ]
+        )
+    )
+    story.append(
+        _card(
+            first_monitoring["title"],
+            [
+                ("Baseline", first_monitoring["baseline"]),
+                ("Planirana provjera", first_monitoring["monitor"]),
+            ],
+            styles,
+        )
+    )
+    for item in remaining_monitoring:
         story.append(
-            Table(
-                [[Paragraph("POVJERLJIVO", styles["chip"])]],
-                colWidths=[30 * mm],
-                style=TableStyle(
-                    [
-                        ("BACKGROUND", (0, 0), (-1, -1), colors.HexColor("#FCEBEC")),
-                        ("TEXTCOLOR", (0, 0), (-1, -1), colors.HexColor("#A72525")),
-                        ("BOX", (0, 0), (-1, -1), 0.6, colors.HexColor("#A72525")),
-                        ("ALIGN", (0, 0), (-1, -1), "CENTER"),
-                        ("TOPPADDING", (0, 0), (-1, -1), 5),
-                        ("BOTTOMPADDING", (0, 0), (-1, -1), 5),
-                    ]
-                ),
+            _card(
+                item["title"],
+                [
+                    ("Baseline", item["baseline"]),
+                    ("Planirana provjera", item["monitor"]),
+                ],
+                styles,
             )
         )
-        story.append(Spacer(1, 9))
-        story.append(Paragraph(_safe(confidential["finding"]), styles["body"]))
-        story.append(Paragraph("Što se smije zaključiti", styles["h3"]))
-        for item in confidential["known"]:
-            story.append(Paragraph(f"• {_safe(item)}", styles["body_small"]))
-            story.append(Spacer(1, 3))
-        story.append(Spacer(1, 6))
-        story.append(Paragraph("Što nije dokazano", styles["h3"]))
-        for item in confidential["unknown"]:
-            story.append(Paragraph(f"• {_safe(item)}", styles["body_small"]))
-            story.append(Spacer(1, 3))
-        story.append(Spacer(1, 6))
-        story.append(Paragraph("Siguran prvi odgovor", styles["h3"]))
-        for index, item in enumerate(confidential["response"], start=1):
-            story.append(Paragraph(f"{index}. {_safe(item)}", styles["body_small"]))
-            story.append(Spacer(1, 3))
-
     story.append(PageBreak())
-    section_number = 8 if confidential else 7
-    story.extend(_section_title(f"{section_number}. Metodologija i izvori", styles))
+    story.extend(_section("5. Konkurentski radar — sekundarno", styles))
+    story.append(Paragraph(_safe(data["competitor_intro"]), styles["body"]))
+    for item in data["competitors"]:
+        story.append(
+            _card(
+                item["name"],
+                [
+                    ("Javni signal", item["signal"]),
+                    ("Status", item.get("status", "potvrđeno")),
+                    ("Preporučeni odgovor", item["response"]),
+                ],
+                styles,
+            )
+        )
+    if data.get("confidential"):
+        story.append(Spacer(1, 6))
+        story.extend(_section("6. Povjerljivi digitalni signal", styles))
+        confidential = data["confidential"]
+        story.append(Paragraph(_safe(confidential["finding"]), styles["body"]))
+        story.append(Paragraph("Potvrđeno / opaženo", styles["h3"]))
+        for item in confidential["known"]:
+            story.append(Paragraph(f"• {_safe(item)}", styles["small"]))
+        story.append(Paragraph("Nije dokazano", styles["h3"]))
+        for item in confidential["unknown"]:
+            story.append(Paragraph(f"• {_safe(item)}", styles["small"]))
+    story.append(PageBreak())
+    number = 7 if data.get("confidential") else 6
+    story.extend(_section(f"{number}. Demonstracijska pilot ponuda", styles))
+    offer = data["offer"]
+    story.append(Paragraph(_safe(offer["intro"]), styles["body"]))
+    story.append(
+        _card(
+            "30 dana · prijedlog",
+            [
+                ("Named scope", offer["scope"]),
+                ("Ritam", offer["cadence"]),
+                ("Acceptance KPI", offer["acceptance_kpi"]),
+                ("Cijena", offer["price"]),
+                ("Ograničenje", offer["limitation"]),
+            ],
+            styles,
+            "P1",
+        )
+    )
+    story.append(PageBreak())
+    story.extend(_section(f"{number + 1}. Metodologija, izvori i izdavatelj", styles))
     for item in data["methodology"]:
-        story.append(Paragraph(f"• {_safe(item)}", styles["body_small"]))
-        story.append(Spacer(1, 4))
-    story.append(Spacer(1, 9))
+        story.append(Paragraph(f"• {_safe(item)}", styles["small"]))
+    story.append(Spacer(1, 6))
+    story.append(_publisher_detail(data["publisher"], styles))
+    story.append(Spacer(1, 7))
     story.append(Paragraph("Glavni javni izvori", styles["h3"]))
-    for index, source in enumerate(data["sources"], start=1):
+    for index, source in enumerate(data["sources"], 1):
         story.append(
             Paragraph(
-                f"{index}. {_safe(source['label'])}<br/>"
-                f"<font color='#176B87'>{_safe(source['url'])}</font>",
+                f"{index}. {_safe(source['label'])}<br/><font color='#176B87'>{_safe(source['url'])}</font>",
                 styles["source"],
             )
         )
-
     doc = SimpleDocTemplate(
         str(output),
         pagesize=A4,
@@ -625,24 +571,31 @@ def render_report(data: dict[str, Any], output_path: str | Path) -> Path:
         topMargin=17 * mm,
         bottomMargin=16 * mm,
         title=str(data["title"]),
-        author=str(data.get("publisher", {}).get("legal_name", "PulseWatch")),
+        author="INMAR d.o.o.",
         subject=str(data["subtitle"]),
     )
-    doc_any: Any = doc
-    doc_any.report_label = data["meta"].get("label", "EXECUTIVE REPORT")
-    publisher = data.get("publisher", {})
-    doc_any.footer_text = data["meta"].get(
-        "footer", f"PulseWatch · {publisher.get('legal_name', 'PulseWatch')}"
-    )
-    doc.build(
-        story,
-        onFirstPage=_page_header_footer,
-        onLaterPages=_page_header_footer,
-    )
+    doc.report_label = data["meta"].get("label", "DEMO · PUBLIC SOURCES ONLY")
+    doc.footer_text = data["meta"].get("footer", "PulseWatch · demonstracijski pilot")
+    doc.build(story, onFirstPage=_page_header_footer, onLaterPages=_page_header_footer)
     return output
 
 
 def render_json(input_path: str | Path, output_path: str | Path) -> Path:
-    """Load a JSON payload and render it as PDF."""
-    payload = json.loads(Path(input_path).read_text(encoding="utf-8"))
-    return render_report(payload, output_path)
+    return render_report(
+        json.loads(Path(input_path).read_text(encoding="utf-8")), output_path
+    )
+
+
+def main() -> None:
+    """Render one JSON report payload from the command line."""
+    import argparse
+
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("input", type=Path, help="JSON payload path")
+    parser.add_argument("output", type=Path, help="PDF output path")
+    args = parser.parse_args()
+    render_json(args.input, args.output)
+
+
+if __name__ == "__main__":
+    main()

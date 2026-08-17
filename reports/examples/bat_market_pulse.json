@@ -3,11 +3,11 @@
   "subtitle": "Konkurentski, promotivni i digitalni signali za BAT Prodajni centar Čakovec",
   "tagline": "Od javne promjene do provjerenog prioriteta i preporučene komercijalne akcije.",
   "meta": {
-    "client": "BAT Prodajni centar Čakovec · Rudolfa Steinera 2",
     "date": "17.08.2026.",
     "status": "Demonstracijski početni baseline — javni izvori",
     "label": "DEMO · PUBLIC SOURCES ONLY",
-    "footer": "PulseWatch · INMAR d.o.o. · OIB 33281217245 · Demonstracijski javni baseline"
+    "footer": "PulseWatch · demonstracijski pilot · javni baseline",
+    "prepared_for": "BAT Prodajni centar Čakovec · Rudolfa Steinera 2"
   },
   "publisher": {
     "legal_name": "INMAR društvo s ograničenom odgovornošću za trgovinu i usluge",
@@ -72,12 +72,14 @@
     {
       "name": "PEVEX Čakovec",
       "signal": "Službena lokalna stranica potvrđuje osam programa, od građevine i vrta do elektronike, sanitarija i kućanskih uređaja; naveden je Click & Collect.",
-      "response": "Pratiti akcije, radno vrijeme, bazene i usporedive košarice; online ponuda nije dokaz lokalne zalihe."
+      "response": "Pratiti akcije, radno vrijeme, bazene i usporedive košarice; online ponuda nije dokaz lokalne zalihe.",
+      "status": "glavni lokalni konkurent — potvrđeno javnim izvorom"
     },
     {
       "name": "BAUHAUS Varaždin",
       "signal": "Regionalni veliki DIY format uključen preko službenog URL-a centra; stranica je pri provjeri vratila sigurnosnu provjeru.",
-      "response": "Lokalne usluge, akcije, kategorije i zalihu pratiti tek nakon dokazivog dohvaćanja; ne pretpostavljati ih."
+      "response": "Lokalne usluge, akcije, kategorije i zalihu pratiti tek nakon dokazivog dohvaćanja; ne pretpostavljati ih.",
+      "status": "sekundaran / blokiran — lokalni detalji nisu potvrđeni zbog sigurnosne provjere"
     }
   ],
   "monitoring": [
@@ -108,62 +110,60 @@
       "priority": "P1",
       "action": "Do 22.08. provjeriti Narančastu subotu na webu, newsletteru, društvenim kanalima i prodajnom mjestu; nakon akcije arhivirati dokaz i učinak.",
       "owner": "Marketing + voditelji odjela",
-      "evidence": "Isti uvjeti na svim kanalima i izvještaj učinka po kategoriji."
+      "evidence": "Isti uvjeti na svim kanalima i izvještaj učinka po kategoriji.",
+      "due_date": "dogovoriti na pilot kick-offu",
+      "status": "new",
+      "kpi_baseline": "unknown — interni KPI nije dostavljen",
+      "kpi_target": "dogovoriti na pilot kick-offu"
     },
     {
       "priority": "P1",
       "action": "Za YATO izlaznu rasprodaju definirati zamjenski asortiman i pratiti javni status do uklanjanja akcije.",
       "owner": "Nabava + odjel alata",
-      "evidence": "Zatvorena akcija, dokumentiran ostatak i spremna zamjenska ponuda."
+      "evidence": "Zatvorena akcija, dokumentiran ostatak i spremna zamjenska ponuda.",
+      "due_date": "dogovoriti na pilot kick-offu",
+      "status": "new",
+      "kpi_baseline": "unknown — interni KPI nije dostavljen",
+      "kpi_target": "dogovoriti na pilot kick-offu"
     },
     {
       "priority": "P2",
       "action": "Uvesti datum valjanosti i status ‘aktualno/arhiva’ na svim letcima i katalozima.",
       "owner": "Marketing / web partner",
-      "evidence": "Svaki dokument ima jasan rok i kanonski URL."
+      "evidence": "Svaki dokument ima jasan rok i kanonski URL.",
+      "due_date": "dogovoriti na pilot kick-offu",
+      "status": "new",
+      "kpi_baseline": "unknown — interni KPI nije dostavljen",
+      "kpi_target": "dogovoriti na pilot kick-offu"
     },
     {
       "priority": "P2",
       "action": "Odabrati jednu kategoriju za javni standard ‘provjeri i rezerviraj’.",
       "owner": "Direktor + vlasnik odjela",
-      "evidence": "Objavljen rok, evidencija upita i stopa stvarnog preuzimanja."
+      "evidence": "Objavljen rok, evidencija upita i stopa stvarnog preuzimanja.",
+      "due_date": "dogovoriti na pilot kick-offu",
+      "status": "new",
+      "kpi_baseline": "unknown — interni KPI nije dostavljen",
+      "kpi_target": "dogovoriti na pilot kick-offu"
     },
     {
       "priority": "P2",
       "action": "Zaključati do 20 identičnih artikala ili usporedivih projektnih košarica za praćenje.",
       "owner": "Komercijala / nabava",
-      "evidence": "Prvi before/after izvještaj bez neusporedivih pakiranja ili proizvoda."
+      "evidence": "Prvi before/after izvještaj bez neusporedivih pakiranja ili proizvoda.",
+      "due_date": "dogovoriti na pilot kick-offu",
+      "status": "new",
+      "kpi_baseline": "unknown — interni KPI nije dostavljen",
+      "kpi_target": "dogovoriti na pilot kick-offu"
     }
   ],
   "offer": {
-    "intro": "Pilot treba dokazati da PulseWatch daje pravodobne, provjerljive i operativno korisne signale bez ERP integracije i pristupa osobnim podacima.",
-    "deliverables": [
-      {
-        "title": "Početni BAT baseline",
-        "description": "Ključne javne stranice, akcije, letci, usluge, radno vrijeme i početno stanje praćenih sposobnosti."
-      },
-      {
-        "title": "Dva prioritetna konkurenta",
-        "description": "PEVEX Čakovec i BAUHAUS Varaždin: akcije, usluge, lokalna dostupnost, preuzimanje i ključne prodajne poruke gdje postoji službeni dokaz."
-      },
-      {
-        "title": "Do 20 artikala",
-        "description": "Samo unaprijed zaključani identični EAN-ovi, pakiranja ili usporedive projektne košarice."
-      },
-      {
-        "title": "Tjedni signal",
-        "description": "Upozorenje samo kada promjena prelazi dogovoreni prag važnosti."
-      },
-      {
-        "title": "Završni PDF",
-        "description": "Što se promijenilo, before/after dokaz, mogući učinak i preporučena akcija."
-      },
-      {
-        "title": "Upravljački pregled",
-        "description": "Jedan sastanak za odluke, vlasnike i zatvaranje nevažnih ili netočnih signala."
-      }
-    ],
-    "success": "Pilot prolazi ako najmanje jedan pravodoban signal dovede do dokumentirane komercijalne ili zaštitne akcije, uz prihvatljivu stopu lažnih alarma i potpun dokaz izvora."
+    "intro": "Ovo je demonstracijska/pilot ponuda, ne tvrdnja o već dokazanoj komercijalnoj vrijednosti. Pilot validira korisnost zatvorene upravljačke petlje uz javne izvore i dogovorene minimalne interne KPI-je bez osobnih podataka.",
+    "scope": "BAT Prodajni centar Čakovec, PEVEX Čakovec kao glavni lokalni radar, BAUHAUS Varaždin kao sekundarni/blokirani radar, do 20 zaključanih artikala ili košarica.",
+    "cadence": "30 dana: planirane provjere, P1 alert do 4 radna sata nakon verificirane detekcije, P2 sljedeći radni dan, tjedni digest i završni review.",
+    "acceptance_kpi": "100% P1/P2 s dokazom i ograničenjem; ≥90% planiranih provjera i SLA; ≥2 dokumentirane odluke/akcije; za ≥1 akciju baseline, cilj i mjerni prozor.",
+    "price": "Prijedlog: 1.500 € + PDV za 30-dnevni demonstracijski pilot.",
+    "limitation": "Bez internih KPI-ja, financijski ROI i uzročnost ostaju unknown; pilot ne obećava prihod, maržu ili tržišni učinak."
   },
   "methodology": [
     "Korišteni su samo javno dostupni izvori provjereni 17.08.2026.",
@@ -173,7 +173,8 @@
     "Nisu korišteni interni promet, marže, zalihe, ugovori, CRM podaci ni prodajni rezultati.",
     "Nije provedena fizička posjeta, kupnja, tajna kupnja ni sigurnosno testiranje.",
     "‘Nije pronađeno’ znači samo da tvrdnja nije potvrđena na pregledanim javnim stranicama.",
-    "Ovo je početni baseline, ne dokaz automatski detektirane povijesne promjene."
+    "Ovo je početni baseline, ne dokaz automatski detektirane povijesne promjene.",
+    "Klasifikacija u karticama razdvaja činjenicu/opažanje, hipotezu i ograničenje; bez povijesnog niza ne tvrdi se automatski detektirana promjena."
   ],
   "sources": [
     {
@@ -248,5 +249,80 @@
       "label": "BAUHAUS Varaždin — službena stranica, blokirana pri provjeri",
       "url": "https://www.bauhaus.hr/prodajni-centri/prodajni-centar-varazdin/fc/958"
     }
-  ]
+  ],
+  "decision_brief": [
+    {
+      "priority": "P1",
+      "title": "Narančasta subota: promotivni prozor",
+      "fact_observation": "Za 22.08.2026. javno je objavljeno 15% za gotovinu ili jednokratnu karticu te 10% na rate, uz navedena isključenja.",
+      "confidence": "visoka — službena BAT objava s datumom i uvjetima",
+      "evidence": "Službena BAT objava, 17.08.2026.",
+      "business_hypothesis": "Sinkronizirana provedba uvjeta može smanjiti rizik neusklađene komunikacije; učinak na promet i maržu nije poznat.",
+      "recommendation": "Prije početka provjeriti kanale i uvjete; nakon završetka arhivirati dokaz.",
+      "owner": "Marketing + voditelji odjela",
+      "due_date": "22.08.2026.",
+      "kpi_baseline": "nepoznato — interni podaci nisu dani",
+      "kpi_target": "dogovoriti prije pilota: pokrivenost uvjeta po kanalima",
+      "limitation": "Javni baseline ne dokazuje poslovni učinak.",
+      "entity_sku_match": "family — pet promotivnih kategorija; bez SKU usporedbe"
+    },
+    {
+      "priority": "P1",
+      "title": "YATO izlazna rasprodaja",
+      "fact_observation": "BAT javno navodi 20% popusta na dostupni YATO aku i električni alat od 04.08.2026. do rasprodaje zaliha.",
+      "confidence": "visoka — službena BAT objava",
+      "evidence": "Službena BAT objava, 17.08.2026.",
+      "business_hypothesis": "Moguće je ubrzanje prodaje i potreba za zamjenskim asortimanom; prijenos potražnje nije dokazan.",
+      "recommendation": "Definirati zamjenski asortiman i pratiti javni status akcije.",
+      "owner": "Nabava + odjel alata",
+      "due_date": "sljedeći radni dan",
+      "kpi_baseline": "nepoznato — nema internog stanja zalihe",
+      "kpi_target": "dogovoriti: dokumentiran zamjenski asortiman",
+      "limitation": "Javni web ne dokazuje fizičku zalihu ni prodaju.",
+      "entity_sku_match": "family — YATO alat; bez EAN-a"
+    },
+    {
+      "priority": "P2",
+      "title": "Gorenje promocija s naknadnom prijavom",
+      "fact_observation": "Uz odabranu Gorenje perilicu posuđa ledomat je na poklon do 20.09.2026. ili isteka zaliha, uz prijavu i dokaz kupnje.",
+      "confidence": "visoka — službena BAT objava",
+      "evidence": "Službena BAT objava, 17.08.2026.",
+      "business_hypothesis": "Jasnoća slijeda može utjecati na iskustvo kupca; konverzija i realizacija nisu poznate.",
+      "recommendation": "Provjeriti objašnjava li komunikacija uvjete i rok prijave.",
+      "owner": "Marketing + odjel tehnike",
+      "due_date": "20.09.2026.",
+      "kpi_baseline": "nepoznato — nema podataka o upitima",
+      "kpi_target": "dogovoriti: provjeren slijed uvjeta",
+      "limitation": "Nije provjerena stvarna provedba ni dostupnost.",
+      "entity_sku_match": "variant — odabrani modeli nisu specificirani"
+    }
+  ],
+  "value_intro": "Scorecard je namjerno ograničen na dokaz isporuke, planirane provjere, SLA i odluke/akcije. Financijski ROI ostaje unknown bez agregiranih internih podataka i kontrolnog dizajna.",
+  "value_scorecard": [
+    {
+      "metric": "Dokazna pokrivenost",
+      "baseline": "baseline: javni dokaz uz prioritetne kartice",
+      "target": "100% P1/P2 isporuka s dokazom, timestampom, klasifikacijom i ograničenjem",
+      "evidence": "evidence ledger; financijski učinak: unknown"
+    },
+    {
+      "metric": "Planirane provjere",
+      "baseline": "unknown — pilot još nije počeo",
+      "target": "≥90% ugovorenih provjera ili evidentirana iznimka",
+      "evidence": "dnevnik provjera i razlog iznimke"
+    },
+    {
+      "metric": "SLA isporuke",
+      "baseline": "unknown — nije mjeren",
+      "target": "≥90% P1/P2 unutar dogovorenog SLA",
+      "evidence": "timestamp detekcije i verificirane isporuke"
+    },
+    {
+      "metric": "Odluke i akcije",
+      "baseline": "0 izmjerenih odluka u demonstracijskom baselineu",
+      "target": "≥2 dokumentirane odluke, testa ili odluke „ne reagirati”",
+      "evidence": "action register; attribution i ROI: unknown"
+    }
+  ],
+  "baseline_notice": "Ovo je početni baseline. Nema povijesnog before/after niza pa report ne tvrdi „detected change”. Činjenice, opažanja, hipoteze i ograničenja odvojeni su u karticama."
 }
