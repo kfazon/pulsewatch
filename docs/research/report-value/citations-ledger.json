@@ -1,0 +1,89 @@
+{
+  "version": 1,
+  "sources": [
+    {
+      "id": 1,
+      "url": "https://klue.com/product/measure",
+      "title": "Klue — Measure business impact",
+      "accessed": "2026-08-17",
+      "quotes": [
+        {
+          "text": "Confidently measure the adoption of your competitive program and how it impacts revenue, win rates, deal duration, and more.",
+          "added": "2026-08-17"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "url": "https://klue.com/case-study/driving-double-digit-increases-to-win-rates",
+      "title": "Klue — Autodesk case study",
+      "accessed": "2026-08-17",
+      "quotes": [
+        {
+          "text": "Quarterly Win-Loss reports are one of the most consumed CI resources globally, and has helped them measure changes in customer sentiment",
+          "added": "2026-08-17"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "url": "https://www.crayon.co/state-of-competitive-intelligence-2026",
+      "title": "Crayon — 2026 State of Competitive Intelligence",
+      "accessed": "2026-08-17",
+      "quotes": [
+        {
+          "text": "Across six chapters we map what separates the teams turning compete into revenue from the teams treating it as a reporting exercise: how they're organized, what they measure, how often they put intel in front of sellers, and how aggressively they've wired in AI.",
+          "added": "2026-08-17"
+        },
+        {
+          "text": "Share CI weekly or faster With 79% Without 41% 1.9× as likely Update deliverables weekly+ With 83% Without 49% 1.7× as likely Solicit sales feedback weekly+ With 84% Without 52% 1.6× as likely",
+          "added": "2026-08-17"
+        },
+        {
+          "text": "soliciting sales feedback weekly is the single biggest driver of strong CI adoption in the survey: 69% vs. 22%.",
+          "added": "2026-08-17"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "url": "https://help.tableau.com/current/blueprint/en-us/bp_visual_best_practices.htm",
+      "title": "Tableau Blueprint — Visual Best Practices",
+      "accessed": "2026-08-17",
+      "quotes": [
+        {
+          "text": "A dashboard is successful when people can easily use it to derive answers. Even a beautiful dashboard with an interesting data source could be rendered useless if your audience can't use it to discover insights.",
+          "added": "2026-08-17"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "url": "https://www.contify.com/platform",
+      "title": "Contify platform",
+      "accessed": "2026-08-17",
+      "quotes": [
+        {
+          "text": "Contify AI-native platform collects, analyzes, and delivers ready-to-use insights from global and proprietary internal sources, customized for every team, function, and strategic priority.",
+          "added": "2026-08-17"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "url": "https://www.forrester.com/blogs/five-findings-about-todays-market-and-competitive-intelligence-programs",
+      "title": "Forrester — Five Findings About M&CI Programs",
+      "accessed": "2026-08-17",
+      "quotes": [
+        {
+          "text": "The shift from delivering “information” to providing “implications” is central to providing value to sales and other stakeholders.",
+          "added": "2026-08-17"
+        },
+        {
+          "text": "Tie intelligence metrics to business outcomes that matter to your stakeholder groups.",
+          "added": "2026-08-17"
+        }
+      ]
+    }
+  ]
+}
