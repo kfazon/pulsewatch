@@ -62,3 +62,13 @@ python pulsewatch_cli.py diff data/example.com/2026-03-18/abc123 data/example.co
 Outputs:
 - changed lines count
 - `diff.txt` path (written to the new capture directory)
+
+### Render an executive PDF report
+
+```bash
+python pulsewatch_cli.py report \
+  reports/examples/grama_market_pulse.json \
+  artifacts/report.pdf
+```
+
+The `report` command turns a structured JSON payload into a branded A4 executive PDF. The reusable visual and evidence rules are documented in [`docs/REPORT_DESIGN_SYSTEM.md`](docs/REPORT_DESIGN_SYSTEM.md).
