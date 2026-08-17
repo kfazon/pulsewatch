@@ -32,6 +32,7 @@ def test_example_report_renders_pdf(tmp_path: Path) -> None:
     assert "OIB: 33281217245" in text
     assert "MBS: 070096926" in text
     assert "Kristijan Fažon" in text
+    assert "+385 91 45 46 013" in text
 
 
 def test_report_supports_croatian_unicode(tmp_path: Path) -> None:

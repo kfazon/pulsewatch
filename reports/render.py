@@ -261,7 +261,8 @@ def _cover(data: dict[str, Any], styles: dict[str, ParagraphStyle]) -> list[Any]
             f"OIB: {_safe(publisher['oib'])} · MBS: {_safe(publisher['mbs'])}",
             f"{_safe(publisher['registry_court'])} · MB DZS: {_safe(publisher['mb_dzs'])}",
             f"Direktor: {_safe(publisher['director'])}",
-            f"{_safe(publisher['email'])} · {_safe(publisher['website'])}",
+            f"{_safe(publisher['email'])} · {_safe(publisher['phone'])}",
+            _safe(publisher["website"]),
         ]
         publisher_box = Table(
             [

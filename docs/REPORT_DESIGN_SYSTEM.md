@@ -63,7 +63,7 @@ A first report is explicitly labeled as a baseline. It must not imply that a his
 
 ## Publisher identity
 
-Every externally delivered report must identify the legal issuer on the cover and in the PDF metadata. The structured payload should include the full legal name, registered address, OIB, MBS, MB DZS, registry court, director, email and website. The footer should use the concise form `PulseWatch · INMAR d.o.o. · OIB 33281217245`; the cover carries the full legal block.
+Every externally delivered report must identify the legal issuer on the cover and in the PDF metadata. The structured payload should include the full legal name, registered address, OIB, MBS, MB DZS, registry court, director, email, phone and website. The footer should use the concise form `PulseWatch · INMAR d.o.o. · OIB 33281217245`; the cover carries the full legal block.
 
 ## Sources used for the design rules
 
