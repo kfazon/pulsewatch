@@ -12,9 +12,11 @@
 
 **Potvrđeno:** BAT javno navodi poslovnicu na adresi Rudolfa Steinera 2, s centralnim telefonom i odvojenim kontaktima za više prodajnih odjela.[2] Ljetno radno vrijeme poslovnice je ponedjeljak–petak 7:00–20:30 i subota 7:00–19:00.[5]
 
-**Potvrđeno:** Javna ponuda kombinira širok asortiman, preko 80.000 artikala kao marketinški navod, besplatnu dostavu iznad 1.000 € na području Međimurja, specijalističke kontakte i dodatne usluge.[1][2][3]
+**Potvrđeno:** Javna ponuda kombinira širok asortiman, preko 80.000 artikala kao marketinški navod, specijalističke kontakte i dodatne usluge.[1][2][3]
 
-**Potvrđeno:** Za 22.08.2026. objavljena je jednodnevna akcija od 15% na redovne cijene laminata, kosilica, boja i lakova te ručnih i električnih alata.[6] YATO aku i električni alat istodobno je na 20% rasprodaji do rasprodaje zaliha.[7]
+**Potvrđeno:** Besplatna dostava iznad 1.000 € na području Međimurske županije vrijedi za robu osim građevinskog materijala; za građevinski materijal cijena dostave daje se na upit.[14]
+
+**Potvrđeno:** Za 22.08.2026. objavljena je jednodnevna akcija od 15% na redovne cijene laminata, kosilica, boja i lakova te ručnih i električnih alata.[6] YATO aku i električni alat istodobno je na 20% rasprodaji do rasprodaje zaliha.[7] Gorenje promocija za odabrane perilice posuđa traje do 20.09.2026. ili do isteka zaliha.[15]
 
 **Opažanje:** Stranica letaka navodi više tematskih kataloga, ali u dohvaćenom javnom tekstu uz nazive nisu bili vidljivi datumi valjanosti.[4] To je signal za provjeru vidljivosti i svježine, a ne dokaz da fizička poslovnica nema važeće ponude.[4]
 
@@ -28,7 +30,8 @@
 | Potvrđeno | Kontakt | +385 (0)40 389 900; bat@batprodajnicentar.hr | [2] |
 | Potvrđeno | Radno vrijeme | Pon–pet 7:00–20:30; subota 7:00–19:00 | [5] |
 | Potvrđeno | Odjelni kontakti | Info pult, građevina, elektro/rasvjeta, alati, bijela tehnika, boje, drvo, keramika/sanitarije, ljubimci, lov/ribolov, vrt | [2] |
-| Potvrđeno | Dostava | Besplatna iznad 1.000 € na području Međimurja | [1] |
+| Potvrđeno | Plaćanje | Gotovina, avans po ponudi, virman, kartice i 2–12 rata | [13] |
+| Potvrđeno | Dostava | Besplatna iznad 1.000 € na području Međimurske županije za robu osim građevinskog materijala; građevinski materijal na upit | [14] |
 | Ograničenje | Fizička zaliha | Nije potvrđena iz javnog web prikaza | — |
 
 ## 2. Asortiman i usluge
@@ -49,6 +52,7 @@ BAT javno navodi dostavu na kućni prag, 3D dizajn kupaonice, miješanje/nijansi
 |---|---|---|---|
 | VISOKO | Narančasta subota 22.8.: 15% na pet skupina proizvoda | Kratak prozor traži sinkronizaciju weba, newslettera, društvenih kanala i prodajnog mjesta | Provjeriti objavu, uvjete i uklanjanje nakon isteka; izmjeriti promet i bruto dobit po kategoriji |
 | VISOKO | YATO alat -20% do rasprodaje zaliha; artikli izlaze iz asortimana | Signal čišćenja asortimana i mogućeg prelaska kupaca na zamjenski brend | Pratiti dostupnost, uklanjanje akcije i definirati zamjenski asortiman |
+| SREDNJE | Gorenje perilica + ledomat na poklon do 20.9. ili isteka zaliha | Proizvođačka promocija veže kupnju, račun i naknadnu prijavu | Pratiti rok, uvjete, uklanjanje objave i jasnoću kupčeva slijeda do poklona |
 | SREDNJE | Tematski katalozi bez vidljivih datuma u izvučenom tekstu | Kupac teže procjenjuje je li katalog aktualan | Uz svaki katalog prikazati datum valjanosti i status “aktualno/arhiva” |
 | SREDNJE | Nije javno potvrđen jedinstveni rok provjere zalihe i rezervacije | Kupac prije dolaska možda mora zvati pojedini odjel | Pilotirati “provjeri i rezerviraj” za jednu projektnu kategoriju |
 
@@ -87,7 +91,7 @@ Vrtni centar Iva u Štefancu specijaliziran je za bilje, sjeme, tegle, gnojiva, 
 
 | Element | Scope |
 |---|---|
-| BAT izvori | Naslovnica, akcije, letci, odabrane kategorije, usluge, radno vrijeme |
+| BAT izvori | Naslovnica, akcije, letci, odabrane kategorije, usluge, plaćanje, dostava i radno vrijeme |
 | Konkurenti | Grama, Petrokov, Vrtni centar Iva i BAUHAUS samo gdje je službeni dokaz dostupan |
 | Cijene | Do 20 unaprijed zaključanih identičnih artikala/pakiranja ili projektnih košarica |
 | Alert | Samo materijalna promjena uz timestamp, before/after dokaz, važnost i preporučenu akciju |
@@ -135,3 +139,9 @@ Korišteni su samo javni izvori provjereni 17.08.2026.[unverified] Nisu korište
     > "Osim šume biljaka imamo i sve što pomaže u njihovom uzgoju. Biljke i biljčice, sjeme i sjemenčice, tegle, teglice, gnojiva, supstrati i svi mogući alati."
 [12] https://vrtnicentariva.hr/kontakt — Vrtni centar Iva kontakt
     > "Poslovnica Štefanec Braće Radića 54, Štefanec 40000 Čakovec"
+[13] https://batprodajnicentar.hr/nacini-i-pogodnosti-placanja — BAT načini i pogodnosti plaćanja
+    > "Načini plaćanja: gotovinom prilikom kupnje na blagajni prodajnog centra ili poslovnice gotovinom ili avansno na temelju ponude virmanom kartičnim plaćanjem Pogodnosti plaćanja: na rate, od 2 do 12 rata"
+[14] https://batprodajnicentar.hr/opci-uvjeti-poslovanja — BAT opći uvjeti poslovanja
+    > "Dostava sve robe, osim građevinskog materijala, na kućni prag - u iznosu iznad 1.000 € – je na području Međimurske županije - besplatna. Cijenu dostave građevinskog materijala, ovisno o količini, vrijednosti i načinu isporuke, dajemo na upit."
+[15] https://batprodajnicentar.hr/2026/08/11/gorenje-perilica-posuda-ledomat — BAT Gorenje perilica + ledomat
+    > "Promocija traje od 20. srpnja do 20. rujna 2026. ili do isteka zaliha"

@@ -21,12 +21,12 @@
     "phone": "+385 91 45 46 013",
     "website": "https://inmar.hr"
   },
-  "executive_intro": "Početni javni baseline pokazuje tri materijalna signala: kratku višekategorijsku akciju, izlaznu YATO rasprodaju i neujednačenu vidljivost valjanosti kataloga. Ovo nije tvrdnja o povijesno automatski detektiranim promjenama.",
+  "executive_intro": "Početni javni baseline pokazuje tri materijalna signala: kratku višekategorijsku akciju, izlaznu YATO rasprodaju i Gorenje promociju s naknadnom prijavom za poklon. Ovo nije tvrdnja o povijesno automatski detektiranim promjenama.",
   "signals": [
     {
       "severity": "high",
       "title": "Narančasta subota aktivira pet kategorija odjednom",
-      "finding": "Za 22.08.2026. objavljeno je 15% popusta na redovne cijene laminata, kosilica, boja i lakova te ručnih i električnih alata.",
+      "finding": "Za 22.08.2026. objavljeno je 15% za gotovinu ili jednokratnu karticu te 10% na rate, uz javno navedena isključenja.",
       "impact": "Kratak prozor povećava vrijednost sinkronizirane objave, provedbe uvjeta i mjerenja učinka po kategoriji.",
       "action": "Prije početka provjeriti sve kanale i uvjete; nakon završetka arhivirati dokaz i usporediti promet i bruto dobit po kategoriji."
     },
@@ -39,10 +39,10 @@
     },
     {
       "severity": "medium",
-      "title": "Valjanost letaka nije jednako vidljiva kao njihov naziv",
-      "finding": "Javna stranica navodi više tematskih letaka i kataloga, ali u dohvaćenom tekstu uz nazive nisu bili vidljivi datumi valjanosti.",
-      "impact": "Kupac teže razlikuje aktualnu ponudu od referentnog ili starijeg kataloga.",
-      "action": "Uz svaki dokument prikazati datum valjanosti, status ‘aktualno/arhiva’ i jedan kanonski URL."
+      "title": "Gorenje promocija traži naknadnu prijavu kupca",
+      "finding": "Uz odabranu Gorenje perilicu posuđa ledomat je na poklon do 20.09.2026. ili isteka zaliha, uz prijavu i dokaz kupnje.",
+      "impact": "Vrijednost promocije ovisi o jasnom objašnjenju uvjeta i pravodobnoj prijavi nakon kupnje.",
+      "action": "Pratiti rok, uvjete, uklanjanje objave i provjeriti razumije li kupac cijeli slijed do ostvarenja poklona."
     }
   ],
   "strengths": {
@@ -52,7 +52,8 @@
       "Odvojeni kontakti za građevinu, elektro, alate, bijelu tehniku, boje, drvo, keramiku, vrt i druge odjele.",
       "Javno naveden širok izbor od preko 80.000 artikala.",
       "Dodatne usluge: dostava, 3D kupaonica, nijansiranje boja, rezanje i kantiranje drva.",
-      "Besplatna dostava za kupnje iznad 1.000 € na području Međimurja."
+      "Gotovina, avans po ponudi, virman, kartice i obročno plaćanje od 2 do 12 rata.",
+      "Besplatna dostava iznad 1.000 € u Međimurskoj županiji za robu osim građevinskog materijala."
     ]
   },
   "gaps": {
@@ -87,7 +88,7 @@
   "monitoring": [
     {
       "title": "Akcije i uvjeti",
-      "baseline": "Aktivne su kratka Narančasta subota i YATO rasprodaja do isteka zaliha.",
+      "baseline": "Aktivne su Narančasta subota, YATO rasprodaja i Gorenje promocija do roka ili isteka zaliha.",
       "monitor": "Početak/kraj, kategorije, uvjeti plaćanja, iznimke, promjena teksta i uklanjanje nakon isteka."
     },
     {
@@ -186,6 +187,9 @@
     {"label": "BAT ljetno radno vrijeme", "url": "https://batprodajnicentar.hr/2026/03/26/ljetno-radno-vrijeme-u-bat-u/"},
     {"label": "BAT Narančasta subota 22.8.", "url": "https://batprodajnicentar.hr/2026/08/17/narancasta-subota-22-8-laminati-kosilice-boje-lakovi-alat/"},
     {"label": "BAT YATO rasprodaja", "url": "https://batprodajnicentar.hr/2026/08/06/yato-alat-20-posto-popusta-bat/"},
+    {"label": "BAT načini plaćanja", "url": "https://batprodajnicentar.hr/nacini-i-pogodnosti-placanja/"},
+    {"label": "BAT opći uvjeti poslovanja", "url": "https://batprodajnicentar.hr/opci-uvjeti-poslovanja/"},
+    {"label": "BAT Gorenje promocija", "url": "https://batprodajnicentar.hr/2026/08/11/gorenje-perilica-posuda-ledomat/"},
     {"label": "Grama naslovnica", "url": "https://grama.com.hr/"},
     {"label": "Grama kontakt", "url": "https://grama.com.hr/kontakt/"},
     {"label": "Petrokov Čakovec", "url": "https://petrokov.hr/poslovnica-cakovec/"},
