@@ -25,7 +25,7 @@ PulseWatch reports are decision documents, not raw monitoring dumps. Each report
 
 ## Information hierarchy
 
-1. Cover and report status.
+1. Cover, report status and legal publisher identity.
 2. Executive signal cards ordered by severity.
 3. Market position and confirmed gaps.
 4. Competitor cards: public signal + recommended response.
@@ -60,6 +60,10 @@ Every reported signal must contain:
 - known limitations.
 
 A first report is explicitly labeled as a baseline. It must not imply that a historical change was automatically detected before monitoring was activated.
+
+## Publisher identity
+
+Every externally delivered report must identify the legal issuer on the cover and in the PDF metadata. The structured payload should include the full legal name, registered address, OIB, MBS, MB DZS, registry court, director, email and website. The footer should use the concise form `PulseWatch · INMAR d.o.o. · OIB 33281217245`; the cover carries the full legal block.
 
 ## Sources used for the design rules
 

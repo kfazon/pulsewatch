@@ -72,3 +72,5 @@ python pulsewatch_cli.py report \
 ```
 
 The `report` command turns a structured JSON payload into a branded A4 executive PDF. The reusable visual and evidence rules are documented in [`docs/REPORT_DESIGN_SYSTEM.md`](docs/REPORT_DESIGN_SYSTEM.md).
+
+Commercial packaging, estimated unit economics and safe client-capacity limits are documented in [`docs/COMMERCIAL_MODEL_AND_UNIT_ECONOMICS_2026-08-17.md`](docs/COMMERCIAL_MODEL_AND_UNIT_ECONOMICS_2026-08-17.md).

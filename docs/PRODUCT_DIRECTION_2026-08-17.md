@@ -112,6 +112,8 @@ The client should not have to watch a dashboard. A portal can be added later for
 
 ### Commercial proposal
 
+The detailed cost, capacity and managed-to-SaaS model is documented in [`COMMERCIAL_MODEL_AND_UNIT_ECONOMICS_2026-08-17.md`](COMMERCIAL_MODEL_AND_UNIT_ECONOMICS_2026-08-17.md).
+
 | Item | Proposal |
 |---|---|
 | Pilot | 30 days |

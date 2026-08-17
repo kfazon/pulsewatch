@@ -159,6 +159,14 @@ def _styles() -> dict[str, ParagraphStyle]:
             textColor=INK,
             alignment=TA_CENTER,
         ),
+        "publisher": ParagraphStyle(
+            "PWPublisher",
+            fontName="PW-Regular",
+            fontSize=7.8,
+            leading=10.6,
+            textColor=INK,
+            alignment=TA_CENTER,
+        ),
         "source": ParagraphStyle(
             "PWSource",
             fontName="PW-Regular",
@@ -236,19 +244,58 @@ def _cover(data: dict[str, Any], styles: dict[str, ParagraphStyle]) -> list[Any]
         )
     )
     meta = data["meta"]
-    return [
+    cover: list[Any] = [
         Spacer(1, 20 * mm),
         title_box,
-        Spacer(1, 16 * mm),
+        Spacer(1, 12 * mm),
         Paragraph(f"<b>Klijent:</b> {_safe(meta['client'])}", styles["cover_meta"]),
         Paragraph(f"<b>Datum:</b> {_safe(meta['date'])}", styles["cover_meta"]),
         Paragraph(f"<b>Status:</b> {_safe(meta['status'])}", styles["cover_meta"]),
-        Spacer(1, 13 * mm),
-        HRFlowable(width="32%", thickness=3, color=TEAL, hAlign="CENTER"),
-        Spacer(1, 8 * mm),
-        Paragraph(_safe(data["tagline"]), styles["cover_meta"]),
-        PageBreak(),
     ]
+
+    publisher = data.get("publisher")
+    if publisher:
+        publisher_lines = [
+            f"<b>{_safe(publisher['legal_name'])}</b>",
+            _safe(publisher["address"]),
+            f"OIB: {_safe(publisher['oib'])} · MBS: {_safe(publisher['mbs'])}",
+            f"{_safe(publisher['registry_court'])} · MB DZS: {_safe(publisher['mb_dzs'])}",
+            f"Direktor: {_safe(publisher['director'])}",
+            f"{_safe(publisher['email'])} · {_safe(publisher['website'])}",
+        ]
+        publisher_box = Table(
+            [
+                [Paragraph("IZRADIO I IZDAJE", styles["label"])],
+                [Paragraph("<br/>".join(publisher_lines), styles["publisher"])],
+            ],
+            colWidths=[CONTENT_WIDTH * 0.72],
+            hAlign="CENTER",
+        )
+        publisher_box.setStyle(
+            TableStyle(
+                [
+                    ("BACKGROUND", (0, 0), (-1, -1), SURFACE),
+                    ("BOX", (0, 0), (-1, -1), 0.6, LINE),
+                    ("ALIGN", (0, 0), (-1, -1), "CENTER"),
+                    ("TOPPADDING", (0, 0), (-1, -1), 6),
+                    ("BOTTOMPADDING", (0, 0), (-1, -1), 6),
+                    ("LEFTPADDING", (0, 0), (-1, -1), 10),
+                    ("RIGHTPADDING", (0, 0), (-1, -1), 10),
+                ]
+            )
+        )
+        cover.extend([Spacer(1, 8 * mm), publisher_box])
+
+    cover.extend(
+        [
+            Spacer(1, 8 * mm),
+            HRFlowable(width="32%", thickness=3, color=TEAL, hAlign="CENTER"),
+            Spacer(1, 6 * mm),
+            Paragraph(_safe(data["tagline"]), styles["cover_meta"]),
+            PageBreak(),
+        ]
+    )
+    return cover
 
 
 def _severity_card(
@@ -576,11 +623,15 @@ def render_report(data: dict[str, Any], output_path: str | Path) -> Path:
         topMargin=17 * mm,
         bottomMargin=16 * mm,
         title=str(data["title"]),
-        author="PulseWatch",
+        author=str(data.get("publisher", {}).get("legal_name", "PulseWatch")),
         subject=str(data["subtitle"]),
     )
-    doc.report_label = data["meta"].get("label", "EXECUTIVE REPORT")
-    doc.footer_text = data["meta"].get("footer", "PulseWatch report")
+    doc_any: Any = doc
+    doc_any.report_label = data["meta"].get("label", "EXECUTIVE REPORT")
+    publisher = data.get("publisher", {})
+    doc_any.footer_text = data["meta"].get(
+        "footer", f"PulseWatch · {publisher.get('legal_name', 'PulseWatch')}"
+    )
     doc.build(
         story,
         onFirstPage=_page_header_footer,
