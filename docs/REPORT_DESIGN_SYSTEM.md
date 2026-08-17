@@ -25,15 +25,14 @@ PulseWatch reports are decision documents, not raw monitoring dumps. Each report
 
 ## Information hierarchy
 
-1. Cover, report status and legal publisher identity.
-2. Executive signal cards ordered by severity.
-3. Market position and confirmed gaps.
-4. Competitor cards: public signal + recommended response.
-5. Monitoring scope.
-6. Prioritized action cards with owner and completion evidence.
-7. Proposed pilot.
-8. Confidential findings, if present.
-9. Method and sources.
+1. Minimal cover: report identity, prepared-for/status metadata and concise publisher identity.
+2. Plain-language decision summary with at most three priority cards.
+3. Benefit measures and agreed actions, using client-facing labels rather than internal jargon.
+4. Market position and the specific items being monitored.
+5. Competitor overview as secondary context: public signal + evidence status + recommended response.
+6. Confidential findings, if present.
+7. Proposed 30-day trial with a final price and plain-language success measures.
+8. Method, sources and full legal publisher identity.
 
 ## Table policy
 
@@ -53,7 +52,7 @@ The evidence contract below is the minimum baseline. Recurring managed-intellige
 
 ## Evidence contract
 
-Every reported signal must contain:
+Every reported signal must contain the following information, but the client-facing labels use plain questions such as “Što smo vidjeli?”, “Zašto je važno?” and “Što treba napraviti?”:
 
 - severity;
 - finding;
@@ -69,7 +68,15 @@ A first report is explicitly labeled as a baseline. It must not imply that a his
 
 ## Publisher identity
 
-Every externally delivered report must identify the legal issuer on the cover and in the PDF metadata. The structured payload should include the full legal name, registered address, OIB, MBS, MB DZS, registry court, director, email, phone and website. The footer should use the concise form `PulseWatch · INMAR d.o.o. · OIB 33281217245`; the cover carries the full legal block.
+Every externally delivered report must identify the legal issuer on the cover and in the PDF metadata. The structured payload retains the full legal name, registered address, OIB, MBS, MB DZS, registry court, director, email, phone and website, but those details are not all cover content.
+
+The cover publisher block is permanently limited to:
+
+- `INMAR d.o.o.`;
+- `Gardinovec 24, 40319 Belica, Hrvatska`;
+- `Kristijan Fažon — direktor i odgovorna osoba`.
+
+OIB, MBS, MB DZS, registry court, email, phone, website and the expanded legal name belong only in the final `Metodologija, izvori i izdavatelj` section. The footer uses a short PulseWatch/report-status label and must not repeat detailed legal data. Until a commercial relationship exists, audience metadata says `Pripremljeno za`, never `Klijent`.
 
 ## Sources used for the design rules
 

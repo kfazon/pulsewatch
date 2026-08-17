@@ -1,13 +1,13 @@
 {
   "title": "GRAMA MARKET PULSE",
   "subtitle": "Konkurentski i digitalni signali za Gramu Čakovec i TSH",
-  "tagline": "Vidite važnu promjenu prije nego postane propuštena prilika ili javni problem.",
+  "tagline": "Od javnog nalaza do jasnog prioriteta i preporučene akcije.",
   "meta": {
-    "client": "Grama Čakovec / Tvornica stočne hrane d.d.",
     "date": "17.08.2026.",
-    "status": "Demonstracijski početni baseline — javni izvori",
-    "label": "DEMO · PUBLIC SOURCES ONLY",
-    "footer": "PulseWatch · INMAR d.o.o. · OIB 33281217245 · Povjerljivo za označene dijelove"
+    "status": "Početni pregled javnih izvora",
+    "label": "DEMO · JAVNI IZVORI",
+    "footer": "PulseWatch · početni javni pregled",
+    "prepared_for": "Grama Čakovec / Tvornica stočne hrane d.d."
   },
   "publisher": {
     "legal_name": "INMAR društvo s ograničenom odgovornošću za trgovinu i usluge",
@@ -21,7 +21,7 @@
     "phone": "+385 91 45 46 013",
     "website": "https://inmar.hr"
   },
-  "executive_intro": "Početni pregled pokazuje četiri komercijalno važna signala i jedan povjerljivi korporativni web-signal. Ovo je početno stanje, ne tvrdnja da je PulseWatch ranije automatski detektirao povijesnu promjenu.",
+  "executive_intro": "Tri stvari sada traže odluku: povjerljivi TSH web-signal, neusklađeni kanali kataloga i nejasan rok lokalne rezervacije. Ovo je početno stanje, a ne dokaz ranije otkrivene promjene.",
   "signals": [
     {
       "severity": "critical",
@@ -78,22 +78,26 @@
     {
       "name": "PEVEX Čakovec",
       "signal": "Lokalna stranica, webshop, Click & Collect, PEVEX KLUB, katalozi i članske pogodnosti.",
-      "response": "Odjelni stručni savjet, projektne košarice i lokalno obećanje brzog odgovora/preuzimanja."
+      "response": "Odjelni stručni savjet, projektne košarice i lokalno obećanje brzog odgovora/preuzimanja.",
+      "status": "potvrđeno javnim izvorom"
     },
     {
       "name": "BAUHAUS Varaždin",
-      "signal": "‘Rezerviraj i preuzmi’, PROFI program za poslovne kupce i širok DIY okvir.",
-      "response": "Brža lokalna pomoć te specijalizacija poljoprivrede, hranidbe i kompletiranja projekta."
+      "signal": "Regionalni veliki DIY format uključen preko službenog URL-a centra; lokalni detalji nisu potvrđeni u ovom baselineu.",
+      "response": "Lokalne usluge, akcije, kategorije i zalihu pratiti tek nakon dokazivog dohvaćanja; ne pretpostavljati ih.",
+      "status": "sekundaran / blokiran — lokalni detalji nisu potvrđeni zbog sigurnosne provjere"
     },
     {
       "name": "Pet centar Čakovec",
       "signal": "Trgovina i veterinarska ljekarna, klub/aplikacija, katalog i lokalna Wolt ponuda.",
-      "response": "Ne napadati veterinarski autoritet; graditi ponovnu narudžbu hrane i vezu s domaćim životinjama."
+      "response": "Ne napadati veterinarski autoritet; graditi ponovnu narudžbu hrane i vezu s domaćim životinjama.",
+      "status": "potvrđeno javnim izvorom"
     },
     {
       "name": "Vrtni centar Iva",
       "signal": "Specijalizirana prezentacija biljaka, savjeta i akcija te statusi pojedinih artikala u webshopu.",
-      "response": "Prodavati rješenje nakon biljke: supstrat, prihrana, zaštita, navodnjavanje i stručni plan."
+      "response": "Prodavati rješenje nakon biljke: supstrat, prihrana, zaštita, navodnjavanje i stručni plan.",
+      "status": "potvrđeno javnim izvorom"
     }
   ],
   "monitoring": [
@@ -118,68 +122,66 @@
       "monitor": "Do 20 unaprijed zaključanih usporedivih artikala, cijena, pakiranje, dostupnost, akcijski rok i arhiva dokaza."
     }
   ],
-  "actions_intro": "Prioriteti su poredani prema riziku i mogućnosti provedbe. Svaki potez ima imenovanog vlasnika i dokaz završetka, kako report ne bi ostao samo informacija.",
+  "actions_intro": "Prikazane su tri najvažnije akcije s najvećim rizikom i najbržom mogućom reakcijom. Za svaku je navedeno tko je vodi i kako se potvrđuje da je završena.",
   "actions": [
     {
       "priority": "P0",
       "action": "Povjerljivo pregledati TSH web, CMS korisnike, dodatke, datoteke, backlinkove i indeksaciju; uklanjati tek nakon čuvanja dokaza i backupa.",
       "owner": "TSH IT / web partner",
-      "evidence": "Dokumentiran uzrok ili barem sigurno uklonjen javni sadržaj uz pregled pristupa i indeksacije."
+      "evidence": "Dokumentiran uzrok ili barem sigurno uklonjen javni sadržaj uz pregled pristupa i indeksacije.",
+      "due_date": "dogovoriti na početnom sastanku",
+      "status": "novo",
+      "kpi_baseline": "nije poznato — interni podatak nije dostavljen",
+      "kpi_target": "dogovoriti na početnom sastanku"
     },
     {
       "priority": "P1",
       "action": "Uskladiti Grama katalog kroz jedan kanonski URL i datum valjanosti.",
       "owner": "Marketing / Grama",
-      "evidence": "Web, Google profil i društveni kanali prikazuju isti aktualni katalog."
+      "evidence": "Web, Google profil i društveni kanali prikazuju isti aktualni katalog.",
+      "due_date": "dogovoriti na početnom sastanku",
+      "status": "novo",
+      "kpi_baseline": "nije poznato — interni podatak nije dostavljen",
+      "kpi_target": "dogovoriti na početnom sastanku"
     },
     {
       "priority": "P1",
       "action": "Odabrati jednu kategoriju za javni standard ‘provjeri i rezerviraj’.",
       "owner": "Direktorica + vlasnik odjela",
-      "evidence": "Objavljen rok koji odjel može dosljedno ispunjavati i jednostavna evidencija ishoda."
+      "evidence": "Objavljen rok koji odjel može dosljedno ispunjavati i jednostavna evidencija ishoda.",
+      "due_date": "dogovoriti na početnom sastanku",
+      "status": "novo",
+      "kpi_baseline": "nije poznato — interni podatak nije dostavljen",
+      "kpi_target": "dogovoriti na početnom sastanku"
     },
     {
       "priority": "P2",
       "action": "Zaključati usporedivu košaricu do 20 artikala za praćenje cijene i akcija.",
       "owner": "Nabava / komercijala",
-      "evidence": "Prvi before/after izvještaj bez neusporedivih proizvoda i pakiranja."
+      "evidence": "Prva usporedba prije i poslije bez neusporedivih proizvoda i pakiranja.",
+      "due_date": "dogovoriti na početnom sastanku",
+      "status": "novo",
+      "kpi_baseline": "nije poznato — interni podatak nije dostavljen",
+      "kpi_target": "dogovoriti na početnom sastanku"
     },
     {
       "priority": "P2",
-      "action": "Uvesti mjesečni konkurentski executive brief s vlasnikom svake akcije.",
+      "action": "Uvesti kratki mjesečni pregled konkurenata s odgovornom osobom za svaku akciju.",
       "owner": "Uprava / marketing",
-      "evidence": "Mjesečna odluka: reagirati, pratiti ili zatvoriti signal uz zapis razloga."
+      "evidence": "Mjesečna odluka: reagirati, pratiti ili zatvoriti signal uz zapis razloga.",
+      "due_date": "dogovoriti na početnom sastanku",
+      "status": "novo",
+      "kpi_baseline": "nije poznato — interni podatak nije dostavljen",
+      "kpi_target": "dogovoriti na početnom sastanku"
     }
   ],
   "offer": {
-    "intro": "Pilot treba dokazati da PulseWatch proizvodi pravodobne, provjerljive i operativno korisne signale bez ERP integracije i pristupa internim podacima.",
-    "deliverables": [
-      {
-        "title": "Početni baseline",
-        "description": "Grama i TSH javne domene, ključne podstranice i početno stanje praćenih sposobnosti."
-      },
-      {
-        "title": "Pet konkurenata",
-        "description": "Katalozi, akcije, loyalty, lokalne usluge, preuzimanje i ključne prodajne poruke."
-      },
-      {
-        "title": "Do 20 artikala",
-        "description": "Samo unaprijed zaključani i usporedivi EAN-ovi, pakiranja i datumi."
-      },
-      {
-        "title": "Tjedni signal",
-        "description": "Kratko upozorenje samo kada promjena prelazi dogovoreni prag važnosti."
-      },
-      {
-        "title": "Mjesečni PDF",
-        "description": "Što se promijenilo, dokaz prije/poslije, mogući učinak i preporučena akcija."
-      },
-      {
-        "title": "Upravljački pregled",
-        "description": "Jedan sastanak za odluke, vlasnike i zatvaranje nevažnih ili netočnih signala."
-      }
-    ],
-    "success": "Pilot prolazi ako najmanje jedan pravodobni signal dovede do dokumentirane poslovne ili zaštitne akcije, uz prihvatljivu stopu lažnih alarma i potpun dokaz izvora."
+    "intro": "Ovo je prijedlog probnog rada. Tijekom 30 dana provjerava se pomaže li PulseWatch Grami da ranije vidi važne signale, donese odluku i provjeri rezultat.",
+    "scope": "Grama Čakovec i javne TSH stranice, pet unaprijed odabranih konkurenata te do 20 usporedivih artikala ili košarica. TSH nalaz ostaje povjerljivo odvojen.",
+    "cadence": "30 dana: redovite provjere, hitna obavijest najkasnije 4 radna sata nakon potvrde, ostale važne obavijesti sljedeći radni dan, tjedni sažetak i završni pregled.",
+    "acceptance_kpi": "Najmanje 90% dogovorenih provjera na vrijeme, svaki važan nalaz s dokazom te najmanje dvije dokumentirane odluke ili akcije.",
+    "price": "Konačna cijena: 1.500 € za 30-dnevni demonstracijski pilot. INMAR d.o.o. nije u sustavu PDV-a.",
+    "limitation": "Bez internih podataka ne možemo dokazati utjecaj na prihod, maržu ili prodaju."
   },
   "confidential": {
     "finding": "Javno potvrđeno 17.08.2026.: na službenoj TSH naslovnici, između legitimnog korporativnog sadržaja, prikazana su dva opsežna teksta o PSK Casinu s vanjskim poveznicama.",
@@ -209,20 +211,132 @@
     "Nije provedena kupnja, tajna kupnja ni sigurnosno testiranje.",
     "Službeni izvori imaju prednost; sekundarni agregatori jasno su označeni.",
     "‘Nije pronađeno’ znači samo da tvrdnja nije potvrđena na pregledanim javnim stranicama.",
-    "Ovo je početni baseline, ne dokaz automatski detektirane povijesne promjene."
+    "Ovo je početno stanje, a ne dokaz ranije automatski otkrivene promjene.",
+    "Klasifikacija u karticama razdvaja činjenicu/opažanje, hipotezu i ograničenje; bez povijesnog niza ne tvrdi se automatski detektirana promjena."
   ],
   "sources": [
-    {"label": "Grama naslovnica", "url": "https://grama.com.hr/"},
-    {"label": "Grama kontakt i odjeli", "url": "https://grama.com.hr/kontakt/"},
-    {"label": "Grama katalog", "url": "https://grama.com.hr/wp-content/uploads/katalog/Grama_katalog.pdf"},
-    {"label": "Grama webshop", "url": "https://www.grama-trgovina.com/"},
-    {"label": "TSH naslovnica", "url": "https://tsh-cakovec.hr/"},
-    {"label": "PEVEX Čakovec", "url": "https://www.pevex.hr/cakovec"},
-    {"label": "PEVEX KLUB", "url": "https://www.pevex.hr/pevex-klub"},
-    {"label": "BAUHAUS Varaždin", "url": "https://www.bauhaus.hr/prodajni-centri/prodajni-centar-varazdin/fc/958"},
-    {"label": "Pet centar Čakovec", "url": "https://www.pet-centar.hr/pages/lokacije/pet-centar-cakovec"},
-    {"label": "Vrtni centar Iva", "url": "https://vrtnicentariva.hr/"},
-    {"label": "Njuškalo katalozi — Grama", "url": "https://katalozi.njuskalo.hr/poslovnica/grama-zrinsko-frankopanska-15-40000-cakovec"},
-    {"label": "Javni agregat komentara", "url": "https://hrvatskekarta.com/drugo/medimurska/gra-ma/"}
-  ]
+    {
+      "label": "Grama naslovnica",
+      "url": "https://grama.com.hr/"
+    },
+    {
+      "label": "Grama kontakt i odjeli",
+      "url": "https://grama.com.hr/kontakt/"
+    },
+    {
+      "label": "Grama katalog",
+      "url": "https://grama.com.hr/wp-content/uploads/katalog/Grama_katalog.pdf"
+    },
+    {
+      "label": "Grama webshop",
+      "url": "https://www.grama-trgovina.com/"
+    },
+    {
+      "label": "TSH naslovnica",
+      "url": "https://tsh-cakovec.hr/"
+    },
+    {
+      "label": "PEVEX Čakovec",
+      "url": "https://www.pevex.hr/cakovec"
+    },
+    {
+      "label": "PEVEX KLUB",
+      "url": "https://www.pevex.hr/pevex-klub"
+    },
+    {
+      "label": "BAUHAUS Varaždin",
+      "url": "https://www.bauhaus.hr/prodajni-centri/prodajni-centar-varazdin/fc/958"
+    },
+    {
+      "label": "Pet centar Čakovec",
+      "url": "https://www.pet-centar.hr/pages/lokacije/pet-centar-cakovec"
+    },
+    {
+      "label": "Vrtni centar Iva",
+      "url": "https://vrtnicentariva.hr/"
+    },
+    {
+      "label": "Njuškalo katalozi — Grama",
+      "url": "https://katalozi.njuskalo.hr/poslovnica/grama-zrinsko-frankopanska-15-40000-cakovec"
+    },
+    {
+      "label": "Javni agregat komentara",
+      "url": "https://hrvatskekarta.com/drugo/medimurska/gra-ma/"
+    }
+  ],
+  "decision_brief": [
+    {
+      "priority": "P0",
+      "title": "Povjerljivi TSH web-signal",
+      "fact_observation": "Na službenoj TSH naslovnici javno su prikazana dva opsežna PSK Casino teksta i vanjske poveznice.",
+      "confidence": "visoka za prisutnost sadržaja; niska za uzrok",
+      "evidence": "Službena TSH naslovnica, 17.08.2026.",
+      "business_hypothesis": "Moguć reputacijski, SEO i sigurnosni rizik; uzrok i opseg nisu utvrđeni.",
+      "recommendation": "Povjerljivo eskalirati IT/web osobi; sačuvati dokaz i provjeriti prije uklanjanja.",
+      "owner": "TSH IT / web partner",
+      "due_date": "odmah",
+      "kpi_baseline": "nepoznato — nema internog sigurnosnog nalaza",
+      "kpi_target": "dokaz, backup i dokumentirana tehnička provjera",
+      "limitation": "Nije dokazano kompromitiranje, opseg ni ugroza podataka.",
+      "entity_sku_match": "točno podudaranje — službena TSH domena; nije proizvod"
+    },
+    {
+      "priority": "P1",
+      "title": "Kanali kataloga nisu usklađeni",
+      "fact_observation": "Direktni službeni PDF sadrži katalog 30.06.–17.08.2026., dok je druga javna poveznica pri provjeri vodila na datoteku naziva iz 2025.; agregator je prikazivao neaktivan katalog.",
+      "confidence": "srednja — javni kanali i datoteke su provjereni",
+      "evidence": "Službeni PDF i javne poveznice, 17.08.2026.",
+      "business_hypothesis": "Kupac može dobiti različitu informaciju o aktualnim akcijama; prodajni učinak je hipoteza.",
+      "recommendation": "Uvesti jedan kanonski URL, datum valjanosti i provjeru distribucije.",
+      "owner": "Marketing / Grama",
+      "due_date": "sljedeći ciklus objave",
+      "kpi_baseline": "nepoznato — nema mjerenja kanala",
+      "kpi_target": "100% provjerenih kanala vodi na aktualni katalog",
+      "limitation": "Nema mjerenja prije i poslije ni dokaza kada je promjena nastala.",
+      "entity_sku_match": "točno podudaranje — Grama katalog; nije proizvod"
+    },
+    {
+      "priority": "P1",
+      "title": "Brzo preuzimanje je javno jasnije kod konkurenata",
+      "fact_observation": "PEVEX javno promovira Click & Collect; za Gramu nije potvrđen opći lokalni rok rezervacije. BAUHAUS lokalne usluge nisu potvrđene jer je izvor bio blokiran.",
+      "confidence": "srednja — PEVEX javna usluga potvrđena; Gramino interno stanje i BAUHAUS lokalni detalji nisu poznati",
+      "evidence": "Službena PEVEX stranica; BAUHAUS URL blokiran pri provjeri, 17.08.2026.",
+      "business_hypothesis": "Kupac može teže procijeniti lokalnu dostupnost u Grami; učinak na kupnju je hipoteza.",
+      "recommendation": "Pilotirati standard provjere i rezervacije za jednu izvedivu kategoriju.",
+      "owner": "Direktorica + vlasnik odjela",
+      "due_date": "30 dana pilota",
+      "kpi_baseline": "nepoznato — nema vremena odgovora",
+      "kpi_target": "dogovoriti: rok odgovora i stopa preuzimanja",
+      "limitation": "Nije dokazana fizička zaliha ni konkurentska prednost po cijeni.",
+      "entity_sku_match": "skupina proizvoda — kategorija za pilot; bez usporedbe pojedinačnih artikala"
+    }
+  ],
+  "value_intro": "Pilot se ocjenjuje po tome jesu li provjere odrađene na vrijeme, jesu li važni nalazi dokazani i jesu li doveli do odluke. Financijski učinak nije poznat bez internih podataka Grame.",
+  "value_scorecard": [
+    {
+      "metric": "Nalazi s dokazom",
+      "baseline": "početno stanje: javni dokaz uz svaki važan nalaz",
+      "target": "Svaki važan nalaz ima izvor, datum provjere i jasno ograničenje",
+      "evidence": "popis izvora; financijski učinak nije poznat"
+    },
+    {
+      "metric": "Planirane provjere",
+      "baseline": "nije poznato — pilot još nije počeo",
+      "target": "Najmanje 90% dogovorenih provjera ili zapisano objašnjenje iznimke",
+      "evidence": "dnevnik provjera i razlog iznimke"
+    },
+    {
+      "metric": "Brzina obavijesti",
+      "baseline": "nije poznato — još nije mjereno",
+      "target": "Najmanje 90% važnih obavijesti unutar dogovorenog roka",
+      "evidence": "datum i vrijeme nalaza te potvrđene isporuke"
+    },
+    {
+      "metric": "Odluke i akcije",
+      "baseline": "0 izmjerenih odluka u ovom početnom pregledu",
+      "target": "Najmanje dvije zapisane odluke, akcije ili odluke „ne reagirati”",
+      "evidence": "popis odluka i akcija; financijski učinak nije poznat"
+    }
+  ],
+  "baseline_notice": "Ovo je početno stanje. Nema ranijih usporedivih mjerenja, zato report ne tvrdi da je PulseWatch već otkrio promjenu."
 }

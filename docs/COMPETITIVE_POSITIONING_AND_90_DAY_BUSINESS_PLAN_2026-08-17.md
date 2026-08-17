@@ -10,9 +10,9 @@
 |---|---|
 | Što prodajemo? | Upravljanu funkciju tržišnog nadzora: provjeren signal, dokaz, poslovno značenje, preporučena akcija i praćenje ishoda. |
 | Kome prvo? | Regionalni vlasnici brendova i ekskluzivni distributeri koji trebaju dokaz promjene cijene, dostupnosti ili promotivne poruke na 20–100 unaprijed poznatih reseller URL-ova. |
-| Glavni paket | **PulseWatch Managed — 1.490 EUR/mj. + PDV**, najmanje 3 mjeseca. |
-| Ulaz | **Plaćeni 30-dnevni pilot — 1.500 EUR + PDV**, unaprijed. |
-| Lite | **690 EUR/mj. + PDV**, asinkron i strogo ograničen; nuditi tek nakon pilota i stabilne automatizacije. |
+| Glavni paket | **PulseWatch Managed — konačnih 1.490 EUR/mj.**, najmanje 3 mjeseca. |
+| Ulaz | **Plaćeni 30-dnevni pilot — konačnih 1.500 EUR**, unaprijed. |
+| Lite | **Konačnih 690 EUR/mj.**, asinkron i strogo ograničen; nuditi tek nakon pilota i stabilne automatizacije. |
 | Ciljni MRR | **9.000–10.500 EUR bez PDV-a**, ne 3.500 EUR. Točan cilj ovisi o stvarnom ukupnom trošku Kristijanove isplate koji treba potvrditi računovođa. |
 | Put do cilja | Najzdravije: 6 Managed klijenata = 8.940 EUR MRR ili miks 5 Managed + 3 Lite = 9.520 EUR MRR. |
 | Trenutačna odluka | **GO za plaćenu validaciju, ne GO za SaaS build.** |
@@ -165,7 +165,7 @@ Mjerilo nije broj monitora ni PDF-ova. Mjerilo je broj pravodobno obrađenih rel
 
 ## 4. Razrađeni paketi
 
-### 4.1 PulseWatch Paid Pilot — 1.500 EUR + PDV jednokratno
+### 4.1 PulseWatch Paid Pilot — konačnih 1.500 EUR jednokratno
 
 | Element | Uključeno |
 |---|---|
@@ -180,7 +180,7 @@ Mjerilo nije broj monitora ni PDF-ova. Mjerilo je broj pravodobno obrađenih rel
 
 Pilot nije besplatan demo. Besplatno se može pokazati samo **jedan bounded sample signal iz javnih podataka**, bez mjesec dana rada.
 
-### 4.2 PulseWatch Managed — 1.490 EUR + PDV/mj.
+### 4.2 PulseWatch Managed — konačnih 1.490 EUR/mj.
 
 **Glavni proizvod; minimalno 3 mjeseca nakon pilota.**
 
@@ -200,7 +200,7 @@ Pilot nije besplatan demo. Besplatno se može pokazati samo **jedan bounded samp
 
 **Cilj vremena:** nakon stabilizacije najviše 4,5–5 sati ljudskog rada po klijentu/mj. Ako dva ciklusa prelaze 6 sati, podiže se cijena, smanjuje scope ili automatizira konkretno usko grlo.
 
-### 4.3 PulseWatch Lite — 690 EUR + PDV/mj.
+### 4.3 PulseWatch Lite — konačnih 690 EUR/mj.
 
 **Nije jeftinija verzija Manageda s istim očekivanjima. To je strogo asinkron watchlist proizvod.**
 
@@ -218,7 +218,7 @@ Pilot nije besplatan demo. Besplatno se može pokazati samo **jedan bounded samp
 
 **Cilj vremena:** najviše 1,5–2 sata ljudskog rada po klijentu/mj. Lite se ne smije prodavati prije nego pipeline automatski složi dokaz i draft reporta.
 
-### 4.4 PulseWatch Managed Plus — 2.490 EUR + PDV/mj.
+### 4.4 PulseWatch Managed Plus — konačnih 2.490 EUR/mj.
 
 Za kupca koji ima dvije odvojene watchliste ili veći prihod pod rizikom:
 
