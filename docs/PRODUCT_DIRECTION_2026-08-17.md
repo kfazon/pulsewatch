@@ -117,8 +117,8 @@ The detailed cost, capacity and managed-to-SaaS model is documented in [`COMMERC
 | Item | Proposal |
 |---|---|
 | Pilot | 30 days |
-| Price | EUR 1,250 + VAT |
-| After pilot | EUR 590–890 + VAT/month, based on sources and frequency |
+| Price | EUR 1,500 + VAT, paid upfront |
+| After pilot | EUR 1,490 + VAT/month for Managed; EUR 690 Lite only for a standardized asynchronous scope |
 | PASS | At least one timely signal leads to a documented business/protective action, evidence coverage is complete, and alert noise is accepted by the client |
 | STOP/REDESIGN | Signals cannot be evidenced, false alarms dominate, or client actions cannot be assigned/closed |
 
@@ -169,3 +169,5 @@ Do not sell “AI website monitoring” or “another dashboard.”
 Sell:
 
 > PulseWatch turns public market and digital changes into reviewed signals, preserved evidence and prioritized actions for management.
+
+The current competitor matrix, package boundaries, owner/agent roles, financial target and paid validation gates are documented in [`COMPETITIVE_POSITIONING_AND_90_DAY_BUSINESS_PLAN_2026-08-17.md`](COMPETITIVE_POSITIONING_AND_90_DAY_BUSINESS_PLAN_2026-08-17.md). This post-research plan supersedes the earlier EUR 590–890 package hypothesis.

@@ -1,5 +1,7 @@
 # PulseWatch commercial model and unit economics — 2026-08-17
 
+> **Post-research commercial update:** competitor and managed-service research changed the recommended sell price. The current go-to-market source of truth is [`COMPETITIVE_POSITIONING_AND_90_DAY_BUSINESS_PLAN_2026-08-17.md`](COMPETITIVE_POSITIONING_AND_90_DAY_BUSINESS_PLAN_2026-08-17.md): EUR 1,500 paid pilot, EUR 1,490/month Managed, EUR 690/month tightly bounded Lite and a EUR 9,500–10,500 MRR operating target pending accountant confirmation. The EUR 590–890 figures below are preserved as the original cost-model hypothesis, not the current offer.
+
 ## Decision
 
 PulseWatch should be sold first as a **managed intelligence service powered by PulseWatch software**. This is not a rejection of SaaS. It is the shortest path to paid proof, repeatable scope and the data needed to know which parts deserve self-service automation.
@@ -125,7 +127,7 @@ Infrastructure is unlikely to be the first bottleneck. Fifty daily pages equal 1
 
 ## Recommended packages
 
-### PulseWatch Pilot — EUR 1,250 + VAT
+### PulseWatch Pilot — original hypothesis EUR 1,250 + VAT; current offer EUR 1,500
 
 - 30 days;
 - baseline and source setup;
@@ -135,7 +137,7 @@ Infrastructure is unlikely to be the first bottleneck. Fifty daily pages equal 1
 - one executive PDF;
 - one 60-minute decision meeting.
 
-### PulseWatch Managed — EUR 890 + VAT/month
+### PulseWatch Managed — original hypothesis EUR 890 + VAT/month; current offer EUR 1,490/month
 
 - same controlled scope;
 - daily automated checks where sources permit;
@@ -145,7 +147,7 @@ Infrastructure is unlikely to be the first bottleneck. Fifty daily pages equal 1
 - one 45-minute decision meeting;
 - evidence archive and action status.
 
-### PulseWatch Lite — EUR 590 + VAT/month
+### PulseWatch Lite — original hypothesis EUR 590 + VAT/month; current offer EUR 690/month
 
 Offer only after automation reduces review time. Suggested limit: up to three competitors, 25 URLs, no product basket, monthly report and no standing monthly meeting.
 
