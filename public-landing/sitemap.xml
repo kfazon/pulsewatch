@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://pulsewatch.top/</loc>
-    <lastmod>2026-08-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://pulsewatch.top/privacy.html</loc>
-    <lastmod>2026-08-21</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
+  <url><loc>https://pulsewatch.top/</loc></url>
+  <url><loc>https://pulsewatch.top/paid-pilot/</loc></url>
+  <url><loc>https://pulsewatch.top/how-it-works/</loc></url>
+  <url><loc>https://pulsewatch.top/sample-report/</loc></url>
+  <url><loc>https://pulsewatch.top/pricing/</loc></url>
+  <url><loc>https://pulsewatch.top/for-cro-agencies/</loc></url>
+  <url><loc>https://pulsewatch.top/about/</loc></url>
+  <url><loc>https://pulsewatch.top/contact/</loc></url>
+  <url><loc>https://pulsewatch.top/security/</loc></url>
+  <url><loc>https://pulsewatch.top/privacy/</loc></url>
+  <url><loc>https://pulsewatch.top/terms/</loc></url>
 </urlset>
