@@ -6,6 +6,7 @@
   const rejectButton = document.querySelector('.js-consent-reject');
   const settingsButtons = document.querySelectorAll('.js-cookie-settings');
   let analyticsLoaded = false;
+  let settingsInvoker = null;
 
   const readConsent = () => {
     try {
@@ -30,6 +31,20 @@
       ad_storage: 'denied',
       ad_user_data: 'denied',
       ad_personalization: 'denied'
+    });
+  };
+
+  const deleteAnalyticsCookies = () => {
+    const names = document.cookie
+      .split(';')
+      .map((cookie) => cookie.split('=')[0].trim())
+      .filter((name) => /^_(?:ga(?:_|$)|gid$|gat(?:_|$)|gac_)/.test(name));
+    const domains = ['', window.location.hostname, `.${window.location.hostname}`];
+    names.forEach((name) => {
+      domains.forEach((domain) => {
+        const domainAttribute = domain ? `; Domain=${domain}` : '';
+        document.cookie = `${name}=; Max-Age=0; Path=/; SameSite=Lax${domainAttribute}`;
+      });
     });
   };
 
@@ -58,6 +73,9 @@
 
   const hideBanner = () => {
     if (banner) banner.hidden = true;
+    const focusTarget = settingsInvoker || document.querySelector('main');
+    settingsInvoker = null;
+    focusTarget?.focus({preventScroll: true});
   };
 
   acceptButton?.addEventListener('click', () => {
@@ -69,17 +87,24 @@
   rejectButton?.addEventListener('click', () => {
     const hadAnalytics = analyticsLoaded || readConsent() === 'granted';
     writeConsent('denied');
-    updateConsent('denied');
+    deleteAnalyticsCookies();
     hideBanner();
     if (hadAnalytics) window.location.reload();
   });
 
-  settingsButtons.forEach((button) => button.addEventListener('click', () => showBanner(true)));
+  settingsButtons.forEach((button) =>
+    button.addEventListener('click', () => {
+      settingsInvoker = button;
+      showBanner(true);
+    })
+  );
 
   const storedConsent = readConsent();
   if (storedConsent === 'granted') {
     loadAnalytics();
-  } else if (storedConsent !== 'denied') {
+  } else if (storedConsent === 'denied') {
+    deleteAnalyticsCookies();
+  } else {
     showBanner();
   }
 

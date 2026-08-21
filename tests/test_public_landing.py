@@ -190,6 +190,9 @@ def test_ga4_is_consent_gated_and_privacy_disclosed() -> None:
         assert 'analytics_storage:"denied"' in html
         assert 'ad_storage:"denied"' in html
         assert 'class="consent-banner"' in html
+        assert 'aria-live="polite"' in html
+        assert '<main id="main" tabindex="-1">' in html
+        assert html.count("button consent-choice") == 2
         assert "Accept analytics" in html
         assert "Reject analytics" in html
         assert 'src="https://www.googletagmanager.com' not in html
@@ -199,6 +202,9 @@ def test_ga4_is_consent_gated_and_privacy_disclosed() -> None:
     assert "googletagmanager.com/gtag/js" in site_js
     assert "allow_google_signals: false" in site_js
     assert "allow_ad_personalization_signals: false" in site_js
+    assert "deleteAnalyticsCookies" in site_js
+    assert "Max-Age=0; Path=/" in site_js
+    assert "settingsInvoker || document.querySelector('main')" in site_js
     assert "generate_lead" in site_js
     assert 'id="analytics"' in privacy
     assert "disabled unless you select" in privacy

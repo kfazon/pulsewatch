@@ -34,12 +34,21 @@ with sync_playwright() as p:
     ]
     page.screenshot(path=str(OUT / "desktop-consent.png"), full_page=False)
 
+    page.evaluate(
+        "document.cookie='_ga=qa; Path=/'; document.cookie='_ga_QA=qa; Path=/'"
+    )
     page.get_by_role("button", name="Reject analytics").click()
     page.wait_for_timeout(500)
     result["reject_choice"] = page.evaluate(
         "localStorage.getItem('pulsewatch_analytics_consent_v1')"
     )
     result["reject_banner_hidden"] = not banner.is_visible()
+    result["reject_clears_ga_cookies"] = not any(
+        c["name"].startswith("_ga") for c in context.cookies()
+    )
+    result["initial_reject_focuses_main"] = page.evaluate(
+        "document.activeElement === document.querySelector('main')"
+    )
     result["post_reject_analytics_requests"] = [
         u for u in requests if is_google_analytics(u)
     ]
@@ -47,6 +56,14 @@ with sync_playwright() as p:
     result["reject_persists_after_reload"] = not banner.is_visible()
     page.get_by_role("button", name="Cookie settings").click()
     result["settings_reopens_banner"] = banner.is_visible()
+    result["settings_focuses_reject"] = page.evaluate(
+        "document.activeElement.classList.contains('js-consent-reject')"
+    )
+    page.get_by_role("button", name="Reject analytics").click()
+    page.wait_for_timeout(100)
+    result["settings_focus_restored"] = page.evaluate(
+        "document.activeElement.classList.contains('js-cookie-settings')"
+    )
     context.close()
 
     # Accepting loads the exact GA4 stream and stores the choice.
@@ -82,6 +99,28 @@ with sync_playwright() as p:
     result["mobile_document_overflow"] = page.evaluate(
         "document.documentElement.scrollWidth-document.documentElement.clientWidth"
     )
+    result["accept_focuses_main"] = page.evaluate(
+        "document.activeElement === document.querySelector('main')"
+    )
+    page.evaluate("document.cookie='_ga_WITHDRAW=qa; Path=/'")
+    before_withdraw = len(requests)
+    page.get_by_role("button", name="Cookie settings").click()
+    with page.expect_navigation(wait_until="networkidle"):
+        page.get_by_role("button", name="Reject analytics").click()
+    result["withdrawal_choice"] = page.evaluate(
+        "localStorage.getItem('pulsewatch_analytics_consent_v1')"
+    )
+    result["withdrawal_remaining_ga_cookies"] = [
+        {"name": c["name"], "domain": c["domain"], "path": c["path"]}
+        for c in context.cookies()
+        if c["name"].startswith("_ga")
+    ]
+    result["withdrawal_clears_ga_cookies"] = not result[
+        "withdrawal_remaining_ga_cookies"
+    ]
+    result["withdrawal_stops_new_analytics_requests"] = not any(
+        is_google_analytics(url) for url in requests[before_withdraw:]
+    )
     context.close()
 
     # Returning accepted visitor: no banner and analytics starts.
@@ -110,13 +149,21 @@ checks = {
     "reject_saved": result["reject_choice"] == "denied",
     "reject_hides_and_persists": result["reject_banner_hidden"]
     and result["reject_persists_after_reload"],
+    "reject_clears_cookies": result["reject_clears_ga_cookies"],
+    "initial_reject_focuses_main": result["initial_reject_focuses_main"],
     "zero_post_reject_requests": result["post_reject_analytics_requests"] == [],
     "settings_reopens": result["settings_reopens_banner"],
+    "settings_focus_path": result["settings_focuses_reject"]
+    and result["settings_focus_restored"],
     "accept_saved": result["accept_choice"] == "granted",
     "accept_hides": result["accept_banner_hidden"],
+    "accept_focuses_main": result["accept_focuses_main"],
     "gtag_loaded_after_accept": bool(result["post_accept_gtag_requests"]),
     "measurement_id_correct": result["measurement_id_in_request"],
     "no_mobile_overflow": result["mobile_document_overflow"] <= 1,
+    "withdrawal_clears_and_stops": result["withdrawal_choice"] == "denied"
+    and result["withdrawal_clears_ga_cookies"]
+    and result["withdrawal_stops_new_analytics_requests"],
     "returning_accept_loads": result["returning_accept_banner_hidden"]
     and result["returning_accept_gtag_loaded"],
 }

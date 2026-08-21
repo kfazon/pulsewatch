@@ -13,6 +13,8 @@
 | Pre-consent GA cookies | PASS — zero observed |
 | Reject and persistence | PASS |
 | Reopen settings | PASS |
+| Withdrawal cleanup | PASS — GA cookies expired; reload returns in denied mode |
+| Focus restoration | PASS — main content or footer settings regains focus |
 | Accept and returning visitor | PASS |
 | GA loader after consent | PASS |
 | Correct Measurement ID | PASS |
@@ -26,7 +28,7 @@
 - The inline bootstrap defines Google Consent Mode v2 with analytics and all advertising consent denied.
 - `gtag.js` is not downloaded until the visitor chooses **Accept analytics**.
 - **Reject analytics** is equally available; the decision persists in local storage.
-- Footer **Cookie settings** reopens the choice. Withdrawing a previous grant updates consent and reloads the page so the Google script is no longer present.
+- Footer **Cookie settings** reopens the choice. Withdrawing a previous grant expires GA cookies and reloads the page in denied mode so the Google script is no longer present.
 - GA4 config disables Google Signals and ad personalization signals.
 - Successful forms emit `generate_lead` only after consent. The email value is never included.
 - Privacy disclosure now names the categories, purpose, legal basis, withdrawal path, Google processor/privacy links, and 2-month retention.
@@ -38,6 +40,10 @@
 - `route-gate.json` — all 11 routes at desktop/mobile, including zero pre-consent analytics requests.
 - `desktop-consent.png`, `mobile-consent.png` — visual evidence.
 - `browser_gate.py`, `route_gate.py` — reproducible local browser gates.
+
+Independent review initially found material gaps in post-accept cookie cleanup,
+equal button prominence, and focus restoration. Those gaps were corrected before
+release, and the expanded browser gate verifies each repaired path.
 
 ## Limits
 
