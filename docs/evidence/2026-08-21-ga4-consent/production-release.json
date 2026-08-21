@@ -1,0 +1,11 @@
+{
+  "runtime_commit": "2c6bcfb6b3304f1adbccddf67fddb58e5630f468",
+  "release": "pulsewatch-ga4-2c6bcfb6b3304f1a-20260821T132328Z",
+  "artifact_sha256": "f4f2a6d5d9143bbc323d91d0db8f0e576cde47321a277bf640c009bc6c1f8673",
+  "cutover_at_utc": "2026-08-21T13:24:11Z",
+  "rollback_directory": "/home/pulsewatch/backups/public_html-20260821T132411Z-pulsewatch-286c6c361d02c2f4-20260821T124417Z",
+  "preflight": "PASS",
+  "cutover": "PASS",
+  "apache_configtest": "PASS",
+  "private_lead_storage_mode": "0600"
+}

@@ -1,0 +1,31 @@
+{
+  "verified_at_utc": "2026-08-21T13:25:00Z",
+  "public_url": "https://pulsewatch.top/",
+  "routes_http_200": 14,
+  "browser_route_gate": {
+    "routes": 11,
+    "viewports": 2,
+    "checks": 22,
+    "failures": 0
+  },
+  "consent_gate": {
+    "public_http_200": true,
+    "fresh_banner_visible": true,
+    "zero_pre_consent_analytics_requests": true,
+    "zero_pre_consent_ga_cookies": true,
+    "reject_persists": true,
+    "zero_post_reject_analytics_requests": true,
+    "accept_saved": true,
+    "gtag_loaded_after_accept": true,
+    "measurement_id_correct": true,
+    "page_view_request_emitted": true,
+    "mobile_horizontal_overflow_px": 0,
+    "withdrawal_clears_ga_cookies": true,
+    "withdrawal_stops_future_analytics_requests": true
+  },
+  "realtime_api_readback": {
+    "status": "blocked",
+    "reason": "Google Analytics Data API is disabled on the OAuth consumer project"
+  },
+  "pass": true
+}
