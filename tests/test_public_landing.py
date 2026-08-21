@@ -233,7 +233,7 @@ def test_homepage_accessibility_contract() -> None:
     html = route_file("/").read_text(encoding="utf-8")
     assert '<link rel="icon" href="/favicon.svg" type="image/svg+xml">' in html
     assert '<p class="signal-heading">Core offer repositioned</p>' in html
-    assert '<h3>Core offer repositioned</h3>' not in html
+    assert "<h3>Core offer repositioned</h3>" not in html
 
     css = (PUBLIC / "assets/site.css").read_text(encoding="utf-8")
     assert ".dark .eyebrow{color:#8aa6ff}" in css
