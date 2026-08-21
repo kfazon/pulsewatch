@@ -1,19 +1,27 @@
 # PulseWatch — aktivni komercijalni, web, SEO i marketinški plan
 
-**Datum:** 2026-08-21  
-**Status:** aktivni plan izvršenja  
-**Izdavatelj usluge:** INMAR d.o.o.  
+**Datum:** 2026-08-21
+**Status:** aktivni plan izvršenja
+**Izdavatelj usluge:** INMAR d.o.o.
 **Pravilo:** prvo dokaz plaćene vrijednosti, zatim širenje softwarea.
 
 ## 1. Izvršna odluka
 
-PulseWatch se zasad ne prodaje kao gotov self-service SaaS. Prodaje se kao **upravljani market-watch desk** za regionalne vlasnike brendova i ekskluzivne distributere.
+PulseWatch se zasad ne prodaje kao gotov self-service SaaS. Prodaje se kao
+**upravljani competitor-move desk** za male specijalizirane CRO/performance
+agencije (otprilike 5–30 ljudi) koje vode više ecommerce ili SaaS klijenata.
 
 Početni posao:
 
-> Na unaprijed dogovorenim javnim reseller i konkurentskim URL-ovima otkrivamo važne promjene cijene, dostupnosti i promotivnih tvrdnji, provjeravamo dokaz i pretvaramo signal u odgovornu osobu, rok i sljedeću komercijalnu akciju.
+> Na unaprijed dogovorenim javnim konkurentskim URL-ovima otkrivamo važne
+> promjene ponude, cijene, landing stranica i poruka, provjeravamo dokaz i
+> pretvaramo signal u client-ready CRO priliku: utjecaj, preporučeni test ili
+> akciju, ownera i sljedeći korak.
 
-Prvi proizvod je **plaćeni 30-dnevni pilot**, a glavni recurring proizvod je **PulseWatch Managed**. Lite i Managed Plus ostaju kasniji paketi, ne fokus početne prodaje.
+Prvi proizvod je **prepaid 30-dnevni Agency Design-Partner Pilot**, a glavni
+recurring proizvod je **PulseWatch Managed Agency Desk**. Regionalni vlasnici
+brendova/distributeri ostaju unaprijed definiran fallback ICP samo ako agency
+test padne; segmenti se ne testiraju paralelno.
 
 ## 2. Zašto bi kupac angažirao PulseWatch
 
@@ -33,13 +41,18 @@ Ne tvrdimo da pratimo “cijeli internet”, da ništa ne može biti propušteno
 
 ### Idealni profil
 
-- vlasnik brenda ili ekskluzivni distributer;
-- približno 20–500 zaposlenih ili dovoljno vrijedna distribucijska mreža;
-- 20–100 poznatih reseller/prodajnih URL-ova;
-- cijene, promocije, dostupnost ili komercijalne poruke mijenjaju se dovoljno često;
-- danas se praćenje radi ručno, stihijski ili bez jasnog ownera;
-- postoji commercial, channel ili e-commerce manager koji može reagirati;
-- jedna pravodobna reakcija potencijalno vrijedi više od mjesečne cijene.
+- specijalizirana CRO/performance agencija od približno 5–30 ljudi;
+- više aktivnih ecommerce ili SaaS klijenata;
+- client lead/strategist koji redovito pretvara nalaze u test backlog,
+  kampanju, landing promjenu ili klijentski brief;
+- pet imenovanih konkurenata za jednog design-partner klijenta;
+- jasna tjedna optimizacijska odluka koju javni signal može promijeniti;
+- spremnost potvrditi relevantnost signala, akciju i ishod.
+
+Javni vendor podaci sugeriraju da su marketing agencije aktivni korisnici
+competitor monitoringa i da imaju mnogo monitora po korisniku. To je samo
+directional evidence, ne dokaz PulseWatch willingness-to-pay; zato odluku
+potvrđuje isključivo prepaid pilot.
 
 ### Ne ciljati prvo
 
@@ -56,14 +69,14 @@ INMAR d.o.o. nije u sustavu PDV-a; svi dolje navedeni iznosi su konačni i bez d
 
 | Paket | Status | Cijena | Opseg | Cilj |
 |---|---|---:|---|---|
-| Paid Pilot | prodavati prvi | 1.500 EUR jednokratno | 30 dana, jedna odluka/watchlista, do 30 javnih URL-ova, kickoff, reviewed signali, završni report i decision session | dokazati barem jedan signal korišten za stvarnu akciju |
-| Managed | glavni recurring | 1.490 EUR/mj., min. 3 mj. | do 50 URL-ova, do 3 teme, human review, hitni radni-dan alert za dogovoreni prag, tjedni digest, mjesečni report i sastanak | ponovljiva operativna vrijednost |
+| Agency Design-Partner Pilot | prodavati prvi | 1.500 EUR jednokratno | 30 dana, jedan klijent, pet konkurenata, do 30 javnih URL-ova, kickoff, reviewed signali, client-ready brief i decision session | dokazati barem jedan signal pretvoren u klijentski test ili akciju |
+| Managed Agency Desk | glavni recurring | 1.490 EUR/mj., min. 3 mj. | jedna klijentska watchlista, do 50 URL-ova, human review, hitni radni-dan alert za dogovoreni prag, tjedni client-ready digest, mjesečni report i sastanak | ponovljiva agency vrijednost |
 | Lite | ne prodavati prije standardizacije | 690 EUR/mj. | do 20 URL-ova, jedna tema, asinkrono, bez hitnog alerta i bez mjesečnog sastanka | niži-touch standardizirani workflow |
 | Managed Plus | kasniji upsell | 2.490 EUR/mj. | dvije watchliste, do 100 URL-ova, više stakeholdera i češći decision ritam | veći prihod pod rizikom |
 
 ### Pilot PASS/STOP
 
-**PASS:** najmanje jedan signal korišten je za dokumentiranu odluku ili akciju i kupac prihvaća cijenu nastavka.  
+**PASS:** najmanje jedan signal korišten je za dokumentiranu odluku ili akciju i kupac prihvaća cijenu nastavka.
 **STOP:** nema vrijedne odluke, nema akcijskog ownera, izvori ne daju dokaz ili kupac zapravo treba jeftini self-service alat.
 
 ## 5. Prodajni sustav
@@ -82,13 +95,18 @@ INMAR d.o.o. nije u sustavu PDV-a; svi dolje navedeni iznosi su konačni i bez d
 
 ### Bounded prodajna poruka
 
-> Vaš tim može kupiti page-monitoring alat za nekoliko desetaka eura. Tada još mora odabrati izvore, očistiti lažne promjene, dokazati što se dogodilo i odlučiti tko reagira. PulseWatch preuzima taj operativni sloj. U plaćenom 30-dnevnom pilotu pratimo jednu jasno definiranu komercijalnu odluku i dokazujemo vodi li barem jedan signal stvarnoj akciji. Ako ne vodi, ne preporučujemo nastavak.
+> Vaša agencija može kupiti page-monitoring alat za nekoliko desetaka eura.
+> Tada još mora odabrati izvore, očistiti lažne promjene, dokazati što se
+> dogodilo i pretvoriti nalaz u preporuku koju klijent može odobriti.
+> PulseWatch preuzima taj operativni sloj. U prepaid 30-dnevnom pilotu pratimo
+> pet konkurenata jednog klijenta i dokazujemo vodi li barem jedan signal do
+> stvarnog testa ili akcije. Ako ne vodi, ne preporučujemo nastavak.
 
 ### Kanali, redoslijedom
 
-1. founder-led, precizni account-based outreach nakon odobrenja liste i poruke;
-2. partnerstva s regionalnim e-commerce, distributerskim i brand-management savjetnicima;
-3. LinkedIn sadržaj temeljen na stvarnim anonimnim signalima i metodologiji;
+1. founder-led, permissioned design-partner outreach nakon odobrenja liste i poruke;
+2. CRO/performance agency zajednice i partnerske preporuke;
+3. javni competitor teardown sadržaj s dokazom i preporučenim testom;
 4. SEO za stabilne problem/use-case upite;
 5. gostujuće analize i originalni benchmark podaci;
 6. plaćeni oglasi tek nakon dokazane landing-page i sales konverzije.
@@ -116,9 +134,11 @@ Nema masovnog slanja, kupljenih lista, lažnih recenzija, umjetnih linkova ili n
 
 Objavljuju se tek nakon live SERP/keyword provjere i dovoljnog originalnog sadržaja:
 
-- `/competitor-price-monitoring-for-distributors`
-- `/reseller-price-monitoring`
-- `/promotion-monitoring-for-brands`
+- `/competitor-monitoring-for-agencies`
+- `/cro-competitor-analysis`
+- `/competitor-landing-page-monitoring`
+- `/competitor-pricing-page-monitoring`
+- `/competitor-seo-change-monitoring`
 - `/competitor-change-alerts`
 - `/market-watch-service`
 
@@ -163,12 +183,12 @@ Tehnički SEO početne stranice, canonical, redirects, robots, sitemap, schema i
 
 | Klaster | Namjera | Ciljna stranica |
 |---|---|---|
-| managed competitor monitoring service | komercijalna | homepage / market-watch service |
-| competitor price monitoring for distributors | komercijalna, specifična | use-case page |
-| reseller price monitoring | komercijalna | use-case page |
-| monitor competitor promotions | problem/solution | use-case + guide |
+| competitor monitoring for agencies | komercijalna | homepage / agency use-case |
+| competitor analysis for CRO agencies | komercijalna, specifična | use-case page |
+| competitor landing page monitoring | komercijalna | use-case page |
+| monitor competitor pricing pages | problem/solution | use-case + guide |
 | competitor website change alerts | solution comparison | use-case page |
-| how to monitor reseller prices | informacijska | guide |
+| how to turn competitor changes into CRO tests | informacijska | guide |
 | reduce competitor alert noise | informacijska / evaluation | methodology guide |
 | competitor monitoring report example | evaluation | sample report |
 
@@ -243,9 +263,9 @@ GSC i web analitika nisu dokaz prihoda; `pilot_paid` i recurring naplata jesu.
 
 **Gate:** kupac može razumjeti ponudu, cijenu, dokaz, granice i sljedeći korak bez razgovora.
 
-### Sprint 2 — prvi pipeline (tjedni 2–4)
+### Sprint 2 — prvi agency pipeline (tjedni 2–4)
 
-- dovršiti 50-account universe i top 30 prioriteta;
+- dovršiti universe specijaliziranih CRO/performance agencija i top 30 prioriteta;
 - pripremiti 3 bounded sample signala;
 - pripremiti discovery script, one-pager, pilot scope i value recap;
 - nakon eksplicitnog odobrenja account liste, kanala i copyja provesti precizan outreach.
@@ -329,6 +349,9 @@ second approval.
 
 - postojeći evidence-grounded plan u PR-u #22: `docs/COMPETITIVE_POSITIONING_AND_90_DAY_BUSINESS_PLAN_2026-08-17.md`;
 - aktualno istraživanje search pozicioniranja: `/Users/kfazon/.hermes/artifacts/pulsewatch-seo/search-positioning-research-20260821.md`;
+- competitor/pricing/positioning matrica: `docs/evidence/2026-08-21-commercial-website-foundation/competitor-pricing-positioning-matrix.md`;
+- red-team poslovne teze: `docs/evidence/2026-08-21-commercial-website-foundation/business-thesis-red-team.md`;
+- ICP i GTM usporedba: `docs/evidence/2026-08-21-commercial-website-foundation/initial-icp-and-gtm.md`;
 - Google Search Central: Search Essentials, helpful content, ranking systems, AI features i AI optimization guidance;
 - Bing Webmaster Tools: AI Performance i IndexNow guidance;
 - službene competitor stranice navedene u evidence-grounded business planu.

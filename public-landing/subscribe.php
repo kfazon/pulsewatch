@@ -1,122 +1,121 @@
 <?php
-/**
- * PulseWatch - Email Subscription Handler
- * 
- * Receives email, logs to subscribers.json, sends Discord notification
- */
-
+// PulseWatch managed-pilot lead capture.
 header('Content-Type: application/json');
+header('Access-Control-Allow-Origin: https://pulsewatch.top');
+header('Access-Control-Allow-Methods: POST, OPTIONS');
+header('Access-Control-Allow-Headers: Content-Type');
 
-$discord_webhook_url = getenv('PULSEWATCH_DISCORD_WEBHOOK_URL') ?: '';
-$subscribers_file = getenv('PULSEWATCH_SUBSCRIBERS_FILE') ?: __DIR__ . '/subscribers.json';
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(204);
+    exit;
+}
 
-// Only accept POST
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);
-    echo json_encode(['success' => false, 'error' => 'Method not allowed']);
+    echo json_encode(['success' => false, 'message' => 'Method not allowed']);
     exit;
 }
 
-// Parse request body
+$subscribers_file = getenv('PULSEWATCH_SUBSCRIBERS_FILE') ?: '';
+if ($subscribers_file === '' || $subscribers_file[0] !== '/') {
+    http_response_code(503);
+    echo json_encode(['success' => false, 'message' => 'Signup is temporarily unavailable']);
+    exit;
+}
+
+$target_dir = realpath(dirname($subscribers_file));
+$public_dir = realpath(__DIR__);
+if (
+    $target_dir === false ||
+    $public_dir === false ||
+    $target_dir === $public_dir ||
+    str_starts_with($target_dir . DIRECTORY_SEPARATOR, $public_dir . DIRECTORY_SEPARATOR)
+) {
+    http_response_code(503);
+    echo json_encode(['success' => false, 'message' => 'Signup is temporarily unavailable']);
+    exit;
+}
+
 $input = json_decode(file_get_contents('php://input'), true);
-
-// Handle count request (for landing page dynamic counter)
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($input['action']) && $input['action'] === 'count') {
-  $subscribers = [];
-  if (file_exists($subscribers_file)) {
-    $content = file_get_contents($subscribers_file);
-    $subscribers = json_decode($content, true) ?? [];
-  }
-  echo json_encode(['count' => count($subscribers)]);
-  exit;
-}
-
-if (!$input || !isset($input['email'])) {
+if (!is_array($input) || !isset($input['email'])) {
     http_response_code(400);
-    echo json_encode(['success' => false, 'error' => 'Email is required']);
+    echo json_encode(['success' => false, 'message' => 'Email is required']);
     exit;
 }
 
-$email = trim($input['email']);
-
-// Validate email
-if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+$email = filter_var(trim((string) $input['email']), FILTER_VALIDATE_EMAIL);
+if (!$email) {
     http_response_code(400);
-    echo json_encode(['success' => false, 'error' => 'Invalid email address']);
+    echo json_encode(['success' => false, 'message' => 'Invalid email address']);
     exit;
 }
 
-// Load existing subscribers
-$subscribers = [];
-if (file_exists($subscribers_file)) {
-    $content = file_get_contents($subscribers_file);
-    $subscribers = json_decode($content, true) ?? [];
-}
-
-// Check for duplicate
-$emails = array_column($subscribers, 'email');
-if (in_array($email, $emails)) {
-    echo json_encode(['success' => true, 'message' => 'Already subscribed']);
+$handle = @fopen($subscribers_file, 'c+');
+if ($handle === false || !flock($handle, LOCK_EX)) {
+    if (is_resource($handle)) {
+        fclose($handle);
+    }
+    http_response_code(503);
+    echo json_encode(['success' => false, 'message' => 'Signup is temporarily unavailable']);
     exit;
 }
 
-// Add new subscriber
-$subscriber = [
-    'email' => $email,
-    'subscribed_at' => date('c'),
-];
-$subscribers[] = $subscriber;
-
-// Save to file
-if (file_put_contents($subscribers_file, json_encode($subscribers, JSON_PRETTY_PRINT)) === false) {
-    http_response_code(500);
-    echo json_encode(['success' => false, 'error' => 'Failed to save subscription']);
-    exit;
+$raw = stream_get_contents($handle);
+$subscribers = $raw === '' ? [] : json_decode($raw, true);
+if (!is_array($subscribers)) {
+    $subscribers = [];
 }
 
-// Send a notification only when a server-side webhook is configured.
-if ($discord_webhook_url !== '') {
-    $discord_payload = [
-        'content' => '🎯 **New PulseWatch Signup**',
-        'embeds' => [
-            [
-                'title' => 'New Early Adopter',
-                'color' => 3447003,
-                'fields' => [
-                    [
-                        'name' => 'Email',
-                        'value' => $email,
-                        'inline' => true,
-                    ],
-                    [
-                        'name' => 'Total Subscribers',
-                        'value' => (string) count($subscribers),
-                        'inline' => true,
-                    ],
-                ],
-                'footer' => [
-                    'text' => 'PulseWatch Landing Page',
-                ],
-                'timestamp' => date('c'),
-            ]
-        ]
-    ];
+// Enforce the published 90-day retention window for unconverted pilot leads.
+$retention_cutoff = time() - (90 * 24 * 60 * 60);
+$subscribers = array_values(array_filter(
+    $subscribers,
+    static function ($subscriber) use ($retention_cutoff): bool {
+        if (!is_array($subscriber) || !isset($subscriber['subscribed_at'])) {
+            return false;
+        }
+        $timestamp = strtotime((string) $subscriber['subscribed_at']);
+        return $timestamp !== false && $timestamp >= $retention_cutoff;
+    }
+));
 
-    $ch = curl_init($discord_webhook_url);
-    curl_setopt_array($ch, [
-        CURLOPT_POST => true,
-        CURLOPT_POSTFIELDS => json_encode($discord_payload),
-        CURLOPT_HTTPHEADER => ['Content-Type: application/json'],
-        CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_TIMEOUT => 10,
-    ]);
-    curl_exec($ch);
-    $discord_http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-    curl_close($ch);
-
-    if ($discord_http_code !== 204 && $discord_http_code !== 200) {
-        error_log("Discord webhook failed with code: $discord_http_code");
+foreach ($subscribers as $subscriber) {
+    if (isset($subscriber['email']) && strcasecmp((string) $subscriber['email'], $email) === 0) {
+        flock($handle, LOCK_UN);
+        fclose($handle);
+        echo json_encode(['success' => true, 'message' => 'You are already registered']);
+        exit;
     }
 }
 
-echo json_encode(['success' => true]);
+$subscribers[] = [
+    'email' => $email,
+    'subscribed_at' => date('c'),
+];
+
+$encoded = json_encode($subscribers, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
+if ($encoded === false) {
+    flock($handle, LOCK_UN);
+    fclose($handle);
+    http_response_code(500);
+    echo json_encode(['success' => false, 'message' => 'Could not save signup']);
+    exit;
+}
+
+rewind($handle);
+if (!ftruncate($handle, 0) || fwrite($handle, $encoded . PHP_EOL) === false || !fflush($handle)) {
+    flock($handle, LOCK_UN);
+    fclose($handle);
+    http_response_code(503);
+    echo json_encode(['success' => false, 'message' => 'Signup is temporarily unavailable']);
+    exit;
+}
+
+@chmod($subscribers_file, 0600);
+flock($handle, LOCK_UN);
+fclose($handle);
+
+echo json_encode([
+    'success' => true,
+    'message' => 'Thanks. We will review fit and send the pilot details.',
+]);

@@ -1,6 +1,6 @@
 # Evidence report — PulseWatch commercial website foundation
 
-**Date:** 2026-08-21  
+**Date:** 2026-08-21
 **Branch:** `feat/commercial-foundation`
 
 ## Scope
@@ -21,8 +21,17 @@ Immediate containment completed on 2026-08-21:
   PulseWatch document root;
 - verified the home page remains `200` while private paths return `403`;
 - revoked the exposed Discord webhook and verified it returns `404`;
-- changed source code to read credentials from server-side environment;
+- removed external webhook delivery from the lead-capture handler;
 - removed IP collection from new subscription records;
+- moved lead storage to `/var/lib/pulsewatch/subscribers.json`, outside the
+  document root, with `www-data` ownership and mode `0600`;
+- added a visible privacy notice, 90-day retention purge, exclusive file
+  locking and fail-closed storage configuration;
+- removed the tracked production environment file, replaced it with a
+  placeholder-only template and added a tracked-file secret scan to CI;
+- rotated the server-side application secrets; the published database user did
+  not exist on the current VPS database, so no database-role password rotation
+  was applicable;
 - added regression assertions for credential absence and Apache denial.
 
 Historical removal is not treated as secret recovery: the webhook was rotated
@@ -76,15 +85,17 @@ then changed to the managed-pilot offer with no adoption claim.
 | `gh auth status` | authenticated |
 | `gh issue list ...` | existing v0.1, Managed Pilot and Revenue Validation work confirmed |
 | `gh pr list ...` | open PRs #10, #11, #21, #22 confirmed |
-| full `pytest tests/ -q` gate | 9 passed |
+| full `pytest tests/ -q` gate | 10 passed |
 | targeted new truthfulness test before fix | failed as expected |
 | targeted new truthfulness test after fix | passed |
-| PHP syntax and isolated subscription flow | passed; valid, duplicate, invalid and count paths exercised; no IP retained |
-| headless Playwright desktop/mobile gate | HTTP 200, no overflow, no console errors, no failed requests |
+| PHP syntax and isolated subscription flow | passed; valid, duplicate and invalid paths exercised; one email/timestamp record, mode `0600`, no IP retained |
+| headless Playwright desktop/mobile/privacy gate | HTTP 200, one H1/main, no overflow, no console errors, no failed requests |
 | production private-path check | home 200; `subscribers.json` 403; `.env` 403 |
 | revoked webhook verification | 404 |
 | `npm ci && npm run build` in `frontend/` | build passed; 41 modules transformed |
 | `npm audit --json` | 7 vulnerabilities: 1 low, 1 moderate, 5 high; no critical |
+| independent P0/P1/P2 review | all four findings remediated in the follow-up diff |
+| Ruff, formatting, tracked-secret scan and `git diff --check` | passed |
 
 ## Current blockers and boundaries
 
