@@ -45,11 +45,26 @@ Independent current-SERP review found that broad results are dominated by establ
 
 The next ranking gate is evidence, not another perfect audit score: all canonical routes discovered/indexed, first non-brand impressions, query-to-page relevance, then qualified clicks and pilot enquiries. Thin pages or invented case studies are explicitly excluded.
 
+## Production verification
+
+- Release: `pulsewatch-286c6c361d02c2f4-20260821T124417Z`.
+- Release archive SHA-256: `f900429155382f0698009570ff8c2fcccb7d65c9c55a5ccdbcfa8df051d092eb`.
+- Rollback tree retained: `/home/pulsewatch/backups/public_html-20260821T124502Z-pulsewatch-1a546ce65aae773e-20260821T114859Z`.
+- All 11 canonical routes, favicon, sitemap and robots returned HTTP 200.
+- Private paths `/subscribers.json`, `/.env` and `/.env.production` returned HTTP 403.
+- `www` returned HTTP 301 to the canonical host.
+- Live CSS SHA-256 matched the merged release.
+- Production browser gate: 11 routes × 2 viewports = 22 checks, zero failures and zero horizontal overflow.
+- Footer mark and wordmark rendered as `inline-flex`, row-direction, center-aligned on every tested route and viewport.
+- Public signup E2E returned HTTP 200 with `success: true`; the exact QA row was then removed and storage mode reverified as `0600`.
+- Apache configuration returned `Syntax OK`; the private lead file remained owned by `pulsewatch:www-data`.
+
 ## Evidence
 
 - `geometry.json`
 - `lighthouse-summary.json`
 - `gsc-summary.json`
+- `production-gate.json`
 - `screenshots/desktop-home.png`
 - `screenshots/mobile-home.png`
 - `screenshots/desktop-sample-report.png`
