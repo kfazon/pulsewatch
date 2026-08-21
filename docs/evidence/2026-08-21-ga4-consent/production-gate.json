@@ -24,8 +24,12 @@
     "withdrawal_stops_future_analytics_requests": true
   },
   "realtime_api_readback": {
-    "status": "blocked",
-    "reason": "Google Analytics Data API is disabled on the OAuth consumer project"
+    "status": "pass",
+    "verified_at_utc": "2026-08-21T14:00:21Z",
+    "event_name": "page_view",
+    "event_count": 1,
+    "method": "Synthetic browser-format verification event sent from the production VPS after the Analytics Data API was enabled",
+    "local_environment_note": "The verification Mac resolves Google Analytics collection hosts to 0.0.0.0, so the readback event was sent from the production VPS network"
   },
   "pass": true
 }

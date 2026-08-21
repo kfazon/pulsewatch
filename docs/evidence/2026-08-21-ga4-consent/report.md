@@ -27,6 +27,7 @@
 | Production browser route gate | PASS — 11 routes × 2 viewports, 22/22 |
 | Production consent gate | PASS — pre-consent, accept, reject and withdrawal |
 | Production `page_view` | PASS — request emitted with the expected Measurement ID after consent |
+| Realtime Data API readback | PASS — `page_view` observed with event count 1 after API enablement |
 
 ## Implementation
 
@@ -56,4 +57,4 @@ release, and the expanded browser gate verifies each repaired path.
 ## Limits
 
 - This implementation does not claim legal certification.
-- Google Analytics Data API Realtime readback remains unavailable because that API is disabled on the OAuth consumer project. The public browser gate independently verifies the `page_view` request with the expected Measurement ID after opt-in, but this report does not claim a Realtime API row that could not be read.
+- Realtime readback was verified with a synthetic browser-format `page_view` sent from the production VPS because the verification Mac locally resolves Google Analytics collection hosts to `0.0.0.0`. This proves the enabled Data API can read an accepted event from the PulseWatch property; it is not claimed as organic visitor traffic.
