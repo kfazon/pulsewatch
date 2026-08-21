@@ -5,12 +5,48 @@ LANDING = Path(__file__).resolve().parents[1] / "public-landing" / "index.html"
 PUBLIC = LANDING.parent
 
 
-def test_landing_uses_current_early_access_status() -> None:
+def test_landing_uses_current_managed_pilot_status() -> None:
     html = LANDING.read_text(encoding="utf-8")
 
-    assert "Early Access" in html
+    assert "Managed Pilot" in html
     assert "Launching Q2 2026" not in html
     assert "Q2 2026" not in html
+
+
+def test_landing_does_not_claim_unverified_customer_adoption() -> None:
+    html = LANDING.read_text(encoding="utf-8")
+
+    unsupported_claims = (
+        "247",
+        "growth teams already on the list",
+        "Used by growth teams worldwide",
+        "From startups to enterprise",
+    )
+    for claim in unsupported_claims:
+        assert claim not in html
+
+    assert "Request the managed pilot details" in html
+
+
+def test_landing_states_the_initial_managed_offer() -> None:
+    html = LANDING.read_text(encoding="utf-8")
+
+    assert "managed competitor monitoring" in html.lower()
+    assert "brand owners and distributors" in html.lower()
+    assert "evidence-backed" in html.lower()
+
+
+def test_subscription_handler_keeps_secrets_and_runtime_state_private() -> None:
+    handler = (PUBLIC / "subscribe.php").read_text(encoding="utf-8")
+    apache = (
+        PUBLIC.parents[0] / "ops" / "apache" / "private-landing-state.conf"
+    ).read_text(encoding="utf-8")
+
+    assert "discord.com/api/" + "webhooks/" not in handler
+    assert "getenv('PULSEWATCH_DISCORD_WEBHOOK_URL')" in handler
+    assert "REMOTE_ADDR" not in handler
+    assert "subscribers\\.json" in apache
+    assert "Require all denied" in apache
 
 
 def test_landing_has_canonical_indexability_and_semantics() -> None:

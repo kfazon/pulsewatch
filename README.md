@@ -1,5 +1,10 @@
 # PulseWatch — Week 1 PoC
 
+> **Commercial direction:** the active product, website, SEO, sales and
+> marketing plan is in
+> [`docs/ACTIVE_COMMERCIAL_WEBSITE_SEO_PLAN_2026-08-21.md`](docs/ACTIVE_COMMERCIAL_WEBSITE_SEO_PLAN_2026-08-21.md).
+> The repository is still a PoC; public claims must not imply otherwise.
+
 Simple CLI proof-of-concept for:
 - capturing a single URL (HTML + full-page screenshot)
 - storing artifacts on local filesystem
@@ -7,7 +12,7 @@ Simple CLI proof-of-concept for:
 
 ## Quick start (Docker Compose full stack)
 ```bash
-cp .env.production .env && docker-compose up --build
+cp .env.example .env && docker-compose up --build
 ```
 
 Services:

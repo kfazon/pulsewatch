@@ -7,8 +7,8 @@
 
 header('Content-Type: application/json');
 
-$discord_webhook_url = 'https://discord.com/api/webhooks/1486056242379096134/mIQgGPR_hgyzqj7sCkUkNitFCylafUx1ZIEV57R_dT9JrMDgixDeWiH9c39gD5XlmLPP';
-$subscribers_file = __DIR__ . '/subscribers.json';
+$discord_webhook_url = getenv('PULSEWATCH_DISCORD_WEBHOOK_URL') ?: '';
+$subscribers_file = getenv('PULSEWATCH_SUBSCRIBERS_FILE') ?: __DIR__ . '/subscribers.json';
 
 // Only accept POST
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -64,7 +64,6 @@ if (in_array($email, $emails)) {
 $subscriber = [
     'email' => $email,
     'subscribed_at' => date('c'),
-    'ip' => $_SERVER['REMOTE_ADDR'] ?? 'unknown',
 ];
 $subscribers[] = $subscriber;
 
@@ -75,48 +74,49 @@ if (file_put_contents($subscribers_file, json_encode($subscribers, JSON_PRETTY_P
     exit;
 }
 
-// Send Discord notification
-$discord_payload = [
-    'content' => '🎯 **New PulseWatch Signup**',
-    'embeds' => [
-        [
-            'title' => 'New Early Adopter',
-            'color' => 3447003, // Blue
-            'fields' => [
-                [
-                    'name' => 'Email',
-                    'value' => $email,
-                    'inline' => true,
+// Send a notification only when a server-side webhook is configured.
+if ($discord_webhook_url !== '') {
+    $discord_payload = [
+        'content' => '🎯 **New PulseWatch Signup**',
+        'embeds' => [
+            [
+                'title' => 'New Early Adopter',
+                'color' => 3447003,
+                'fields' => [
+                    [
+                        'name' => 'Email',
+                        'value' => $email,
+                        'inline' => true,
+                    ],
+                    [
+                        'name' => 'Total Subscribers',
+                        'value' => (string) count($subscribers),
+                        'inline' => true,
+                    ],
                 ],
-                [
-                    'name' => 'Total Subscribers',
-                    'value' => (string) count($subscribers),
-                    'inline' => true,
+                'footer' => [
+                    'text' => 'PulseWatch Landing Page',
                 ],
-            ],
-            'footer' => [
-                'text' => 'PulseWatch Landing Page',
-            ],
-            'timestamp' => date('c'),
+                'timestamp' => date('c'),
+            ]
         ]
-    ]
-];
+    ];
 
-$ch = curl_init($discord_webhook_url);
-curl_setopt_array($ch, [
-    CURLOPT_POST => true,
-    CURLOPT_POSTFIELDS => json_encode($discord_payload),
-    CURLOPT_HTTPHEADER => ['Content-Type: application/json'],
-    CURLOPT_RETURNTRANSFER => true,
-    CURLOPT_TIMEOUT => 10,
-]);
-$discord_response = curl_exec($ch);
-$discord_http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-curl_close($ch);
+    $ch = curl_init($discord_webhook_url);
+    curl_setopt_array($ch, [
+        CURLOPT_POST => true,
+        CURLOPT_POSTFIELDS => json_encode($discord_payload),
+        CURLOPT_HTTPHEADER => ['Content-Type: application/json'],
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_TIMEOUT => 10,
+    ]);
+    curl_exec($ch);
+    $discord_http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    curl_close($ch);
 
-// Log Discord notification success (optional, don't fail if Discord is down)
-if ($discord_http_code !== 204 && $discord_http_code !== 200) {
-    error_log("Discord webhook failed with code: $discord_http_code");
+    if ($discord_http_code !== 204 && $discord_http_code !== 200) {
+        error_log("Discord webhook failed with code: $discord_http_code");
+    }
 }
 
 echo json_encode(['success' => true]);
