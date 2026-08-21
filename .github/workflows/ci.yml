@@ -13,6 +13,8 @@ jobs:
         python-version: '3.12'
     - name: Install dependencies
       run: pip install -r requirements-dev.txt && playwright install
+    - name: Scan tracked files for secrets
+      run: python scripts/check_no_secrets.py
     # Legacy application modules do not yet have a clean full-repo Ruff baseline.
     # Keep this change gated without rewriting unrelated runtime code.
     - name: Lint landing regression test

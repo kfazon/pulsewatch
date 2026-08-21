@@ -5,12 +5,56 @@ LANDING = Path(__file__).resolve().parents[1] / "public-landing" / "index.html"
 PUBLIC = LANDING.parent
 
 
-def test_landing_uses_current_early_access_status() -> None:
+def test_landing_uses_current_managed_pilot_status() -> None:
     html = LANDING.read_text(encoding="utf-8")
 
-    assert "Early Access" in html
+    assert "Managed Pilot" in html
     assert "Launching Q2 2026" not in html
     assert "Q2 2026" not in html
+
+
+def test_landing_does_not_claim_unverified_customer_adoption() -> None:
+    html = LANDING.read_text(encoding="utf-8")
+
+    unsupported_claims = (
+        "247",
+        "growth teams already on the list",
+        "Used by growth teams worldwide",
+        "From startups to enterprise",
+    )
+    for claim in unsupported_claims:
+        assert claim not in html
+
+    assert "Request the managed pilot details" in html
+
+
+def test_landing_states_the_initial_managed_offer() -> None:
+    html = LANDING.read_text(encoding="utf-8")
+
+    assert "managed competitor monitoring" in html.lower()
+    assert "cro and performance agencies" in html.lower()
+    assert "client-ready" in html.lower()
+    assert "Add any competitor URL" not in html
+    assert "We scrape daily" not in html
+    assert "Zero Noise" not in html
+
+
+def test_subscription_handler_keeps_secrets_and_runtime_state_private() -> None:
+    handler = (PUBLIC / "subscribe.php").read_text(encoding="utf-8")
+    apache = (
+        PUBLIC.parents[0] / "ops" / "apache" / "private-landing-state.conf"
+    ).read_text(encoding="utf-8")
+
+    assert "discord.com/api/" + "webhooks/" not in handler
+    assert "PULSEWATCH_DISCORD_WEBHOOK_URL" not in handler
+    assert "getenv('PULSEWATCH_SUBSCRIBERS_FILE')" in handler
+    assert "getenv('PULSEWATCH_SUBSCRIBERS_FILE') ?: ''" in handler
+    assert "__DIR__ . '/subscribers.json'" not in handler
+    assert "flock($handle, LOCK_EX)" in handler
+    assert "90 * 24 * 60 * 60" in handler
+    assert "REMOTE_ADDR" not in handler
+    assert "subscribers\\.json" in apache
+    assert "Require all denied" in apache
 
 
 def test_landing_has_canonical_indexability_and_semantics() -> None:
@@ -40,7 +84,20 @@ def test_sitemap_contains_only_canonical_public_urls() -> None:
     namespace = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
     urls = [node.text for node in root.findall("sm:url/sm:loc", namespace)]
 
-    assert urls == ["https://pulsewatch.top/"]
+    assert urls == [
+        "https://pulsewatch.top/",
+        "https://pulsewatch.top/privacy.html",
+    ]
+
+
+def test_landing_links_to_a_specific_privacy_notice() -> None:
+    html = LANDING.read_text(encoding="utf-8")
+    privacy = (PUBLIC / "privacy.html").read_text(encoding="utf-8")
+
+    assert html.count('href="/privacy.html"') >= 3
+    assert "INMAR d.o.o." in privacy
+    assert "automatically removed from the lead file after 90 days" in privacy
+    assert 'href="https://inmar.hr/#contact"' in privacy
 
 
 def test_apache_rules_canonicalize_http_and_www_without_touching_other_hosts() -> None:
