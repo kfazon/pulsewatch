@@ -41,6 +41,8 @@ That does **not** establish a strong ranking position. Current GSC evidence:
 - 0 clicks, 0 impressions and no query rows in the inspected 28-day window.
 - The competitor-monitoring SERPs contain established monitoring and pricing-intelligence vendors, so authority, links, useful original content and time remain necessary.
 
+Independent current-SERP review found that broad results are dominated by established, tool-led competitors such as [MonitoringMonkey](https://monitoringmonkey.com/) and [Visualping](https://visualping.io/competitive-monitoring). PulseWatch is intentionally a managed service, so generic software-intent terms are both difficult and poorly matched. The defensible future cluster is service-qualified: managed competitive intelligence for CRO agencies, material competitor-move analysis, a pricing-change response checklist and a reusable client intelligence brief template. Those pages must be original and evidence-led, not filler.
+
 The next ranking gate is evidence, not another perfect audit score: all canonical routes discovered/indexed, first non-brand impressions, query-to-page relevance, then qualified clicks and pilot enquiries. Thin pages or invented case studies are explicitly excluded.
 
 ## Evidence
