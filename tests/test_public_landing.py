@@ -57,3 +57,9 @@ def test_apache_rules_canonicalize_http_and_www_without_touching_other_hosts() -
     assert "%{HTTPS} !=on [OR]" in rules
     assert "https://pulsewatch.top%{REQUEST_URI}" in rules
     assert "[R=301,L,NE]" in rules
+
+
+def test_google_verification_file_matches_the_registered_token() -> None:
+    verification = (PUBLIC / "googledaf5b7b73736b24c.html").read_text(encoding="utf-8")
+
+    assert verification == ("google-site-verification: googledaf5b7b73736b24c.html\n")
