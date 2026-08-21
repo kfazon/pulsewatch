@@ -218,3 +218,22 @@ def test_no_blank_or_javascript_links() -> None:
         assert not re.search(
             r'href=["\'](?:#["\']|javascript:)', html, flags=re.IGNORECASE
         )
+
+
+def test_shared_css_preserves_brand_and_component_alignment() -> None:
+    css = (PUBLIC / "assets/site.css").read_text(encoding="utf-8")
+    assert ".site-footer .brand{display:inline-flex;align-items:center" in css
+    assert ".site-footer a:not(.brand)" in css
+    assert ".price small{display:block" in css
+    assert ".cta-band>.button{flex:0 0 auto}" in css
+    assert ".hero-actions .button{width:100%}" in css
+
+
+def test_homepage_accessibility_contract() -> None:
+    html = route_file("/").read_text(encoding="utf-8")
+    assert '<link rel="icon" href="/favicon.svg" type="image/svg+xml">' in html
+    assert '<p class="signal-heading">Core offer repositioned</p>' in html
+    assert "<h3>Core offer repositioned</h3>" not in html
+
+    css = (PUBLIC / "assets/site.css").read_text(encoding="utf-8")
+    assert ".dark .eyebrow{color:#8aa6ff}" in css
