@@ -24,7 +24,7 @@ Immediate containment completed on 2026-08-21:
 - removed external webhook delivery from the lead-capture handler;
 - removed IP collection from new subscription records;
 - moved lead storage to `/var/lib/pulsewatch/subscribers.json`, outside the
-  document root, with `www-data` ownership and mode `0600`;
+  document root, owned by the production PHP-FPM account with mode `0600`;
 - added a visible privacy notice, 90-day retention purge, exclusive file
   locking and fail-closed storage configuration;
 - removed the tracked production environment file, replaced it with a
@@ -96,6 +96,8 @@ then changed to the managed-pilot offer with no adoption claim.
 | `npm audit --json` | 7 vulnerabilities: 1 low, 1 moderate, 5 high; no critical |
 | independent P0/P1/P2 review | all four findings remediated in the follow-up diff |
 | Ruff, formatting, tracked-secret scan and `git diff --check` | passed |
+| production PHP-FPM storage probe | request environment present; runtime account read/write verified after owner correction |
+| production lead flow | controlled signup passed, test record removed under lock, active record count returned to zero |
 
 ## Current blockers and boundaries
 
