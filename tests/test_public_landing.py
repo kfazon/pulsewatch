@@ -180,6 +180,37 @@ def test_lead_form_and_privacy_disclosure_match_handler() -> None:
     assert "Require all denied" in apache
 
 
+def test_ga4_is_consent_gated_and_privacy_disclosed() -> None:
+    site_js = (PUBLIC / "assets/site.js").read_text(encoding="utf-8")
+    privacy = route_file("/privacy/").read_text(encoding="utf-8")
+
+    for route in CANONICAL_ROUTES:
+        html = route_file(route).read_text(encoding="utf-8")
+        assert 'window.PULSEWATCH_GA4_ID="G-8BCQQRSG45"' in html
+        assert 'analytics_storage:"denied"' in html
+        assert 'ad_storage:"denied"' in html
+        assert 'class="consent-banner"' in html
+        assert 'aria-live="polite"' in html
+        assert '<main id="main" tabindex="-1">' in html
+        assert html.count("button consent-choice") == 2
+        assert "Accept analytics" in html
+        assert "Reject analytics" in html
+        assert 'src="https://www.googletagmanager.com' not in html
+
+    assert "pulsewatch_analytics_consent_v1" in site_js
+    assert "readConsent() !== 'granted'" in site_js
+    assert "googletagmanager.com/gtag/js" in site_js
+    assert "allow_google_signals: false" in site_js
+    assert "allow_ad_personalization_signals: false" in site_js
+    assert "deleteAnalyticsCookies" in site_js
+    assert "Max-Age=0; Path=/" in site_js
+    assert "settingsInvoker || document.querySelector('main')" in site_js
+    assert "generate_lead" in site_js
+    assert 'id="analytics"' in privacy
+    assert "disabled unless you select" in privacy
+    assert "two months" in privacy
+
+
 def test_robots_and_sitemap_publish_only_canonical_routes() -> None:
     robots = (PUBLIC / "robots.txt").read_text(encoding="utf-8")
     assert "User-agent: *" in robots
