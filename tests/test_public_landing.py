@@ -51,6 +51,7 @@ def test_apache_rules_canonicalize_http_and_www_without_touching_other_hosts() -
         / "canonical-host-rewrite.conf"
     ).read_text(encoding="utf-8")
 
+    assert "<VirtualHost 164.68.100.134:80>" in rules
     assert "^(?:www\\.)?pulsewatch\\.top$" in rules
     assert "^www\\.pulsewatch\\.top$" in rules
     assert "%{HTTPS} !=on [OR]" in rules
