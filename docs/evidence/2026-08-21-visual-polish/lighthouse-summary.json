@@ -1,0 +1,9 @@
+{
+  "candidate_url": "http://127.0.0.1:8766/",
+  "performance": 100,
+  "accessibility": 100,
+  "best_practices": 100,
+  "seo": 100,
+  "source": "Lighthouse local candidate audit",
+  "note": "Lighthouse category scores validate the rendered page, not future Google rankings."
+}

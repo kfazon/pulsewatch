@@ -1,0 +1,18 @@
+{
+  "property": "https://pulsewatch.top/",
+  "inspection": {
+    "indexed": ["https://pulsewatch.top/"],
+    "not_known_to_google_yet": 10,
+    "canonical_routes_checked": 11
+  },
+  "search_performance_28d": {
+    "rows": 0,
+    "clicks": 0,
+    "impressions": 0
+  },
+  "sitemap": {
+    "url": "https://pulsewatch.top/sitemap.xml",
+    "resubmitted": true
+  },
+  "interpretation": "Technical readiness is strong, but current organic visibility and ranking proof are absent."
+}
