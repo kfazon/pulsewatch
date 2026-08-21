@@ -1,0 +1,21 @@
+{
+  "configured_at_utc": "2026-08-21T13:03:51Z",
+  "analytics_account": {
+    "resource": "accounts/25661613",
+    "display_name": "inmar.hr"
+  },
+  "property": {
+    "resource": "properties/550978406",
+    "display_name": "PulseWatch - GA4",
+    "time_zone": "Europe/Zagreb",
+    "currency": "EUR",
+    "event_data_retention": "TWO_MONTHS"
+  },
+  "web_stream": {
+    "resource": "properties/550978406/dataStreams/15477034106",
+    "display_name": "pulsewatch.top",
+    "default_uri": "https://pulsewatch.top",
+    "measurement_id": "G-8BCQQRSG45"
+  },
+  "secrets_recorded": false
+}

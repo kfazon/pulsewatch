@@ -1,0 +1,37 @@
+{
+  "fresh_banner_visible": true,
+  "pre_consent_analytics_requests": [],
+  "pre_consent_ga_cookies": [],
+  "reject_choice": "denied",
+  "reject_banner_hidden": true,
+  "post_reject_analytics_requests": [],
+  "reject_persists_after_reload": true,
+  "settings_reopens_banner": true,
+  "accept_choice": "granted",
+  "accept_banner_hidden": true,
+  "post_accept_gtag_requests": [
+    "https://www.googletagmanager.com/gtag/js?id=G-8BCQQRSG45"
+  ],
+  "post_accept_collect_count": 1,
+  "post_accept_collect_statuses": [],
+  "measurement_id_in_request": true,
+  "mobile_document_overflow": 0,
+  "returning_accept_banner_hidden": true,
+  "returning_accept_gtag_loaded": true,
+  "checks": {
+    "fresh_banner_visible": true,
+    "zero_pre_consent_requests": true,
+    "zero_pre_consent_ga_cookies": true,
+    "reject_saved": true,
+    "reject_hides_and_persists": true,
+    "zero_post_reject_requests": true,
+    "settings_reopens": true,
+    "accept_saved": true,
+    "accept_hides": true,
+    "gtag_loaded_after_accept": true,
+    "measurement_id_correct": true,
+    "no_mobile_overflow": true,
+    "returning_accept_loads": true
+  },
+  "pass": true
+}
