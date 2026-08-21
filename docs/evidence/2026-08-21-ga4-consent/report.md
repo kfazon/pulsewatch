@@ -1,6 +1,6 @@
 # PulseWatch GA4 and consent report
 
-## Status before production deployment
+## Verified status
 
 | Gate | Result |
 |---|---|
@@ -22,6 +22,11 @@
 | Mobile overflow | PASS — 0 px |
 | All-route browser gate | PASS — 11 routes × 2 viewports, 22/22; zero pre-consent analytics requests |
 | Focused tests | PASS — 15 tests |
+| Production cutover | PASS — rollbackable release deployed |
+| Public HTTP probe | PASS — 11 routes plus favicon, sitemap and robots |
+| Production browser route gate | PASS — 11 routes × 2 viewports, 22/22 |
+| Production consent gate | PASS — pre-consent, accept, reject and withdrawal |
+| Production `page_view` | PASS — request emitted with the expected Measurement ID after consent |
 
 ## Implementation
 
@@ -40,6 +45,9 @@
 - `route-gate.json` — all 11 routes at desktop/mobile, including zero pre-consent analytics requests.
 - `desktop-consent.png`, `mobile-consent.png` — visual evidence.
 - `browser_gate.py`, `route_gate.py` — reproducible local browser gates.
+- `production-release.json` — exact deployed runtime commit, artifact and rollback path.
+- `production-gate.json` — sanitized public runtime verification.
+- `production-desktop-consent.png`, `production-mobile-consent.png` — public production render evidence.
 
 Independent review initially found material gaps in post-accept cookie cleanup,
 equal button prominence, and focus restoration. Those gaps were corrected before
@@ -48,4 +56,4 @@ release, and the expanded browser gate verifies each repaired path.
 ## Limits
 
 - This implementation does not claim legal certification.
-- Google Analytics Data API readback could not be used because that API is disabled on the OAuth client project. This does not block collection; runtime evidence verifies the expected GA loader and collection request after consent. Public production verification remains required after deployment.
+- Google Analytics Data API Realtime readback remains unavailable because that API is disabled on the OAuth consumer project. The public browser gate independently verifies the `page_view` request with the expected Measurement ID after opt-in, but this report does not claim a Realtime API row that could not be read.
