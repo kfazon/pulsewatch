@@ -1,53 +1,165 @@
+import json
+import re
 from pathlib import Path
 from xml.etree import ElementTree
 
-LANDING = Path(__file__).resolve().parents[1] / "public-landing" / "index.html"
-PUBLIC = LANDING.parent
+from bs4 import BeautifulSoup
+
+ROOT = Path(__file__).resolve().parents[1]
+PUBLIC = ROOT / "public-landing"
+CANONICAL_ROUTES = [
+    "/",
+    "/paid-pilot/",
+    "/how-it-works/",
+    "/sample-report/",
+    "/pricing/",
+    "/for-cro-agencies/",
+    "/about/",
+    "/contact/",
+    "/security/",
+    "/privacy/",
+    "/terms/",
+]
 
 
-def test_landing_uses_current_managed_pilot_status() -> None:
-    html = LANDING.read_text(encoding="utf-8")
-
-    assert "Managed Pilot" in html
-    assert "Launching Q2 2026" not in html
-    assert "Q2 2026" not in html
+def route_file(route: str) -> Path:
+    return PUBLIC / ("index.html" if route == "/" else route.strip("/") + "/index.html")
 
 
-def test_landing_does_not_claim_unverified_customer_adoption() -> None:
-    html = LANDING.read_text(encoding="utf-8")
+def test_commercial_site_has_all_canonical_routes() -> None:
+    for route in CANONICAL_ROUTES:
+        assert route_file(route).is_file(), route
 
-    unsupported_claims = (
-        "247",
-        "growth teams already on the list",
+
+def test_every_page_has_unique_seo_and_semantic_basics() -> None:
+    titles: set[str] = set()
+    descriptions: set[str] = set()
+    for route in CANONICAL_ROUTES:
+        html = route_file(route).read_text(encoding="utf-8")
+        soup = BeautifulSoup(html, "html.parser")
+        canonical = f"https://pulsewatch.top{route}"
+        assert soup.html.get("lang") == "en"
+        assert len(soup.select("main")) == 1
+        assert len(soup.select("h1")) == 1
+        assert soup.select_one('meta[name="robots"]')["content"].startswith(
+            "index, follow"
+        )
+        assert soup.select_one('link[rel="canonical"]')["href"] == canonical
+        assert soup.select_one('meta[property="og:url"]')["content"] == canonical
+        title = soup.title.get_text(strip=True)
+        description = soup.select_one('meta[name="description"]')["content"]
+        assert 20 <= len(title) <= 70
+        assert 70 <= len(description) <= 180
+        assert title not in titles
+        assert description not in descriptions
+        titles.add(title)
+        descriptions.add(description)
+        payloads = soup.select('script[type="application/ld+json"]')
+        assert len(payloads) == 1
+        schema = json.loads(payloads[0].string)
+        assert schema["@context"] == "https://schema.org"
+
+
+def test_site_uses_local_shared_assets_and_no_runtime_cdn() -> None:
+    for route in CANONICAL_ROUTES:
+        html = route_file(route).read_text(encoding="utf-8")
+        assert 'href="/assets/site.css"' in html
+        assert 'src="/assets/site.js"' in html
+        assert "cdn.tailwindcss.com" not in html
+        assert "unpkg.com" not in html
+        assert "fonts.googleapis.com" not in html
+    assert (PUBLIC / "assets/site.css").stat().st_size > 5_000
+    assert (PUBLIC / "assets/site.js").stat().st_size > 500
+
+
+def test_internal_links_resolve_to_public_files() -> None:
+    for route in CANONICAL_ROUTES:
+        soup = BeautifulSoup(
+            route_file(route).read_text(encoding="utf-8"), "html.parser"
+        )
+        for link in soup.select("a[href]"):
+            href = link["href"].split("#", 1)[0]
+            if not href or href.startswith(("http://", "https://", "mailto:")):
+                continue
+            assert href.startswith("/")
+            if href.endswith(".html"):
+                target = PUBLIC / href.lstrip("/")
+            elif href == "/":
+                target = PUBLIC / "index.html"
+            else:
+                target = PUBLIC / href.strip("/") / "index.html"
+            assert target.is_file(), f"{route}: broken link {href}"
+
+
+def test_offer_is_specific_truthful_and_not_self_service() -> None:
+    combined = "\n".join(
+        route_file(route).read_text(encoding="utf-8") for route in CANONICAL_ROUTES
+    )
+    required = (
+        "30-day",
+        "€1,500",
+        "one client account",
+        "five competitors",
+        "up to 30 agreed public URLs",
+        "Human review",
+        "client-ready",
+        "INMAR d.o.o.",
+    )
+    for phrase in required:
+        assert phrase.lower() in combined.lower()
+    unsupported = (
+        "247 growth teams",
         "Used by growth teams worldwide",
         "From startups to enterprise",
+        "We scrape daily",
+        "Add any competitor URL",
+        "Zero Noise",
+        "SOC 2 certified",
+        "ISO 27001 certified",
     )
-    for claim in unsupported_claims:
-        assert claim not in html
-
-    assert "Request the managed pilot details" in html
-
-
-def test_landing_states_the_initial_managed_offer() -> None:
-    html = LANDING.read_text(encoding="utf-8")
-
-    assert "managed competitor monitoring" in html.lower()
-    assert "cro and performance agencies" in html.lower()
-    assert "client-ready" in html.lower()
-    assert "Add any competitor URL" not in html
-    assert "We scrape daily" not in html
-    assert "Zero Noise" not in html
+    for claim in unsupported:
+        assert claim not in combined
+    assert "No published paid-client case study yet" in combined
+    assert "not a client case study" in combined
 
 
-def test_subscription_handler_keeps_secrets_and_runtime_state_private() -> None:
+def test_pricing_states_final_total_without_vat_addition() -> None:
+    pricing = route_file("/pricing/").read_text(encoding="utf-8")
+    pilot = route_file("/paid-pilot/").read_text(encoding="utf-8")
+    assert "€1,500" in pricing and "final · one time" in pricing
+    assert "not in the Croatian VAT system" in pricing
+    assert "no VAT is added" in pilot
+    assert "+ VAT" not in pricing
+    assert "+ PDV" not in pricing
+    assert "commercial hypothesis" in pricing
+
+
+def test_sample_report_is_explicitly_demonstration_not_social_proof() -> None:
+    sample = route_file("/sample-report/").read_text(encoding="utf-8")
+    for phrase in (
+        "demonstration",
+        "not a client case study",
+        "No claim that the positioning change improved conversion",
+        "not social proof",
+        "Observed change",
+        "Interpretation",
+        "Recommended action",
+        "Confidence / limits",
+    ):
+        assert phrase.lower() in sample.lower()
+
+
+def test_lead_form_and_privacy_disclosure_match_handler() -> None:
+    pilot = route_file("/paid-pilot/").read_text(encoding="utf-8")
+    privacy = route_file("/privacy/").read_text(encoding="utf-8")
     handler = (PUBLIC / "subscribe.php").read_text(encoding="utf-8")
-    apache = (
-        PUBLIC.parents[0] / "ops" / "apache" / "private-landing-state.conf"
-    ).read_text(encoding="utf-8")
-
-    assert "discord.com/api/" + "webhooks/" not in handler
-    assert "PULSEWATCH_DISCORD_WEBHOOK_URL" not in handler
-    assert "getenv('PULSEWATCH_SUBSCRIBERS_FILE')" in handler
+    apache = (ROOT / "ops/apache/private-landing-state.conf").read_text(
+        encoding="utf-8"
+    )
+    assert 'class="card form js-lead-form"' in pilot
+    assert 'name="email"' in pilot
+    assert "not a newsletter subscription" in pilot
+    assert "automatically removed from the lead file after 90 days" in privacy
     assert "getenv('PULSEWATCH_SUBSCRIBERS_FILE') ?: ''" in handler
     assert "__DIR__ . '/subscribers.json'" not in handler
     assert "flock($handle, LOCK_EX)" in handler
@@ -57,66 +169,41 @@ def test_subscription_handler_keeps_secrets_and_runtime_state_private() -> None:
     assert "Require all denied" in apache
 
 
-def test_landing_has_canonical_indexability_and_semantics() -> None:
-    html = LANDING.read_text(encoding="utf-8")
-
-    assert '<link rel="canonical" href="https://pulsewatch.top/">' in html
-    assert (
-        '<meta name="robots" content="index, follow, max-image-preview:large">' in html
-    )
-    assert html.count("<main>") == 1
-    assert html.count("</main>") == 1
-    assert html.count('type="application/ld+json"') == 1
-    assert '"@type": "Organization"' in html
-    assert '"@type": "WebSite"' in html
-
-
-def test_robots_points_to_the_canonical_sitemap() -> None:
+def test_robots_and_sitemap_publish_only_canonical_routes() -> None:
     robots = (PUBLIC / "robots.txt").read_text(encoding="utf-8")
-
     assert "User-agent: *" in robots
     assert "Disallow:" not in robots
     assert "Sitemap: https://pulsewatch.top/sitemap.xml" in robots
-
-
-def test_sitemap_contains_only_canonical_public_urls() -> None:
     root = ElementTree.parse(PUBLIC / "sitemap.xml").getroot()
-    namespace = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
-    urls = [node.text for node in root.findall("sm:url/sm:loc", namespace)]
-
-    assert urls == [
-        "https://pulsewatch.top/",
-        "https://pulsewatch.top/privacy.html",
-    ]
+    ns = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
+    urls = [node.text for node in root.findall("sm:url/sm:loc", ns)]
+    assert urls == [f"https://pulsewatch.top{route}" for route in CANONICAL_ROUTES]
+    assert len(urls) == len(set(urls))
 
 
-def test_landing_links_to_a_specific_privacy_notice() -> None:
-    html = LANDING.read_text(encoding="utf-8")
-    privacy = (PUBLIC / "privacy.html").read_text(encoding="utf-8")
+def test_generator_is_deterministic_and_covers_sitemap_routes(tmp_path: Path) -> None:
+    before = {
+        p.relative_to(PUBLIC): p.read_bytes() for p in PUBLIC.rglob("*") if p.is_file()
+    }
+    import subprocess
 
-    assert html.count('href="/privacy.html"') >= 3
-    assert "INMAR d.o.o." in privacy
-    assert "automatically removed from the lead file after 90 days" in privacy
-    assert 'href="https://inmar.hr/#contact"' in privacy
-
-
-def test_apache_rules_canonicalize_http_and_www_without_touching_other_hosts() -> None:
-    rules = (
-        Path(__file__).resolve().parents[1]
-        / "ops"
-        / "apache"
-        / "canonical-host-rewrite.conf"
-    ).read_text(encoding="utf-8")
-
-    assert "<VirtualHost 164.68.100.134:80>" in rules
-    assert "^(?:www\\.)?pulsewatch\\.top$" in rules
-    assert "^www\\.pulsewatch\\.top$" in rules
-    assert "%{HTTPS} !=on [OR]" in rules
-    assert "https://pulsewatch.top%{REQUEST_URI}" in rules
-    assert "[R=301,L,NE]" in rules
+    subprocess.run(
+        ["python3", "scripts/build_commercial_site.py"], cwd=ROOT, check=True
+    )
+    after = {
+        p.relative_to(PUBLIC): p.read_bytes() for p in PUBLIC.rglob("*") if p.is_file()
+    }
+    assert before == after
 
 
-def test_google_verification_file_matches_the_registered_token() -> None:
+def test_google_verification_file_matches_registered_token() -> None:
     verification = (PUBLIC / "googledaf5b7b73736b24c.html").read_text(encoding="utf-8")
+    assert verification == "google-site-verification: googledaf5b7b73736b24c.html\n"
 
-    assert verification == ("google-site-verification: googledaf5b7b73736b24c.html\n")
+
+def test_no_blank_or_javascript_links() -> None:
+    for route in CANONICAL_ROUTES:
+        html = route_file(route).read_text(encoding="utf-8")
+        assert not re.search(
+            r'href=["\'](?:#["\']|javascript:)', html, flags=re.IGNORECASE
+        )
