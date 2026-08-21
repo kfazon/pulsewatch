@@ -58,6 +58,17 @@ def test_every_page_has_unique_seo_and_semantic_basics() -> None:
         assert len(payloads) == 1
         schema = json.loads(payloads[0].string)
         assert schema["@context"] == "https://schema.org"
+        assert isinstance(schema["@graph"], list)
+        expected_page_type = {
+            "/paid-pilot/": "Service",
+            "/pricing/": "Service",
+            "/about/": "AboutPage",
+            "/contact/": "ContactPage",
+        }.get(route, "WebPage")
+        assert {node["@type"] for node in schema["@graph"]} >= {
+            "Organization",
+            expected_page_type,
+        }
 
 
 def test_site_uses_local_shared_assets_and_no_runtime_cdn() -> None:

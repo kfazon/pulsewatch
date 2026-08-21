@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Build the static PulseWatch commercial site from reviewed page content."""
 
+import json
 from html import escape
 from pathlib import Path
 
@@ -46,9 +47,34 @@ def footer() -> str:
 def schema(
     name: str, description: str, canonical: str, page_type: str = "WebPage"
 ) -> str:
-    return f'''{{"@context":"https://schema.org","@graph":[{{"@type":"Organization","@id":"{BASE}/#organization","name":"PulseWatch","legalName":"INMAR d.o.o.","url":"{BASE}/"}},{{"@type":"{page_type}","@id":"{canonical}#webpage","url":"{canonical}","name":{name!r},"description":{description!r},"isPartOf":{{"@type":"WebSite","@id":"{BASE}/#website","url":"{BASE}/","name":"PulseWatch"}},"about":{{"@id":"{BASE}/#organization"}},"inLanguage":"en"}}]}}'''.replace(
-        "'", '"'
-    )
+    data = {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Organization",
+                "@id": f"{BASE}/#organization",
+                "name": "PulseWatch",
+                "legalName": "INMAR d.o.o.",
+                "url": f"{BASE}/",
+            },
+            {
+                "@type": page_type,
+                "@id": f"{canonical}#webpage",
+                "url": canonical,
+                "name": name,
+                "description": description,
+                "isPartOf": {
+                    "@type": "WebSite",
+                    "@id": f"{BASE}/#website",
+                    "url": f"{BASE}/",
+                    "name": "PulseWatch",
+                },
+                "about": {"@id": f"{BASE}/#organization"},
+                "inLanguage": "en",
+            },
+        ],
+    }
+    return json.dumps(data, ensure_ascii=False, separators=(",", ":"))
 
 
 def page(
