@@ -18,6 +18,7 @@
 | Correct Measurement ID | PASS |
 | GA collection request after consent | PASS — one request emitted in the local browser gate |
 | Mobile overflow | PASS — 0 px |
+| All-route browser gate | PASS — 11 routes × 2 viewports, 22/22; zero pre-consent analytics requests |
 | Focused tests | PASS — 15 tests |
 
 ## Implementation
@@ -34,8 +35,9 @@
 
 - `ga4-resource.json` — Admin API resource identities and settings.
 - `browser-gate.json` — consent/network/cookie/runtime assertions.
+- `route-gate.json` — all 11 routes at desktop/mobile, including zero pre-consent analytics requests.
 - `desktop-consent.png`, `mobile-consent.png` — visual evidence.
-- `browser_gate.py` — reproducible local browser gate.
+- `browser_gate.py`, `route_gate.py` — reproducible local browser gates.
 
 ## Limits
 
