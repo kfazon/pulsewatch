@@ -41,3 +41,18 @@ def test_sitemap_contains_only_canonical_public_urls() -> None:
     urls = [node.text for node in root.findall("sm:url/sm:loc", namespace)]
 
     assert urls == ["https://pulsewatch.top/"]
+
+
+def test_apache_rules_canonicalize_http_and_www_without_touching_other_hosts() -> None:
+    rules = (
+        Path(__file__).resolve().parents[1]
+        / "ops"
+        / "apache"
+        / "canonical-host-rewrite.conf"
+    ).read_text(encoding="utf-8")
+
+    assert "^(?:www\\.)?pulsewatch\\.top$" in rules
+    assert "^www\\.pulsewatch\\.top$" in rules
+    assert "%{HTTPS} !=on [OR]" in rules
+    assert "https://pulsewatch.top%{REQUEST_URI}" in rules
+    assert "[R=301,L,NE]" in rules
