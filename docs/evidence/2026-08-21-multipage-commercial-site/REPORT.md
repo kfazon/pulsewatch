@@ -17,7 +17,8 @@
 
 | Gate | Result |
 |---|---|
-| Full Python suite | PASS — `12 passed` |
+| Full Python suite | PASS — `25 passed` |
+| Focused public-landing suite | PASS — `12 passed` |
 | Ruff targeted check | PASS |
 | Tracked secret scan | PASS |
 | PHP syntax | PASS |
@@ -34,8 +35,10 @@
 - `screenshots/desktop-home.png`
 - `screenshots/mobile-home.png`
 - `screenshots/desktop-sample-report.png`
+- `screenshots/production-desktop-home.png`
+- `screenshots/production-mobile-home.png`
 
-The managed browser correctly blocked localhost by SSRF policy. The documented isolated Playwright fallback was used against the local PHP server.
+The managed browser correctly blocked localhost by SSRF policy. The documented isolated Playwright fallback was used for both local and production verification.
 
 ## Truthfulness boundary
 
@@ -43,4 +46,18 @@ This release does **not** claim paid customers, proven conversion lift, recurrin
 
 ## Release status
 
-Local implementation and QA are complete. GitHub review, CI, merge, rollbackable production deploy and outside-in public verification are recorded separately after cutover.
+**VERIFIED ONLINE.** PR #34 was independently reviewed after the JSON-LD correction, passed CI and merged as `1a546ce65aae773e022ff5c971a2b7ef99afc731`.
+
+The exact hashed artifact (`052824baf0bcfafb80c5854a203d8e848c4fe307b8a5582c6ed61509b0f4ecda`) was deployed as release `pulsewatch-1a546ce65aae773e-20260821T114859Z` through a same-filesystem rename cutover. The retained rollback tree is `/home/pulsewatch/backups/public_html-20260821T120024Z-84339c0348fc`.
+
+Outside-in production verification passed:
+
+- 11 canonical routes returned HTTP 200 with one H1/main, matching canonical and parseable JSON-LD;
+- desktop/mobile Playwright gate covered 22 route/view combinations with zero overflow, broken images, console errors or failed requests;
+- the public signup returned HTTP 200 / `success: true`; the disposable lead was removed and private storage remained mode `0600`;
+- `/subscribers.json`, `/.env` and `/.env.production` remained inaccessible (`403`);
+- `www` redirected canonically to `https://pulsewatch.top/`;
+- live `index.html` SHA-256 matched the canonical artifact (`5ce5187ae6f275f5eaae9a29972346d919814d1e2b80fadf965319210b4c736f`);
+- Apache configuration returned `Syntax OK` and the rollback directory was confirmed readable.
+
+The production SEO audit completed with four clean probes out of five. Its only finding was a P2 preload heuristic even though the page contains no images; no P0/P1 production finding remained.
