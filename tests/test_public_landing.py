@@ -134,6 +134,36 @@ def test_offer_is_specific_truthful_and_not_self_service() -> None:
     assert "not a client case study" in combined
 
 
+def test_founder_story_is_specific_and_does_not_overclaim_credentials() -> None:
+    home = route_file("/").read_text(encoding="utf-8")
+    about = route_file("/about/").read_text(encoding="utf-8")
+    how = route_file("/how-it-works/").read_text(encoding="utf-8")
+    combined = f"{home}\n{about}\n{how}"
+
+    for phrase in (
+        "15 years of competing for real customers",
+        "physical print business",
+        "sales, offer, pricing and positioning decisions",
+        "Practical commercial expertise",
+        "does not present that as 15 years of formal CRO consulting",
+        "agency strategist retains the final client decision",
+    ):
+        assert phrase.lower() in combined.lower()
+
+    for unsupported_claim in (
+        "15 years of CRO consulting",
+        "15 years of competitive intelligence consulting",
+        "certified CRO expert",
+        "proven conversion uplift",
+    ):
+        if unsupported_claim == "15 years of CRO consulting":
+            assert (
+                "does not present that as 15 years of formal CRO consulting" in combined
+            )
+        else:
+            assert unsupported_claim.lower() not in combined.lower()
+
+
 def test_pricing_states_final_total_without_vat_addition() -> None:
     pricing = route_file("/pricing/").read_text(encoding="utf-8")
     pilot = route_file("/paid-pilot/").read_text(encoding="utf-8")
