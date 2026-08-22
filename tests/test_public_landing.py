@@ -281,10 +281,22 @@ def test_no_blank_or_javascript_links() -> None:
         )
 
 
+def test_every_page_has_webstarthub_footer_credit() -> None:
+    for route in CANONICAL_ROUTES:
+        html = route_file(route).read_text(encoding="utf-8")
+        soup = BeautifulSoup(html, "html.parser")
+        credit = soup.select_one(".footer-bottom .footer-credit")
+        assert credit is not None, route
+        assert credit.get_text(strip=True) == "WebStartHub", route
+        assert credit.get("href") == "https://webstarthub.com/", route
+        assert not credit.has_attr("rel"), route
+
+
 def test_shared_css_preserves_brand_and_component_alignment() -> None:
     css = (PUBLIC / "assets/site.css").read_text(encoding="utf-8")
     assert ".site-footer .brand{display:inline-flex;align-items:center" in css
     assert ".site-footer a:not(.brand)" in css
+    assert ".site-footer .footer-credit{display:inline" in css
     assert ".price small{display:block" in css
     assert ".cta-band>.button{flex:0 0 auto}" in css
     assert ".hero-actions .button{width:100%}" in css
